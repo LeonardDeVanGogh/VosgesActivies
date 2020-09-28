@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Activitité : {{ activite.name }} {% endblock %}
+
+{% block body %}
+<section class="articles">
+		<article>
+			<h1>{{activite.name}}</h1><br/>
+			<h2>Description : </h2>
+			{{activite.description | raw}}
+			<p>Adresse : {{activite.address}}</p>
+			<p>Extérieur : {% if activite.outdoor==1 %} oui {%else %} non {% endif%}</p>
+			<p>Intérieur : {% if activite.indoor==1 %} oui {%else %} non {% endif%}</p>
+			<section id="categories">
+			{% for category in activite.category %}
+				<div class="category">
+					<div class="row">
+						<div class="col-3">
+							Catégorie(s) :
+						</div>
+						<div class="col-3">
+							{{category.name }}
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</section>
+			<p><img src="{{activite.picture}}"></p>
+		</article>
+
+		<section id="comments">
+			<h1>{{ activite.comments | length }} Commentaire(s) : </h1>
+			{% for comment in activite.comments %}
+				<div class="comment">
+					<div class="row">
+						<div class="col-3">
+							{{ comment.authour }} (<small>{{ comment.createdAt | date('d/m/Y à H:i') }}</small>)
+						</div>
+						<div class="col-9">
+							{{ comment.content | raw }}
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+
+			{% if app.user %}
+				{{form_start(commentForm)}}
+				{{form_row(commentForm.authour, {'attr': {'placeholder' : "Votre nom"}}) }}
+				{{ form_row(commentForm.content, {'attr': {'placeholder' : "Votre commentaire"}}) }}
+				<button type="submit" class="btn btn-success">Commenter</button>
+				{{form_end(commentForm)}}
+			{% else %}
+				<h2>vous ne pouvez pas commenter si vous n'êtes pas connecté</h2>
+				<a class="btn btn-primary" href="{{ path('security_login') }}">Connexion</a>
+			{% endif %}
+
+		</section>
+</section>
+{% endblock %}

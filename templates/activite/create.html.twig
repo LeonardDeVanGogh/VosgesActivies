@@ -1,0 +1,29 @@
+{%  extends 'base.html.twig' %}
+{% form_theme formActivity 'bootstrap_4_layout.html.twig' %}
+
+{% block body %}
+	<h1>creation d'une activité</h1>
+	{{ form_start(formActivity) }}
+
+	{{ form_row(formActivity.name, {'attr' : {'placeholder' : "Nom"}}) }}
+	{{ form_row(formActivity.description, {'attr' : {'placeholder' : "Description"}}) }}
+	{{ form_row(formActivity.address, {'attr' : {'placeholder' : "Adresse"}}) }}
+	{{ form_row(formActivity.owner, {'attr' : {'placeholder' : "Owner"}}) }}
+	{{ form_row(formActivity.latitude, {'attr' : {'placeholder' : "Latitude"}}) }}
+	{{ form_row(formActivity.longitude, {'attr' : {'placeholder' : "Longitude"}}) }}
+	{{ form_row(formActivity.picture, {'attr' : {'placeholder' : "Url de l'image"}}) }}
+	{{ form_row(formActivity.category) }}
+	{{ form_row(formActivity.indoor, {'attr' : {'placeholder' : "Indoor"}}) }}
+	{{ form_row(formActivity.outdoor, {'attr' : {'placeholder' : "Outdoor"}}) }}
+
+
+	<button type="submit" class="btn btn-success">
+		{% if editMode %}
+			Modifier Activité
+		{% else %}
+			Créer Activité
+		{% endif %}
+	</button>
+	{{ form_end(formActivity) }}
+
+{% endblock %}
