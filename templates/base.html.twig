@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Bienvenue !{% endblock %}</title>
+        <title>{% block title %}Vosges Activités{% endblock %}</title>
         
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://bootswatch.com/4/cerulean/bootstrap.min.css">
@@ -24,14 +24,12 @@
 		        </a>
 		      </li>
 		      <li class="nav-item">
-		        <a class="nav-link" href="{{ path('activites') }}">Activites 
+		        <a class="nav-link" href="{{ path('activity') }}">Activites
 		        	<span class="sr-only">(current)</span>
 		        </a>
 		      </li>
 		      <li class="nav-item">
-		        <a class="nav-link" href="{{ path('activity_create') }}">Création Activité 
-		        	<span class="sr-only">(current)</span>
-		        </a>
+		        <a class="nav-link" href="{{ path('activity_create') }}">Création Activité</a>
 		      </li>
 	          {% if not app.user %}
 				<li class="nav-item">

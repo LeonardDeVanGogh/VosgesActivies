@@ -2,7 +2,7 @@
 
 namespace App\Form;
 
-use App\Entity\Activite;
+use App\Entity\Activity;
 use App\Entity\Category;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -31,13 +31,21 @@ class ActivityType extends AbstractType
             ->add('indoor')
             ->add('outdoor')
             ->add('picture')
+            ->add('city')
+            ->add('zipcode')
+            ->add('street')
+            ->add('street_number')
+            ->add('is_indoor')
+            ->add('is_outdoor')
+            ->add('animals')
+            ->add('is_handicaped')
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Activite::class,
+            'data_class' => Activity::class,
         ]);
     }
 }

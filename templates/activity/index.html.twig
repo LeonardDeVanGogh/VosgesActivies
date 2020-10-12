@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+<section class="articles">
+	{% for activity in activities %}
+		<article>
+			<h2>{{activity.name}}</h2>
+			<p>{{activity.address}}</p>
+			<a href="{{ path('show', {'id':activity.id}) }}" class="btn btn-primary">Lire l'article</a>
+		</article>
+	{% endfor %}
+</section>
+{% endblock %}

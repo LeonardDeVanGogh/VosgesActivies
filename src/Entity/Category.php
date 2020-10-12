@@ -30,7 +30,7 @@ class Category
     private $description;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Activite::class, inversedBy="Category")
+     * @ORM\ManyToMany(targetEntity=Activity::class, inversedBy="Category")
      */
     private $Activity;
 
@@ -69,14 +69,14 @@ class Category
     }
 
     /**
-     * @return Collection|Activite[]
+     * @return Collection|Activity[]
      */
     public function getActivity(): Collection
     {
         return $this->Activity;
     }
 
-    public function addActivity(Activite $activity): self
+    public function addActivity(Activity $activity): self
     {
         if (!$this->Activity->contains($activity)) {
             $this->Activity[] = $activity;
@@ -85,7 +85,7 @@ class Category
         return $this;
     }
 
-    public function removeActivity(Activite $activity): self
+    public function removeActivity(Activity $activity): self
     {
         if ($this->Activity->contains($activity)) {
             $this->Activity->removeElement($activity);

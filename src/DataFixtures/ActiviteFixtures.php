@@ -4,7 +4,7 @@ namespace App\DataFixtures;
 
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
-use App\Entity\Activite;
+use App\Entity\Activity;
 use App\Entity\Category;
 use App\Entity\Comment;
 
@@ -26,7 +26,7 @@ class ActiviteFixtures extends Fixture
 
         //Créer entre 4 6 et activités
             for($j=1;$j<=mt_rand(4,6);$j++){
-            $activite = new Activite();
+            $activite = new Activity();
 
             $content = '<p>' . join($faker->paragraphs(5), '</p><p>') . '</p>';
             $activite->setName($faker->sentence())

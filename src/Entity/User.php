@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -47,6 +49,27 @@ class User implements UserInterface
      */
 
     private $confirm_password;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $phone_number;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Report::class, mappedBy="user_id", orphanRemoval=true)
+     */
+    private $reports;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Activity::class, mappedBy="user", orphanRemoval=true)
+     */
+    private $activites;
+
+    public function __construct()
+    {
+        $this->reports = new ArrayCollection();
+        $this->activites = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -107,5 +130,79 @@ class User implements UserInterface
     public function getRoles()
     {
         return ['ROLE_USER'];
+    }
+
+    public function getPhoneNumber(): ?string
+    {
+        return $this->phone_number;
+    }
+
+    public function setPhoneNumber(?string $phone_number): self
+    {
+        $this->phone_number = $phone_number;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Report[]
+     */
+    public function getReports(): Collection
+    {
+        return $this->reports;
+    }
+
+    public function addReport(Report $report): self
+    {
+        if (!$this->reports->contains($report)) {
+            $this->reports[] = $report;
+            $report->setUserId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeReport(Report $report): self
+    {
+        if ($this->reports->contains($report)) {
+            $this->reports->removeElement($report);
+            // set the owning side to null (unless already changed)
+            if ($report->getUserId() === $this) {
+                $report->setUserId(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Activity[]
+     */
+    public function getActivites(): Collection
+    {
+        return $this->activites;
+    }
+
+    public function addActivite(Activity $activite): self
+    {
+        if (!$this->activites->contains($activite)) {
+            $this->activites[] = $activite;
+            $activite->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeActivite(Activity $activite): self
+    {
+        if ($this->activites->contains($activite)) {
+            $this->activites->removeElement($activite);
+            // set the owning side to null (unless already changed)
+            if ($activite->getUser() === $this) {
+                $activite->setUser(null);
+            }
+        }
+
+        return $this;
     }
 }
