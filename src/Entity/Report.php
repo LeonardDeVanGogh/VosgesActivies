@@ -24,13 +24,13 @@ class Report
     private $comment_id;
 
     /**
-     * @ORM\ManyToOne(targetEntity=user::class, inversedBy="reports")
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="reports")
      * @ORM\JoinColumn(nullable=false)
      */
     private $user_id;
 
     /**
-     * @ORM\ManyToOne(targetEntity=reportReason::class, inversedBy="reports")
+     * @ORM\ManyToOne(targetEntity=ReportReason::class, inversedBy="reports")
      * @ORM\JoinColumn(nullable=false)
      */
     private $reason_id;

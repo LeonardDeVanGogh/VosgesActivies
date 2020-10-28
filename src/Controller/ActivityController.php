@@ -11,7 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use App\Entity\Activity;
 use App\Entity\Category;
-use App\ENtity\Comment;
+use App\Entity\Comment;
 use App\Form\CommentType;
 
 use App\Form\ActivityType;
@@ -26,7 +26,7 @@ class ActivityController extends AbstractController
      */
     public function index(ActivityRepository $repo)
     {
-    	$activities = $repo->findAll();
+    	$activities = $repo->findAllActiveActivites();
         return $this->render('activity/index.html.twig', [
             'controller_name' => 'ActivityController',
             'activities'=> $activities,

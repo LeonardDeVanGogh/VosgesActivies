@@ -7,12 +7,22 @@ use Doctrine\Persistence\ObjectManager;
 use App\Entity\Activity;
 use App\Entity\Category;
 use App\Entity\Comment;
+use App\Entity\User;
 
 
 class ActiviteFixtures extends Fixture
 {
     public function load(ObjectManager $manager)
     {
+        $faker = \Faker\Factory::create('fr_FR');
+        $user = new User();
+        $user->setEmail($faker->email())
+            ->setUsername($faker->name())
+            ->setPassword('test')
+            ->getActivites('activite');
+        $manager->persist($user);
+
+        $manager->flush();
 
         $faker = \Faker\Factory::create('fr_FR');
 
@@ -24,21 +34,35 @@ class ActiviteFixtures extends Fixture
                      ->setDescription($faker->paragraph());
             $manager->persist($category);
 
-        //Créer entre 4 6 et activités
+
+        //Créer entre 4 et 6 activités
             for($j=1;$j<=mt_rand(4,6);$j++){
             $activite = new Activity();
+            $user = new User();
+            $user->setEmail($faker->email())
+                ->setUsername($faker->name())
+                ->setPassword('test')
+                ->getActivites('activite');
+            $manager->persist($user);
 
             $content = '<p>' . join($faker->paragraphs(5), '</p><p>') . '</p>';
             $activite->setName($faker->sentence())
                      ->setDescription($content)
-                     ->setAddress("Quai du Lac, 88400 Gérardmer")
-                     ->setOwner(1)
                      ->setLatitude(48.070759)
                      ->setLongitude(6.866638)
-                     ->setIndoor(0)
-                     ->setOutdoor(1)
                      ->setPicture($faker->imageUrl())
-                     ->setCreatedAt($faker->dateTimeBetween('-6 months'));
+                     ->setCreatedAt($faker->dateTimeBetween('-6 months'))
+                     ->setCity("Gerardmer")
+                     ->setZipcode(88400)
+                     ->setStreet("Rue du Lac")
+                     ->setStreetNumber(1)
+                     ->setIsIndoor(0)
+                     ->setIsOutdoor(1)
+                     ->setAnimals(0)
+                     ->setIsHandicaped(1)
+                     ->setUser($user)
+            ;
+
             $manager->persist($activite);
 
 
@@ -51,10 +75,10 @@ class ActiviteFixtures extends Fixture
                 $minimum = '-' . $days . ' days';
 
                 $comment = new Comment();
-                $comment->setAuthour($faker->name)
-                        ->setContent($content)
+                $comment->setContent($content)
                         ->setCreatedAt($faker->dateTimeBetween($minimum))
-                        ->setActivity($activite);
+                        ->setActivity($activite)
+                        ->setUser($user);
                 $manager->persist($comment);
             
                 }

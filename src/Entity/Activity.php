@@ -119,7 +119,7 @@ class Activity
     private $is_handicaped;
 
     /**
-     * @ORM\ManyToOne(targetEntity=user::class, inversedBy="activites")
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="activites")
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;
