@@ -26,7 +26,7 @@ class ActivityController extends AbstractController
      */
     public function index(ActivityRepository $repo)
     {
-    	$activities = $repo->findAllActiveActivites();
+    	$activities = $repo->findAllActivities();
         return $this->render('activity/index.html.twig', [
             'controller_name' => 'ActivityController',
             'activities'=> $activities,

@@ -21,6 +21,17 @@ class ActivityRepository extends ServiceEntityRepository
     public function findAllActiveActivites(){
 
     }
+    public function findAllActivities()
+    {
+        return $this->createQueryBuilder('a')
+            ->andWhere('a.deleted_at is NULL')
+            ->orderBy('a.id', 'ASC')
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
 
     // /**
     //  * @return Activity[] Returns an array of Activity objects
