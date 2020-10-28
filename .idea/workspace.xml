@@ -28,7 +28,9 @@
     <list default="true" id="58d55e91-27dc-42a4-8308-c7828bf875b8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/ActivityController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ActivityController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/ActivityType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/ActivityType.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Repository/ActivityRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/ActivityRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/activity/create.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/activity/create.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -205,7 +207,7 @@
       <workItem from="1603443323509" duration="6053000" />
       <workItem from="1603449420034" duration="11047000" />
       <workItem from="1603812028236" duration="1227000" />
-      <workItem from="1603873550732" duration="4943000" />
+      <workItem from="1603873550732" duration="6958000" />
     </task>
     <servers />
   </component>
@@ -242,6 +244,10 @@
     </state>
     <state x="-1366" y="-24" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1680.1010/-1920.-24.1920.1040@-1920.-24.1920.1040" timestamp="1601639008566" />
     <state x="485" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1680.1010/-1920.-24.1920.1040@0.0.1680.1010" timestamp="1602144024781" />
+    <state x="570" y="260" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1603880573215">
+      <screen x="0" y="0" width="1680" height="1010" />
+    </state>
+    <state x="570" y="260" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1680.1010/-1920.-24.1920.1040@0.0.1680.1010" timestamp="1603880573215" />
     <state x="620" y="260" key="FileChooserDialogImpl" timestamp="1603455599779">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
@@ -280,5 +286,16 @@
     </state>
     <state x="-1295" y="83" width="669" height="825" key="find.popup/0.0.1680.1010/-1920.-24.1920.1040@-1920.-24.1920.1040" timestamp="1602242233251" />
     <state x="547" y="104" width="585" height="801" key="find.popup/0.0.1680.1010/-1920.-24.1920.1040@0.0.1680.1010" timestamp="1603456789189" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/src/Controller/ActivityController.php</url>
+          <line>14</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

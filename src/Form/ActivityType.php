@@ -19,22 +19,18 @@ class ActivityType extends AbstractType
         $builder
             ->add('name')
             ->add('description')
-            ->add('address')
-            ->add('owner')
             ->add('latitude')
             ->add('longitude')
-            ->add('category', EntityType::class, [
-                'multiple'=> true,
-                'class' => Category::class,
-                'choice_label' => 'name'
-            ])
-            ->add('indoor')
-            ->add('outdoor')
             ->add('picture')
             ->add('city')
             ->add('zipcode')
             ->add('street')
             ->add('street_number')
+            ->add('category', EntityType::class, [
+                'multiple'=> true,
+                'class' => Category::class,
+                'choice_label' => 'name'
+            ])
             ->add('is_indoor')
             ->add('is_outdoor')
             ->add('animals')

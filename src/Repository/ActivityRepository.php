@@ -18,15 +18,12 @@ class ActivityRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Activity::class);
     }
-    public function findAllActiveActivites(){
 
-    }
     public function findAllActivities()
     {
         return $this->createQueryBuilder('a')
             ->andWhere('a.deleted_at is NULL')
-            ->orderBy('a.id', 'ASC')
-            ->setMaxResults(10)
+            ->orderBy('a.name', 'ASC')
             ->getQuery()
             ->getResult()
             ;

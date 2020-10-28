@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
@@ -55,8 +56,18 @@ class ActivityController extends AbstractController
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isvalid()){
+            $user = new User();
+            $user->setEmail("test@gmail.com")
+                ->setUsername("test")
+                ->setPassword('test');
+            $manager->persist($user);
+
             if(!$activity->getId()){
+                $activity->setUser($user);
                 $activity->setCreatedAt(new \Datetime());
+            }else{
+                $activity->setUpdatedAt(new \Datetime());
+                $activity->setUpdatedBy(1);
             }
             
             $manager->persist($activity);
