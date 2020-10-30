@@ -67,7 +67,7 @@ class ActivityController extends AbstractController
                 $activity->setCreatedAt(new \Datetime());
             }else{
                 $activity->setUpdatedAt(new \Datetime());
-                $activity->setUpdatedBy(1);
+                $activity->setUpdatedBy($this->getUser()->getId());
             }
             
             $manager->persist($activity);
@@ -89,7 +89,8 @@ class ActivityController extends AbstractController
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()){
             $comment->setCreatedAt(new \DateTime())
-                    ->setActivity($activity);
+                    ->setActivity($activity)
+                    ->setUser($this->getUser());
 
             $manager->persist($comment);
             $manager->flush();
@@ -100,6 +101,16 @@ class ActivityController extends AbstractController
             'commentForm' => $form->createView()
     		]);
 
+    }
+    /**
+     * @Route("/activity/{id}/delete", name="activity_delete")
+     */
+    public function delete(Activity $activity, Request $request, EntityManagerInterface $manager)
+    {
+        $activity->setDeletedAt(new \DateTime());
+        $manager->persist($activity);
+        $manager->flush();
+        return $this->redirectToRoute('activity');
     }
 
 }

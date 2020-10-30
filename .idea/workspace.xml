@@ -26,11 +26,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="58d55e91-27dc-42a4-8308-c7828bf875b8" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/symfony2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/symfony2.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/styles/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/styles/home.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/home.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/ActivityController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ActivityController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/ActivityType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/ActivityType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/ActivityRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/ActivityRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/activity/create.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/activity/create.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/activity/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/activity/show.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -207,7 +209,8 @@
       <workItem from="1603443323509" duration="6053000" />
       <workItem from="1603449420034" duration="11047000" />
       <workItem from="1603812028236" duration="1227000" />
-      <workItem from="1603873550732" duration="6958000" />
+      <workItem from="1603873550732" duration="11328000" />
+      <workItem from="1603966839177" duration="3109000" />
     </task>
     <servers />
   </component>
@@ -239,6 +242,10 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="520" y="241" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1603966763319">
+      <screen x="0" y="0" width="1680" height="1010" />
+    </state>
+    <state x="520" y="241" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1680.1010/-1920.-24.1920.1040@0.0.1680.1010" timestamp="1603966763319" />
     <state x="485" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1602144024781">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>

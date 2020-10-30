@@ -3,14 +3,30 @@
 {% block title %}Activitité : {{ activity.name }} {% endblock %}
 
 {% block body %}
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-3">
+				<a href="{{ path('activity_edit', {'id':activity.id}) }}" class="btn btn-primary">
+					Modifier l'activité
+				</a>
+			</div>
+			<div class="col-lg-3">
+				<a href="{{ path('activity_delete', {'id':activity.id}) }}" class="btn btn-primary">
+					Supprimer l'activité
+				</a>
+			</div>
+		</div>
+	</div>
 <section class="articles">
 		<article>
 			<h1>{{activity.name}}</h1><br/>
 			<h2>Description : </h2>
 			{{activity.description | raw}}
-			<p>Adresse : {{activity.city}}</p>
+			<p>Adresse : {{ activity.streetNumber}}, {{ activity.street}} {{ activity.zipcode}} {{activity.city}}</p>
 			<p>Extérieur : {% if activity.isOutdoor==1 %} oui {%else %} non {% endif%}</p>
 			<p>Intérieur : {% if activity.isIndoor==1 %} oui {%else %} non {% endif%}</p>
+			<p>Accès aux personnes à mobilité réduite : {% if activity.isHandicaped==1 %} oui {%else %} non {% endif%}</p>
+			<p>Animaux acceptés : {% if activity.Animals==1 %} oui {%else %} non {% endif%}</p>
 			<section id="categories">
 			{% for category in activity.category %}
 				<div class="category">
