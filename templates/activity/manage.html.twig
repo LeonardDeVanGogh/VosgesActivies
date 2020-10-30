@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Home{% endblock %}
+{% block head %}{{ encore_entry_link_tags('activity_manage') }}{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="h1">Mes Activités :</div>
+        </div>
+    </div>
+    <section class="articles">
+        {% for activity in activities %}
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">Nom : {{ activity.name }}</div>
+                    <div class="col-lg-1">
+                        <a href="{{ path('show', {'id':activity.id}) }}">
+                            <i class="fas fa-eye fa-2x"></i>
+                        </a>
+                    </div>
+                    <div class="col-lg-1">
+                        <a href="{{ path('activity_edit', {'id':activity.id}) }}">
+                            <i class="fas fa-edit fa-2x"></i>
+                        </a>
+                    </div>
+                    <div class="col-lg-1">
+                        <a type="button" href="{{ path('activity_delete', {'id':activity.id}) }}" data-toggle="modal" data-target="#ActivityDeleteModal">
+                            <i class="fas fa-times-circle fa-2x"></i>
+                        </a>
+
+                        <div class="modal fade" id="ActivityDeleteModal" tabindex="-1" role="dialog" aria-labelledby="ActivityDeleteModal" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Confirmation</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Souhaitez-vous vraiment supprimer cette Activite ?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                                        <button href="{{ path('activity_delete', {'id':activity.id}) }}" type="button" class="btn btn-danger data-dismiss="modal">Effacer</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </section>
+    {{ encore_entry_script_tags('activity_manage') }}
+{% endblock %}

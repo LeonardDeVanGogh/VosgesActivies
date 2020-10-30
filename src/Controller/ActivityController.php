@@ -56,14 +56,10 @@ class ActivityController extends AbstractController
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isvalid()){
-            $user = new User();
-            $user->setEmail("test@gmail.com")
-                ->setUsername("test")
-                ->setPassword('test');
-            $manager->persist($user);
+
 
             if(!$activity->getId()){
-                $activity->setUser($user);
+                $activity->setUser($this->getUser());
                 $activity->setCreatedAt(new \Datetime());
             }else{
                 $activity->setUpdatedAt(new \Datetime());
@@ -102,6 +98,19 @@ class ActivityController extends AbstractController
     		]);
 
     }
+
+    /**
+     * @Route("/activity/manage", name="activity_manage")
+     */
+    public function manage(ActivityRepository $repo)
+    {
+        $activities = $repo->findActivitiesByUser($this->getUser());
+        return $this->render('activity/manage.html.twig', [
+            'controller_name' => 'ActivityController',
+            'activities'=> $activities,
+        ]);
+    }
+
     /**
      * @Route("/activity/{id}/delete", name="activity_delete")
      */
@@ -112,5 +121,6 @@ class ActivityController extends AbstractController
         $manager->flush();
         return $this->redirectToRoute('activity');
     }
+
 
 }

@@ -28,6 +28,17 @@ class ActivityRepository extends ServiceEntityRepository
             ->getResult()
             ;
     }
+    public function findActivitiesByUser($value)
+    {
+        return $this->createQueryBuilder('a')
+            ->andWhere('a.user = :val')
+            ->andWhere('a.deleted_at is NULL')
+            ->setParameter('val', $value)
+            ->orderBy('a.name', 'ASC')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
 
 
     // /**
