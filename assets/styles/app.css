@@ -7,3 +7,7 @@ footer{
 .fa-github{
     color:black;
 }
+.comment{
+    border:solid 1px black;
+    margin:1px;
+}

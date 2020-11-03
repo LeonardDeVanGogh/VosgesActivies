@@ -8,6 +8,7 @@ use App\Entity\Activity;
 use App\Entity\Category;
 use App\Entity\Comment;
 use App\Entity\User;
+use App\Entity\ReportReason;
 
 
 class ActiviteFixtures extends Fixture
@@ -26,7 +27,11 @@ class ActiviteFixtures extends Fixture
 
         $faker = \Faker\Factory::create('fr_FR');
 
-        //Créer 3 catégories
+        for($m=1;$m<=5;$m++){
+            $reportReason = new ReportReason();
+            $reportReason->setReason($faker->sentence());
+            $manager->persist($reportReason);
+        }
 
         for ($i=1;$i<=3;$i++){
             $category = new Category();
@@ -85,9 +90,8 @@ class ActiviteFixtures extends Fixture
 
             }
 
-        }
-        
 
+        }
 
         $manager->flush();
     }

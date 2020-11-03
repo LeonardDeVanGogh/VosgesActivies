@@ -13,11 +13,13 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use App\Entity\Activity;
 use App\Entity\Category;
 use App\Entity\Comment;
+use App\Entity\ReportReason;
 use App\Form\CommentType;
 
 use App\Form\ActivityType;
 use App\Repository\ActivityRepository;
 use App\Repository\CategoryRepository;
+use App\Repository\ReportReasonRepository;
 
 
 class ActivityController extends AbstractController
@@ -61,12 +63,14 @@ class ActivityController extends AbstractController
             if(!$activity->getId()){
                 $activity->setUser($this->getUser());
                 $activity->setCreatedAt(new \Datetime());
+                $manager->persist($activity);
             }else{
+
                 $activity->setUpdatedAt(new \Datetime());
                 $activity->setUpdatedBy($this->getUser()->getId());
             }
             
-            $manager->persist($activity);
+
             $manager->flush();
             return $this->redirectToRoute('show', ['id' => $activity->getId()]);
         }
@@ -78,7 +82,7 @@ class ActivityController extends AbstractController
     /**
      * @Route("/activity/show/{id}", name="show")
      */
-    public function show(Activity $activity, Request $request, EntityManagerInterface $manager)
+    public function show(Activity $activity, Request $request, EntityManagerInterface $manager, ReportReasonRepository $repo)
     {
         $comment = new Comment();
         $form = $this->createForm(CommentType::class, $comment);
@@ -92,8 +96,10 @@ class ActivityController extends AbstractController
             $manager->flush();
             return $this->redirectToRoute('show', ['id'=>$activity->getId()]);
         }
+        $reportReasons = $repo->findAll();
     	return $this->render('activity/show.html.twig',[
     		'activity'=>$activity,
+            'reportReasons' => $reportReasons,
             'commentForm' => $form->createView()
     		]);
 

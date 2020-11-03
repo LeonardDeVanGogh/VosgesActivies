@@ -30,7 +30,7 @@ class Category
     private $description;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Activity::class, inversedBy="Category")
+     * @ORM\ManyToMany(targetEntity=Activity::class, mappedBy="Category")
      */
     private $Activity;
 

@@ -54,7 +54,7 @@ class Activity
     private $createdAt;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Category::class, mappedBy="Activity")
+     * @ORM\ManyToMany(targetEntity=Category::class, inversedBy="Activity")
      */
     private $Category;
 
