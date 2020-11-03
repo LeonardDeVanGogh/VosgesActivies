@@ -1384,6 +1384,7 @@
                 "reflection",
                 "static"
             ],
+            "abandoned": "roave/better-reflection",
             "time": "2020-03-27T11:06:43+00:00"
         },
         {
@@ -1545,6 +1546,7 @@
                 "faker",
                 "fixtures"
             ],
+            "abandoned": true,
             "time": "2019-12-12T13:22:17+00:00"
         },
         {
@@ -3591,16 +3593,16 @@
         },
         {
             "name": "symfony/form",
-            "version": "v5.1.7",
+            "version": "v5.1.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/form.git",
-                "reference": "f3a49105e472fd168b743acdb5e0524c66aeb287"
+                "reference": "3f61496220b9f8672ede9b9acfb87a06c0c752f2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/form/zipball/f3a49105e472fd168b743acdb5e0524c66aeb287",
-                "reference": "f3a49105e472fd168b743acdb5e0524c66aeb287",
+                "url": "https://api.github.com/repos/symfony/form/zipball/3f61496220b9f8672ede9b9acfb87a06c0c752f2",
+                "reference": "3f61496220b9f8672ede9b9acfb87a06c0c752f2",
                 "shasum": ""
             },
             "require": {
@@ -3647,11 +3649,6 @@
                 "symfony/validator": "For form validation."
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "5.1-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "Symfony\\Component\\Form\\": ""
@@ -3690,7 +3687,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-10-02T12:58:01+00:00"
+            "time": "2020-10-28T05:25:38+00:00"
         },
         {
             "name": "symfony/framework-bundle",

@@ -64,17 +64,20 @@
 												</div>
 												<div class="modal-body">
 
-													{% for reportReason in reportReasons %}
-														<div class="row">
-															<a> - {{reportReason.reason}}</a>
-														</div>
-													{% endfor %}
+
+													{{form_start(reportForm)}}
+
+
+													{{form_end(reportForm)}}
+
+													<div class="modal-footer">
+														<button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+														<button href="" type="button" class="btn btn-warning" data-dismiss="modal">Signaler</button>
+													</div>
+
 
 												</div>
-												<div class="modal-footer">
-													<button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-													<button href="" type="button" class="btn btn-warning" data-dismiss="modal">Signaler</button>
-												</div>
+
 											</div>
 										</div>
 									</div>

@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\ReportReason;
 use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -13,12 +14,15 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use App\Entity\Activity;
 use App\Entity\Category;
 use App\Entity\Comment;
-use App\Entity\ReportReason;
+use App\Entity\Report;
+
 use App\Form\CommentType;
+use App\Form\ReportType;
 
 use App\Form\ActivityType;
 use App\Repository\ActivityRepository;
 use App\Repository\CategoryRepository;
+use App\Repository\ReportRepository;
 use App\Repository\ReportReasonRepository;
 
 
@@ -85,9 +89,9 @@ class ActivityController extends AbstractController
     public function show(Activity $activity, Request $request, EntityManagerInterface $manager, ReportReasonRepository $repo)
     {
         $comment = new Comment();
-        $form = $this->createForm(CommentType::class, $comment);
-        $form->handleRequest($request);
-        if($form->isSubmitted() && $form->isValid()){
+        $formComment = $this->createForm(CommentType::class, $comment);
+        $formComment->handleRequest($request);
+        if($formComment->isSubmitted() && $formComment->isValid()){
             $comment->setCreatedAt(new \DateTime())
                     ->setActivity($activity)
                     ->setUser($this->getUser());
@@ -96,14 +100,46 @@ class ActivityController extends AbstractController
             $manager->flush();
             return $this->redirectToRoute('show', ['id'=>$activity->getId()]);
         }
+
         $reportReasons = $repo->findAll();
+
+        $report = new Report();
+        $formReport = $this->createForm(ReportType::class, $report);
+        $formReport->handleRequest($request);
+
+        if($formReport->isSubmitted() && $formReport->isValid()){
+            $report->setDate(new \DateTime())
+
+            ;
+            $manager->persist($report);
+            $manager->flush();
+            return $this->redirectToRoute('show', ['id'=>$activity->getId()]);
+        }
+
     	return $this->render('activity/show.html.twig',[
-    		'activity'=>$activity,
+    		'activity' => $activity,
             'reportReasons' => $reportReasons,
-            'commentForm' => $form->createView()
+            'commentForm' => $formComment->createView(),
+            'reportForm' => $formReport->createView()
     		]);
 
     }
+    /**
+     * @Route("/activity/test", name="test")
+     */
+    public function test(Request $request)
+    {
+    $comment = new Comment();
+        $report = new Report();
+        $formReport = $this->createForm(ReportType::class, $report);
+        $formReport->handleRequest($request);
+
+        return $this->render('activity/test.html.twig',[
+            'reportForm' => $formReport->createView()
+
+        ]);
+    }
+
 
     /**
      * @Route("/activity/manage", name="activity_manage")

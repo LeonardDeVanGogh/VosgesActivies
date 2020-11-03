@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+ <h1>test</h1>
+ {{form_start(reportForm)}}
+ {{ form_row(reportForm.reason_id) }}
+ <button type="submit" class="btn btn-success">Signaler</button>
+ {{form_end(reportForm)}}
+{% endblock %}

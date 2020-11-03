@@ -27,15 +27,8 @@
   <component name="ChangeListManager">
     <list default="true" id="58d55e91-27dc-42a4-8308-c7828bf875b8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/styles/activity_manage.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/activity_manage.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/styles/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20201022084118.php" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/Version20201022084118.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/ActivityController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ActivityController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataFixtures/ActiviteFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/ActiviteFixtures.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Activity.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Activity.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Category.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Category.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/activity/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/activity/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/activity/manage.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/activity/manage.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/activity/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/activity/show.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -218,7 +211,7 @@
       <workItem from="1603812028236" duration="1227000" />
       <workItem from="1603873550732" duration="11328000" />
       <workItem from="1603966839177" duration="17446000" />
-      <workItem from="1604386778293" duration="1546000" />
+      <workItem from="1604386778293" duration="12678000" />
     </task>
     <servers />
   </component>
@@ -259,10 +252,10 @@
     </state>
     <state x="-1366" y="-24" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1680.1010/-1920.-24.1920.1040@-1920.-24.1920.1040" timestamp="1601639008566" />
     <state x="485" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1680.1010/-1920.-24.1920.1040@0.0.1680.1010" timestamp="1602144024781" />
-    <state x="570" y="260" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1603880573215">
+    <state x="570" y="260" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1604412676330">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state x="570" y="260" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1680.1010/-1920.-24.1920.1040@0.0.1680.1010" timestamp="1603880573215" />
+    <state x="570" y="260" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1680.1010/-1920.-24.1920.1040@0.0.1680.1010" timestamp="1604412676330" />
     <state x="620" y="260" key="FileChooserDialogImpl" timestamp="1603455599779">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
@@ -296,22 +289,22 @@
       <screen x="-1920" y="-24" width="1920" height="1040" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1680.1010/-1920.-24.1920.1040@-1920.-24.1920.1040" timestamp="1604061459883" />
-    <state x="442" y="115" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1603454583255">
+    <state x="442" y="115" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1604415508794">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state x="442" y="115" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1680.1010/-1920.-24.1920.1040@0.0.1680.1010" timestamp="1603454583255" />
-    <state x="547" y="104" width="585" height="801" key="find.popup" timestamp="1604055380328">
+    <state x="442" y="115" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1680.1010/-1920.-24.1920.1040@0.0.1680.1010" timestamp="1604415508794" />
+    <state x="547" y="104" width="585" height="801" key="find.popup" timestamp="1604415514983">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state x="-1295" y="83" width="669" height="825" key="find.popup/0.0.1680.1010/-1920.-24.1920.1040@-1920.-24.1920.1040" timestamp="1602242233251" />
-    <state x="547" y="104" width="585" height="801" key="find.popup/0.0.1680.1010/-1920.-24.1920.1040@0.0.1680.1010" timestamp="1604055380328" />
+    <state x="547" y="104" width="585" height="801" key="find.popup/0.0.1680.1010/-1920.-24.1920.1040@0.0.1680.1010" timestamp="1604415514983" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/src/Controller/ActivityController.php</url>
-          <line>14</line>
+          <line>15</line>
           <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
