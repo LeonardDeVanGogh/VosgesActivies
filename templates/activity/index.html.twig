@@ -8,7 +8,7 @@
 		<article>
 			<h2>{{activity.name}}</h2>
 			<p>{{activity.city}}</p>
-			<a href="{{ path('show', {'id':activity.id}) }}" class="btn btn-primary">Lire l'article</a>
+			<a href="{{ path('read', {'id':activity.id}) }}" class="btn btn-primary">Lire l'article</a>
 		</article>
 	{% endfor %}
 </section>

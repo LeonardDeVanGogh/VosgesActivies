@@ -15,7 +15,7 @@
                 <div class="row">
                     <div class="col-lg-9">Nom : {{ activity.name }}</div>
                     <div class="col-lg-1">
-                        <a href="{{ path('show', {'id':activity.id}) }}" title="Consulter l'activité">
+                        <a href="{{ path('read', {'id':activity.id}) }}" title="Consulter l'activité">
                             <i class="fas fa-eye fa-2x"></i>
                         </a>
                     </div>
@@ -43,7 +43,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-                                        <button href="{{ path('activity_delete', {'id':activity.id}) }}" type="button" class="btn btn-danger data-dismiss="modal">Effacer</button>
+                                        <a href="{{ path('activity_delete', {'id':activity.id}) }}" type="button" class="btn btn-danger">Effacer</a>
                                     </div>
                                 </div>
                             </div>

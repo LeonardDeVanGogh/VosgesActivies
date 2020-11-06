@@ -48,14 +48,9 @@ class ActivityController extends AbstractController
         ]);
     }
     /**
-    * @Route("/activity/new", name="activity_create")
     * @Route("/activity/{id}/edit", name="activity_edit")
     */
-    public function form(Activity $activity = null, Request $request, EntityManagerInterface $manager){
-
-        if(!$activity){
-            $activity = new Activity();
-        }
+    public function update(Activity $activity, Request $request, EntityManagerInterface $manager){
 
         $form = $this->createForm(ActivityType::class,$activity);
 
@@ -63,20 +58,11 @@ class ActivityController extends AbstractController
 
         if($form->isSubmitted() && $form->isvalid()){
 
-
-            if(!$activity->getId()){
-                $activity->setUser($this->getUser());
-                $activity->setCreatedAt(new \Datetime());
-                $manager->persist($activity);
-            }else{
-
-                $activity->setUpdatedAt(new \Datetime());
-                $activity->setUpdatedBy($this->getUser()->getId());
-            }
-            
+            $activity->setUpdatedAt(new \Datetime());
+            $activity->setUpdatedBy($this->getUser()->getId());
 
             $manager->flush();
-            return $this->redirectToRoute('show', ['id' => $activity->getId()]);
+            return $this->redirectToRoute('read', ['id' => $activity->getId()]);
         }
         return $this->render('activity/create.html.twig',[
             'formActivity' => $form->createView(),
@@ -84,7 +70,32 @@ class ActivityController extends AbstractController
             ]);
     }
     /**
-     * @Route("/activity/show/{id}", name="show")
+     * @Route("/activity/new", name="activity_create")
+     */
+    public function create(Request $request, EntityManagerInterface $manager){
+
+        $activity = new Activity();
+
+        $form = $this->createForm(ActivityType::class,$activity);
+
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isvalid()){
+
+            $activity->setUser($this->getUser());
+            $activity->setCreatedAt(new \Datetime());
+            $manager->persist($activity);
+
+            $manager->flush();
+            return $this->redirectToRoute('read', ['id' => $activity->getId()]);
+        }
+        return $this->render('activity/create.html.twig',[
+            'formActivity' => $form->createView(),
+            'editMode' => $activity->getId() !== null
+        ]);
+    }
+    /**
+     * @Route("/activity/read/{id}", name="read")
      */
     public function show(Activity $activity, Request $request, EntityManagerInterface $manager, ReportReasonRepository $repo)
     {
@@ -95,10 +106,9 @@ class ActivityController extends AbstractController
             $comment->setCreatedAt(new \DateTime())
                     ->setActivity($activity)
                     ->setUser($this->getUser());
-
             $manager->persist($comment);
             $manager->flush();
-            return $this->redirectToRoute('show', ['id'=>$activity->getId()]);
+            return $this->redirectToRoute('read', ['id'=>$activity->getId()]);
         }
 
         $reportReasons = $repo->findAll();
@@ -113,7 +123,7 @@ class ActivityController extends AbstractController
             ;
             $manager->persist($report);
             $manager->flush();
-            return $this->redirectToRoute('show', ['id'=>$activity->getId()]);
+            return $this->redirectToRoute('read', ['id'=>$activity->getId()]);
         }
 
     	return $this->render('activity/show.html.twig',[

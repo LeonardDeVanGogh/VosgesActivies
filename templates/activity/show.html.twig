@@ -27,7 +27,7 @@
 				</div>
 			{% endfor %}
 			</section>
-			<p><img src="{{activity.picture}}"></p>
+			<p><img src="{{activity.picture}}" alt="image"></p>
 		</article>
 
 		<section id="comments">
@@ -52,7 +52,6 @@
 									<a type="button" data-toggle="modal" data-target="#CommentReportModal">
 										<i class="far fa-flag"></i>
 									</a>
-
 									<div class="modal fade" id="CommentReportModal" tabindex="-1" role="dialog" aria-labelledby="CommentReportModal" aria-hidden="true">
 										<div class="modal-dialog" role="document">
 											<div class="modal-content">
@@ -63,30 +62,21 @@
 													</button>
 												</div>
 												<div class="modal-body">
-
-
 													{{form_start(reportForm)}}
 
 
 													{{form_end(reportForm)}}
-
 													<div class="modal-footer">
 														<button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-														<button href="" type="button" class="btn btn-warning" data-dismiss="modal">Signaler</button>
 													</div>
-
-
 												</div>
-
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-
 					</div>
-
 				</div>
 			{% endfor %}
 
