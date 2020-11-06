@@ -28,9 +28,8 @@
     <list default="true" id="58d55e91-27dc-42a4-8308-c7828bf875b8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/ActivityController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ActivityController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/activity/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/activity/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/activity/manage.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/activity/manage.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/activity/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/activity/show.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/SecurityController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/SecurityController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Activity.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Activity.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -213,7 +212,7 @@
       <workItem from="1603873550732" duration="11328000" />
       <workItem from="1603966839177" duration="17446000" />
       <workItem from="1604386778293" duration="13398000" />
-      <workItem from="1604654562927" duration="3017000" />
+      <workItem from="1604654562927" duration="5449000" />
     </task>
     <servers />
   </component>
@@ -295,11 +294,11 @@
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state x="442" y="115" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1680.1010/-1920.-24.1920.1040@0.0.1680.1010" timestamp="1604415508794" />
-    <state x="547" y="104" width="585" height="801" key="find.popup" timestamp="1604415514983">
+    <state x="547" y="104" width="585" height="801" key="find.popup" timestamp="1604658456834">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state x="-1295" y="83" width="669" height="825" key="find.popup/0.0.1680.1010/-1920.-24.1920.1040@-1920.-24.1920.1040" timestamp="1602242233251" />
-    <state x="547" y="104" width="585" height="801" key="find.popup/0.0.1680.1010/-1920.-24.1920.1040@0.0.1680.1010" timestamp="1604415514983" />
+    <state x="547" y="104" width="585" height="801" key="find.popup/0.0.1680.1010/-1920.-24.1920.1040@0.0.1680.1010" timestamp="1604658456834" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

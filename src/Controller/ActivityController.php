@@ -58,7 +58,7 @@ class ActivityController extends AbstractController
 
         if($form->isSubmitted() && $form->isvalid()){
 
-            $activity->setUpdatedAt(new \Datetime());
+            $activity->setUpdatedAt();
             $activity->setUpdatedBy($this->getUser()->getId());
 
             $manager->flush();
@@ -83,7 +83,7 @@ class ActivityController extends AbstractController
         if($form->isSubmitted() && $form->isvalid()){
 
             $activity->setUser($this->getUser());
-            $activity->setCreatedAt(new \Datetime());
+            $activity->setCreatedAt();
             $manager->persist($activity);
 
             $manager->flush();
