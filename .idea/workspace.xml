@@ -27,10 +27,18 @@
   <component name="ChangeListManager">
     <list default="true" id="58d55e91-27dc-42a4-8308-c7828bf875b8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20201009111817.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20201012115528.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20201012120209.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20201012120855.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20201012120954.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20201012121454.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20201022084118.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20201030123830.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/ActivityController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ActivityController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/ReportType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/ReportType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataFixtures/ActiviteFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/ActiviteFixtures.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Report.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Report.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/activity/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/activity/show.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -222,7 +230,7 @@
       <workItem from="1604663812476" duration="4399000" />
       <workItem from="1605268506078" duration="2446000" />
       <workItem from="1605697891060" duration="1200000" />
-      <workItem from="1605779675767" duration="5582000" />
+      <workItem from="1605779675767" duration="13686000" />
     </task>
     <servers />
   </component>
@@ -304,11 +312,11 @@
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state x="442" y="115" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1680.1010/-1920.-24.1920.1040@0.0.1680.1010" timestamp="1604415508794" />
-    <state x="547" y="104" width="585" height="801" key="find.popup" timestamp="1604658456834">
+    <state x="547" y="104" width="585" height="801" key="find.popup" timestamp="1605795924616">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state x="-1295" y="83" width="669" height="825" key="find.popup/0.0.1680.1010/-1920.-24.1920.1040@-1920.-24.1920.1040" timestamp="1602242233251" />
-    <state x="547" y="104" width="585" height="801" key="find.popup/0.0.1680.1010/-1920.-24.1920.1040@0.0.1680.1010" timestamp="1604658456834" />
+    <state x="547" y="104" width="585" height="801" key="find.popup/0.0.1680.1010/-1920.-24.1920.1040@0.0.1680.1010" timestamp="1605795924616" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

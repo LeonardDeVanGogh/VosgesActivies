@@ -45,6 +45,11 @@ class Report
      */
     private $moderated_at;
 
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $deletedAt;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -90,10 +95,12 @@ class Report
     {
         return $this->date;
     }
-
-    public function setDate(\DateTimeInterface $date): self
+    /**
+     * @ORM\PrePersist
+     */
+    public function setDate($date): self
     {
-        $this->date = $date;
+        $this->date = new \DateTime();
 
         return $this;
     }
@@ -106,6 +113,18 @@ class Report
     public function setModeratedAt(?\DateTimeInterface $moderated_at): self
     {
         $this->moderated_at = $moderated_at;
+
+        return $this;
+    }
+
+    public function getDeletedAt(): ?\DateTimeInterface
+    {
+        return $this->deletedAt;
+    }
+
+    public function setDeletedAt(?\DateTimeInterface $deletedAt): self
+    {
+        $this->deletedAt = $deletedAt;
 
         return $this;
     }

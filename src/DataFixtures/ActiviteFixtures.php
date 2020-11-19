@@ -8,6 +8,7 @@ use App\Entity\Activity;
 use App\Entity\Category;
 use App\Entity\Comment;
 use App\Entity\User;
+use App\Entity\Report;
 use App\Entity\ReportReason;
 
 
@@ -89,7 +90,6 @@ class ActiviteFixtures extends Fixture
                 }
 
             }
-
 
         }
 

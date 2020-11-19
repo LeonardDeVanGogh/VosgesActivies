@@ -113,19 +113,12 @@ class ActivityController extends AbstractController
             return $this->redirectToRoute('read', ['id'=>$activity->getId()]);
         }
 
-
-
         $report = new Report();
         $formReport = $this->createForm(ReportType::class, $report);
-
         $formReport->handleRequest($request);
-
         if($formReport->isSubmitted() && $formReport->isValid()){
-
-            $report->setDate(new \DateTime())
-
-            ;
-            $manager->persist($report);
+            $report->setUser($this->getUser());
+            $manager->persist($comment);
             $manager->flush();
             return $this->redirectToRoute('read', ['id'=>$activity->getId()]);
         }
@@ -177,6 +170,5 @@ class ActivityController extends AbstractController
         $manager->flush();
         return $this->redirectToRoute('activity');
     }
-
 
 }
