@@ -30,6 +30,7 @@ class ReportType extends AbstractType
                 'multiple'=> false,
                 'class' => ReportReason::class,
                 'choice_label' => 'reason',
+                'label' => 'Raison',
 
             ])
         ;

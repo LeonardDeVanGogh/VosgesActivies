@@ -47,6 +47,7 @@ class ActivityController extends AbstractController
     	return $this->render('activity/home.html.twig', [
         ]);
     }
+
     /**
     * @Route("/activity/{id}/edit", name="activity_edit")
     */
@@ -69,6 +70,7 @@ class ActivityController extends AbstractController
             'editMode' => $activity->getId() !== null
             ]);
     }
+
     /**
      * @Route("/activity/new", name="activity_create")
      */
@@ -111,13 +113,15 @@ class ActivityController extends AbstractController
             return $this->redirectToRoute('read', ['id'=>$activity->getId()]);
         }
 
-        $reportReasons = $repo->findAll();
+
 
         $report = new Report();
         $formReport = $this->createForm(ReportType::class, $report);
+
         $formReport->handleRequest($request);
 
         if($formReport->isSubmitted() && $formReport->isValid()){
+
             $report->setDate(new \DateTime())
 
             ;
@@ -128,7 +132,7 @@ class ActivityController extends AbstractController
 
     	return $this->render('activity/show.html.twig',[
     		'activity' => $activity,
-            'reportReasons' => $reportReasons,
+
             'commentForm' => $formComment->createView(),
             'reportForm' => $formReport->createView()
     		]);

@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Activitité : {{ activity.name }} {% endblock %}
+{% block head %}{{ encore_entry_link_tags('show') }}{% endblock %}
 
 {% block body %}
 	<section class="articles">
@@ -49,39 +50,45 @@
 							{{ comment.content | raw }}
 							<div class="row">
 								<div class="col-lg-1">
-									<a type="button" data-toggle="modal" data-target="#CommentReportModal">
+									<a type="button" class="openReportModal" data-toggle="modal" data-comment-id="{{ comment.id }}" data-target="#CommentReportModal">
 										<i class="far fa-flag"></i>
 									</a>
-									<div class="modal fade" id="CommentReportModal" tabindex="-1" role="dialog" aria-labelledby="CommentReportModal" aria-hidden="true">
-										<div class="modal-dialog" role="document">
-											<div class="modal-content">
-												<div class="modal-header">
-													<h5 class="modal-title" id="Report Comment">Report un commentaire</h5>
-													<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-														<span aria-hidden="true">&times;</span>
-													</button>
-												</div>
-												<div class="modal-body">
-													{{form_start(reportForm)}}
 
-
-													{{form_end(reportForm)}}
-													<div class="modal-footer">
-														<button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			{% endfor %}
+			<div class="modal fade" id="CommentReportModal" tabindex="-1" role="dialog" aria-labelledby="CommentReportModal" aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="Report Comment">Report un commentaire</h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						{{form_start(reportForm)}}
+						<div class="modal-body">
+							{{ form_label(reportForm.reason_id) }}
+							{{ form_widget(reportForm.reason_id) }}
+							{{ form_errors(reportForm.reason_id) }}
+							<input type="hidden" name="comment_id" id="comment_id" value="">
+
+						</div>
+						<div class="modal-footer">
+							<button type="submit" class="btn btn-secondary" data-dismiss="modal">Signaler</button>
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+						</div>
+						{{form_end(reportForm, {'render_rest': false})}}
+{#						#}
+					</div>
+				</div>
+			</div>
 
 			{% if app.user %}
-				{{form_start(commentForm)}}
+			{{form_start(commentForm)}}
 				{{ form_row(commentForm.content, {'attr': {'placeholder' : "Votre commentaire"}}) }}
 				<button type="submit" class="btn btn-success">Commenter</button>
 				{{form_end(commentForm)}}
@@ -92,4 +99,5 @@
 
 		</section>
 	</section>
+	{{ encore_entry_script_tags('show') }}
 {% endblock %}

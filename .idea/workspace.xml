@@ -28,8 +28,9 @@
     <list default="true" id="58d55e91-27dc-42a4-8308-c7828bf875b8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/ActivityController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ActivityController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/SecurityController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/SecurityController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Activity.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Activity.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/ReportType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/ReportType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/activity/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/activity/show.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -178,6 +179,11 @@
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Console Colors" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\wamp64\www\VosgesActivites\assets" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -212,7 +218,11 @@
       <workItem from="1603873550732" duration="11328000" />
       <workItem from="1603966839177" duration="17446000" />
       <workItem from="1604386778293" duration="13398000" />
-      <workItem from="1604654562927" duration="5449000" />
+      <workItem from="1604654562927" duration="7339000" />
+      <workItem from="1604663812476" duration="4399000" />
+      <workItem from="1605268506078" duration="2446000" />
+      <workItem from="1605697891060" duration="1200000" />
+      <workItem from="1605779675767" duration="5582000" />
     </task>
     <servers />
   </component>
