@@ -21,19 +21,19 @@ class Report
      * @ORM\ManyToOne(targetEntity=comment::class, inversedBy="reports")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $comment_id;
+    private $comment;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="reports")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $user_id;
+    private $user;
 
     /**
      * @ORM\ManyToOne(targetEntity=ReportReason::class, inversedBy="reports")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $reason_id;
+    private $reason;
 
     /**
      * @ORM\Column(type="datetime")
@@ -55,41 +55,6 @@ class Report
         return $this->id;
     }
 
-    public function getCommentId(): ?comment
-    {
-        return $this->comment_id;
-    }
-
-    public function setCommentId(?comment $comment_id): self
-    {
-        $this->comment_id = $comment_id;
-
-        return $this;
-    }
-
-    public function getUserId(): ?user
-    {
-        return $this->user_id;
-    }
-
-    public function setUserId(?user $user_id): self
-    {
-        $this->user_id = $user_id;
-
-        return $this;
-    }
-
-    public function getReasonId(): ?reportReason
-    {
-        return $this->reason_id;
-    }
-
-    public function setReasonId(?reportReason $reason_id): self
-    {
-        $this->reason_id = $reason_id;
-
-        return $this;
-    }
 
     public function getDate(): ?\DateTimeInterface
     {
@@ -125,6 +90,42 @@ class Report
     public function setDeletedAt(?\DateTimeInterface $deletedAt): self
     {
         $this->deletedAt = $deletedAt;
+
+        return $this;
+    }
+
+    public function getComment(): ?comment
+    {
+        return $this->comment;
+    }
+
+    public function setComment(?comment $comment): self
+    {
+        $this->comment = $comment;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    public function getReason(): ?ReportReason
+    {
+        return $this->reason;
+    }
+
+    public function setReason(?ReportReason $reason): self
+    {
+        $this->reason = $reason;
 
         return $this;
     }

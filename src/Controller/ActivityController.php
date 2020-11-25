@@ -99,8 +99,9 @@ class ActivityController extends AbstractController
     /**
      * @Route("/activity/read/{id}", name="read")
      */
-    public function show(Activity $activity, Request $request, EntityManagerInterface $manager, ReportReasonRepository $repo)
+    public function show(Activity $activity, Request $request, EntityManagerInterface $manager, ReportRepository $repo)
     {
+
         $comment = new Comment();
         $formComment = $this->createForm(CommentType::class, $comment);
         $formComment->handleRequest($request);
@@ -115,13 +116,8 @@ class ActivityController extends AbstractController
 
         $report = new Report();
         $formReport = $this->createForm(ReportType::class, $report);
-        $formReport->handleRequest($request);
-        if($formReport->isSubmitted() && $formReport->isValid()){
-            $report->setUser($this->getUser());
-            $manager->persist($comment);
-            $manager->flush();
-            return $this->redirectToRoute('read', ['id'=>$activity->getId()]);
-        }
+
+
 
     	return $this->render('activity/show.html.twig',[
     		'activity' => $activity,

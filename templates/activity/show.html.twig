@@ -50,7 +50,7 @@
 							{{ comment.content | raw }}
 							<div class="row">
 								<div class="col-lg-1">
-									<a type="button" class="openReportModal" data-toggle="modal" data-comment-id="{{ comment.id }}" data-target="#CommentReportModal">
+									<a type="button" class="openReportModal" data-toggle="modal" data-comment="{{ comment.id }}" data-target="#CommentReportModal">
 										<i class="far fa-flag"></i>
 									</a>
 
@@ -74,7 +74,7 @@
 							{{ form_label(reportForm.reason_id) }}
 							{{ form_widget(reportForm.reason_id) }}
 							{{ form_errors(reportForm.reason_id) }}
-							<input type="hidden" name="comment_id" id="comment_id" value="">
+							<input type="hidden" name="comment" id="comment" value="">
 
 						</div>
 						<div class="modal-footer">

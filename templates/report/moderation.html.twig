@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Moderation{% endblock %}
+{% block head %}{{ encore_entry_link_tags('activity_manage') }}{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="h1">Mes Activités :</div>
+        </div>
+    </div>
+    <section class="articles">
+        {% for report in reports %}
+            <div class="container activity">
+                <div class="row">
+                    <div class="col-lg-9">Nom : {{ report.id }}</div>
+                    <div class="col-lg-1">
+                        <a href="{{ path('read', {'id':report.id}) }}" title="Consulter l'activité">
+                            <i class="fas fa-eye fa-2x"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </section>
+    {{ encore_entry_script_tags('activity_manage') }}
+{% endblock %}

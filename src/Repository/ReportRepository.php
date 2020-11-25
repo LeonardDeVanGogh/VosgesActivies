@@ -18,6 +18,15 @@ class ReportRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Report::class);
     }
+    public function findAllReports()
+    {
+        return $this->createQueryBuilder('r')
+            ->andWhere('r.moderated_at is NULL')
+            ->orderBy('r.id', 'ASC')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
 
     // /**
     //  * @return Report[] Returns an array of Report objects
