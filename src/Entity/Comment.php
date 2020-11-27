@@ -43,7 +43,7 @@ class Comment
     private $user;
 
     /**
-     * @ORM\OneToMany(targetEntity=Report::class, mappedBy="comment_id", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=Report::class, mappedBy="comment", orphanRemoval=true)
      */
     private $reports;
 

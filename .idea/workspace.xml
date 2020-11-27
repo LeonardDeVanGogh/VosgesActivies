@@ -26,18 +26,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="58d55e91-27dc-42a4-8308-c7828bf875b8" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/VosgesActivites.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/VosgesActivites.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/show.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/show.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20201009111817.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20201012115528.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20201012120209.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20201012120855.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20201012120954.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20201012121454.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20201022084118.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20201030123830.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20201119142159.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/ActivityController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ActivityController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Report.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Report.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/ReportRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/ReportRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Comment.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Comment.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/ReportType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/ReportType.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/activity/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/activity/show.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/report/moderation.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/report/moderation.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -240,6 +245,8 @@
       <workItem from="1606210081735" duration="285000" />
       <workItem from="1606210523472" duration="8929000" />
       <workItem from="1606295625070" duration="1199000" />
+      <workItem from="1606391507531" duration="9840000" />
+      <workItem from="1606474282736" duration="8921000" />
     </task>
     <servers />
   </component>
@@ -332,7 +339,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/src/Controller/ActivityController.php</url>
-          <line>15</line>
+          <line>4</line>
           <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>

@@ -2,28 +2,18 @@
 
 namespace App\Controller;
 
-use App\Entity\ReportReason;
-use App\Entity\User;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\Request;
-use Doctrine\Persistence\ObjectManager;
-use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use App\Entity\Activity;
-use App\Entity\Category;
 use App\Entity\Comment;
 use App\Entity\Report;
-
+use App\Form\ActivityType;
 use App\Form\CommentType;
 use App\Form\ReportType;
-
-use App\Form\ActivityType;
 use App\Repository\ActivityRepository;
-use App\Repository\CategoryRepository;
-use App\Repository\ReportRepository;
-use App\Repository\ReportReasonRepository;
+use App\Repository\CommentRepository;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Routing\Annotation\Route;
 
 
 class ActivityController extends AbstractController
@@ -99,7 +89,7 @@ class ActivityController extends AbstractController
     /**
      * @Route("/activity/read/{id}", name="read")
      */
-    public function show(Activity $activity, Request $request, EntityManagerInterface $manager, ReportRepository $repo)
+    public function show(Activity $activity, Request $request, EntityManagerInterface $manager, CommentRepository $repo)
     {
 
         $comment = new Comment();
@@ -116,6 +106,19 @@ class ActivityController extends AbstractController
 
         $report = new Report();
         $formReport = $this->createForm(ReportType::class, $report);
+        $formReport->handleRequest($request);
+        if($formReport->isSubmitted() && $formReport->isValid()){
+            $myComment = $repo->find($request->request->get('comment_id'));
+            $report->setComment($myComment);
+            $report->setUser($this->getUser());
+            $manager->persist($report);
+            $manager->flush();
+            return $this->redirectToRoute('read', ['id'=>$activity->getId()]);
+        }
+
+
+
+
 
 
 

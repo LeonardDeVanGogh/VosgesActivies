@@ -56,7 +56,7 @@ class User implements UserInterface
     private $phone_number;
 
     /**
-     * @ORM\OneToMany(targetEntity=Report::class, mappedBy="user_id", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=Report::class, mappedBy="user", orphanRemoval=true)
      */
     private $reports;
 

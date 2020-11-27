@@ -50,8 +50,9 @@
 							{{ comment.content | raw }}
 							<div class="row">
 								<div class="col-lg-1">
-									<a type="button" class="openReportModal" data-toggle="modal" data-comment="{{ comment.id }}" data-target="#CommentReportModal">
+									<a type="button" class="openReportModal" data-toggle="modal" data-comment-id="{{ comment.id }}" data-target="#CommentReportModal">
 										<i class="far fa-flag"></i>
+										<span>({{ comment.reports | length }})</span>
 									</a>
 
 								</div>
@@ -71,18 +72,17 @@
 						</div>
 						{{form_start(reportForm)}}
 						<div class="modal-body">
-							{{ form_label(reportForm.reason_id) }}
-							{{ form_widget(reportForm.reason_id) }}
-							{{ form_errors(reportForm.reason_id) }}
-							<input type="hidden" name="comment" id="comment" value="">
-
+							{{ form_label(reportForm.reason) }}
+							{{ form_widget(reportForm.reason) }}
+							{{ form_errors(reportForm.reason) }}
 						</div>
+						<input type="hidden" name="comment_id" id="comment_id" value="">
 						<div class="modal-footer">
 							<button type="submit" class="btn btn-secondary">Signaler</button>
 							<button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
 						</div>
+{						{{ form_row(reportForm._token) }}
 						{{form_end(reportForm, {'render_rest': false})}}
-{#						#}
 					</div>
 				</div>
 			</div>

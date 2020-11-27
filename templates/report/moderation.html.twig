@@ -15,7 +15,7 @@
                 <div class="row">
                     <div class="col-lg-9">Nom : {{ report.id }}</div>
                     <div class="col-lg-1">
-                        <a href="{{ path('read', {'id':report.id}) }}" title="Consulter l'activité">
+                        <a href="{{ path('read', {'id':report.comment.activity.id}) }}" title="Consulter l'activité">
                             <i class="fas fa-eye fa-2x"></i>
                         </a>
                     </div>

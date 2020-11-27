@@ -3,10 +3,10 @@ import './styles/show.css';
 
 
 
-let tests = document.getElementsByClassName("openReportModal");
+let comments = document.getElementsByClassName("openReportModal");
 let i;
-for (i = 0; i < tests.length; i++) {
-    tests[i].addEventListener("click", setCommentId);
+for (i = 0; i < comments.length; i++) {
+    comments[i].addEventListener("click", setCommentId);
 }
 
 function setCommentId(){
