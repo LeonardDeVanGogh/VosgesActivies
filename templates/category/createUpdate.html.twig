@@ -1,0 +1,20 @@
+{%  extends 'base.html.twig' %}
+
+
+{% block body %}
+    <h1>{% if editMode %}Modification{% else%}Création{% endif%} d'une activité</h1>
+    {{ form_start(formCategory) }}
+    {{ form_widget(formCategory.name) }}
+    {{ form_errors(formCategory.name) }}
+    {{ form_widget(formCategory.description) }}
+    {{ form_errors(formCategory.description) }}
+    <button type="submit" class="btn btn-success">
+        {% if editMode %}
+            Modifier
+        {% else %}
+            Créer
+        {% endif %}
+    </button>
+    {{ form_end(formCategory) }}
+
+{% endblock %}

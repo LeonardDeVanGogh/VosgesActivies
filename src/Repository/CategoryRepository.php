@@ -18,6 +18,15 @@ class CategoryRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Category::class);
     }
+    public function findAllCategoriesNotDeleted()
+    {
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.deleted_at is NULL')
+            ->orderBy('c.id', 'DESC')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
 
     // /**
     //  * @return Category[] Returns an array of Category objects

@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ReportReasonController!{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>Catégories : </h1>
+        <div class="row">
+            <div class="col-lg-2">
+                <a href="{{ path('category_create') }}">
+                    <i class="fas fa-plus"></i>
+                </a>
+            </div>
+        </div>
+        {% for category in categories %}
+            <div class="row">
+                <div class="col-lg-6">{{ category.name }}</div>
+                <div class="col-lg-2">
+                    <a href="{{ path('category_update',{'id':category.id}) }}">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                </div>
+                <div class="col-lg-2">
+                    <a href="{{ path('category_delete',{'id':category.id}) }}">
+                        <i class="fas fa-times-circle"></i>
+                    </a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
