@@ -21,7 +21,7 @@ class CommentController extends AbstractController
         ]);
     }
     /**
-     * @Route("/comment/moderation", name="comment_moderate")
+     * @Route("/comment/moderation", name="comment_moderation")
      */
     public function moderation(CommentRepository $repo)
     {
@@ -31,13 +31,23 @@ class CommentController extends AbstractController
         ]);
     }
     /**
-     * @Route("/comment/{id}/validate", name="comment_validate")
+     * @Route("/comment/{id}/validate", name="comment_moderate")
      */
-    public function delete(Comment $comment, EntityManagerInterface $manager)
+    public function moderate(Comment $comment, EntityManagerInterface $manager)
     {
         $comment->setModeratedAt(new \DateTime());
         $manager->persist($comment);
         $manager->flush();
-        return $this->redirectToRoute('comment_moderate');
+        return $this->redirectToRoute('comment_moderation');
+    }
+    /**
+     * @Route("/comment/{id}/delete", name="comment_delete")
+     */
+    public function delete(Comment $comment, EntityManagerInterface $manager)
+    {
+        $comment->setDeletedAt(new \DateTime());
+        $manager->persist($comment);
+        $manager->flush();
+        return $this->redirectToRoute('comment_validate', ['id' => $comment->getId()] );
     }
 }
