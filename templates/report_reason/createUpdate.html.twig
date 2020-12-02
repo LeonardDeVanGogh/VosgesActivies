@@ -1,0 +1,19 @@
+{%  extends 'base.html.twig' %}
+
+
+{% block body %}
+    <h1>{% if editMode %}Modification{% else%}Création{% endif%} d'une activité</h1>
+    {{ form_start(formReportReason) }}
+
+    {{ form_row(formReportReason.reason, {'attr' : {'placeholder' : "Raison"}}) }}
+
+    <button type="submit" class="btn btn-success">
+        {% if editMode %}
+            Modifier
+        {% else %}
+            Créer
+        {% endif %}
+    </button>
+    {{ form_end(formReportReason) }}
+
+{% endblock %}

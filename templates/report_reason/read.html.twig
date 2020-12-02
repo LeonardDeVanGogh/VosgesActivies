@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ReportReasonController!{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>Types de reports : </h1>
+        <div class="row">
+            <div class="col-lg-2">
+                <a href="{{ path('report_reason_create') }}">
+                    <i class="fas fa-rocket"></i>
+                </a>
+            </div>
+        </div>
+        {% for reason in reasons %}
+            <div class="row">
+                <div class="col-lg-6">{{ reason.reason }}</div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

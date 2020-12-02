@@ -29,6 +29,11 @@ class ReportReason
      */
     private $reports;
 
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $deleted_at;
+
     public function __construct()
     {
         $this->reports = new ArrayCollection();
@@ -78,6 +83,18 @@ class ReportReason
                 $report->setReasonId(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getDeletedAt(): ?\DateTimeInterface
+    {
+        return $this->deleted_at;
+    }
+
+    public function setDeletedAt(?\DateTimeInterface $deleted_at): self
+    {
+        $this->deleted_at = $deleted_at;
 
         return $this;
     }
