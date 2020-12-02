@@ -51,12 +51,16 @@
 			{% block body %}{% endblock %}
 		</div>
 		<footer class="page-footer">
-			<div class="row justify-content-end">
-				<a href="https://github.com/LeonardDeVanGogh/VosgesActivies">
-					<i class="fab fa-github fa-2x"></i>
-				</a>
-				<div class="col-lg-2">mentions légales</div>
-			</div>
+
+				<div class="col-lg-2">
+					<a href="https://github.com/LeonardDeVanGogh/VosgesActivies">
+						<i class="fab fa-github fa-2x"></i>
+					</a>
+				</div>
+				<div class="col-lg-2">
+					<span>mentions légales</span>
+				</div>
+
 		</footer>
         {% block javascripts %}{% endblock %}
 		{{ encore_entry_script_tags('app') }}

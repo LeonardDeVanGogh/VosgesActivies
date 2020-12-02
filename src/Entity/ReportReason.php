@@ -25,7 +25,7 @@ class ReportReason
     private $reason;
 
     /**
-     * @ORM\OneToMany(targetEntity=Report::class, mappedBy="reason_id", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=Report::class, mappedBy="reason", orphanRemoval=true)
      */
     private $reports;
 

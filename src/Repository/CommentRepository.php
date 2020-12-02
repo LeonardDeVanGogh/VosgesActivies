@@ -18,6 +18,16 @@ class CommentRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Comment::class);
     }
+    public function findAllReportedComment()
+    {
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.deleted_at is NULL')
+            ->andWhere('c.moderated_at is NULL')
+            ->orderBy('c.id', 'ASC')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
 
     // /**
     //  * @return Comment[] Returns an array of Comment objects

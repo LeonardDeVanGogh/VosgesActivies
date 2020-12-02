@@ -47,6 +47,16 @@ class Comment
      */
     private $reports;
 
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $moderated_at;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $deleted_at;
+
     public function __construct()
     {
         $this->reports = new ArrayCollection();
@@ -132,6 +142,30 @@ class Comment
                 $report->setCommentId(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getModeratedAt(): ?\DateTimeInterface
+    {
+        return $this->moderated_at;
+    }
+
+    public function setModeratedAt(?\DateTimeInterface $moderated_at): self
+    {
+        $this->moderated_at = $moderated_at;
+
+        return $this;
+    }
+
+    public function getDeletedAt(): ?\DateTimeInterface
+    {
+        return $this->deleted_at;
+    }
+
+    public function setDeletedAt(?\DateTimeInterface $deleted_at): self
+    {
+        $this->deleted_at = $deleted_at;
 
         return $this;
     }
