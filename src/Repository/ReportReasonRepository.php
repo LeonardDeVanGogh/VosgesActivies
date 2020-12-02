@@ -19,6 +19,16 @@ class ReportReasonRepository extends ServiceEntityRepository
         parent::__construct($registry, ReportReason::class);
     }
 
+    public function findAllReportReasonNotDeleted()
+    {
+        return $this->createQueryBuilder('r')
+            ->andWhere('r.deleted_at is NULL')
+            ->orderBy('r.id', 'DESC')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
     // /**
     //  * @return ReportReason[] Returns an array of ReportReason objects
     //  */

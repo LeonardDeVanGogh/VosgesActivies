@@ -4,9 +4,8 @@
 {% block body %}
     <h1>{% if editMode %}Modification{% else%}Création{% endif%} d'une activité</h1>
     {{ form_start(formReportReason) }}
-
-    {{ form_row(formReportReason.reason, {'attr' : {'placeholder' : "Raison"}}) }}
-
+    {{ form_widget(formReportReason.reason) }}
+    {{ form_errors(formReportReason.reason) }}
     <button type="submit" class="btn btn-success">
         {% if editMode %}
             Modifier

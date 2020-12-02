@@ -38,11 +38,11 @@ footer{
     color:#AB6A02;
     text-decoration:none;
 }
-.fa-check
+.fa-check, .fa-plus
 {
     color:green;
 }
-.fa-check:hover
+.fa-check:hover, .fa-plus:hover
 {
     color:darkgreen;
     text-decoration:none;
