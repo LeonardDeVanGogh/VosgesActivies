@@ -35,10 +35,13 @@ class CommentController extends AbstractController
      */
     public function moderate(Comment $comment, EntityManagerInterface $manager)
     {
-        $comment->setModeratedAt(new \DateTime());
-        $manager->persist($comment);
-        $manager->flush();
-        return $this->redirectToRoute('comment_moderation');
+        if($comment->getUser()!== $this->getUser()){
+            $comment->setModeratedAt(new \DateTime());
+            $manager->persist($comment);
+            $manager->flush();
+            return $this->redirectToRoute('comment_moderation');
+        }
+
     }
     /**
      * @Route("/comment/{id}/delete", name="comment_delete")
@@ -48,6 +51,11 @@ class CommentController extends AbstractController
         $comment->setDeletedAt(new \DateTime());
         $manager->persist($comment);
         $manager->flush();
-        return $this->redirectToRoute('comment_validate', ['id' => $comment->getId()] );
+        if($comment->getUser() != $this->getUser()){
+            return $this->redirectToRoute('comment_moderate', ['id' => $comment->getId()] );
+        }else{
+            return $this->redirectToRoute('activity');
+        }
+
     }
 }

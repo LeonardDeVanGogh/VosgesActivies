@@ -34,32 +34,39 @@
 		<section id="comments">
 			<h1>{{ activity.comments | length }} Commentaire(s) : </h1>
 			{% for comment in activity.comments %}
-				<div class="comment">
-					<div class="row">
-						<div class="col-lg-3">
-							{{ comment.user.username }} (<small>{{ comment.createdAt | date('d/m/Y à H:i') }}</small>)
-							<div class="row">
-								{%if app.user and app.user.id==comment.user.id%}
-									<div class="col-lg-1">
-										<i class="fas fa-rocket"></i>
+				{% if comment.deletedAt is null %}
+					<div class="comment">
+						<div class="row">
+							<div class="col-lg-3">
+								{{ comment.user.username }} (<small>{{ comment.createdAt | date('d/m/Y à H:i') }}</small>)
+								<div class="row">
+									{%if app.user and app.user.id==comment.user.id%}
+										<div class="col-lg-1">
+											<a href="{{ path('comment_delete', {'id':comment.id}) }}">
+												<i class="fas fa-times-circle"></i>
+											</a>
+										</div>
+									{% endif %}
+								</div>
+							</div>
+							<div class="col-9">
+								{{ comment.content | raw }}
+								{% if comment.moderatedAt is null %}
+									<div class="row">
+										<div class="col-lg-1">
+											<a type="button" class="openReportModal" data-toggle="modal" data-comment-id="{{ comment.id }}" data-target="#CommentReportModal">
+												<i class="far fa-flag"></i>
+												<span>({{ comment.reports | length }})</span>
+											</a>
+
+										</div>
 									</div>
 								{% endif %}
 							</div>
 						</div>
-						<div class="col-9">
-							{{ comment.content | raw }}
-							<div class="row">
-								<div class="col-lg-1">
-									<a type="button" class="openReportModal" data-toggle="modal" data-comment-id="{{ comment.id }}" data-target="#CommentReportModal">
-										<i class="far fa-flag"></i>
-										<span>({{ comment.reports | length }})</span>
-									</a>
-
-								</div>
-							</div>
-						</div>
 					</div>
-				</div>
+				{% endif %}
+
 			{% endfor %}
 			<div class="modal fade" id="CommentReportModal" tabindex="-1" role="dialog" aria-labelledby="CommentReportModal" aria-hidden="true">
 				<div class="modal-dialog" role="document">

@@ -27,7 +27,10 @@
   <component name="ChangeListManager">
     <list default="true" id="58d55e91-27dc-42a4-8308-c7828bf875b8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/styles/activity_manage.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/activity_manage.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/styles/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/app.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/CommentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CommentController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/activity/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/activity/show.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/comment/moderation.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/comment/moderation.html.twig" afterDir="false" />
     </list>
@@ -236,7 +239,7 @@
       <workItem from="1606474282736" duration="11722000" />
       <workItem from="1606645537903" duration="365000" />
       <workItem from="1606822554998" duration="989000" />
-      <workItem from="1606910041635" duration="4944000" />
+      <workItem from="1606910041635" duration="6636000" />
     </task>
     <servers />
   </component>

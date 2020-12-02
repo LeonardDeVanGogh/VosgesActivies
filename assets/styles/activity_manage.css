@@ -1,30 +1,4 @@
-.fa-times-circle
-{
-    color:red;
-}
-.fa-times-circle:hover
-{
-    color:#BC0303;
-    text-decoration:none;
-}
-.fa-eye
-{
-    color:black;
-}
-.fa-eye:hover
-{
-    color:#2E2E2E;
-    text-decoration:none;
-}
-.fa-edit
-{
-    color:orange;
-}
-.fa-edit:hover
-{
-    color:#AB6A02;
-    text-decoration:none;
-}
+
 .activity{
     border:solid 1px black;
     margin:1px;
