@@ -24,28 +24,34 @@
 		        	<span>Home</span>
 		        </a>
 		      </li>
-		      <li class="nav-item">
-		        <a class="nav-link" href="{{ path('activity') }}">Activites
-		        	<span class="sr-only">(current)</span>
-		        </a>
-		      </li>
-		      <li class="nav-item">
-		        <a class="nav-link" href="{{ path('activity_create') }}">Création Activité</a>
-		      </li>
-				<li class="nav-item">
-					<a class="nav-link" href="{{ path('activity_create') }}">Création Activité</a>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Activités
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+						<a class="dropdown-item" href="{{ path('activity') }}">Activités</a>
+						<a class="dropdown-item" href="{{ path('activity_manage') }}">Gérer mes activités</a>
+						<a class="dropdown-item" href="{{ path('activity_create') }}">Création Activité</a>
+					</div>
 				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="{{ path('report_reason') }}">Type de report</a>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Modération
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+						<a class="dropdown-item" href="{{ path('comment_moderation') }}">Modération</a>
+						<a class="dropdown-item" href="{{ path('report_reason') }}">Type de report</a>
+					</div>
 				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="{{ path('activity_manage') }}">Gérer mes activités</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="{{ path('comment_moderation') }}">Modération</a>
-				</li>
+
 	          {% if not app.user %}
 				<li class="nav-item">
+					<a class="nav-link" href="{{ path('security_login') }}">Connexion</a>
+				</li>
+				  <li class="nav-item">
+					  <a class="nav-link" href="{{ path('security_registration') }}">Inscription</a>
+				  </li>
+				  <li class="nav-item">
 					<a class="nav-link" href="{{ path('security_login') }}">Connexion</a>
 				</li>
 	          {% else %}

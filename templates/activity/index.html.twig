@@ -1,15 +1,23 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Activités{% endblock %}
+{% block head %}{{ encore_entry_link_tags('activities') }}{% endblock %}
 
 {% block body %}
-<section class="articles">
-	{% for activity in activities %}
-		<article>
-			<h2>{{activity.name}}</h2>
-			<p>{{activity.city}}</p>
-			<a href="{{ path('read', {'id':activity.id}) }}" class="btn btn-primary">Lire l'article</a>
-		</article>
-	{% endfor %}
-</section>
+	<div class="row">
+		<h1 class="col-lg-12 text-center">Activités : </h1>
+	</div>
+	<section class="articles row d-flex flex-wrap">
+		{% for activity in activities %}
+			<div class="col-lg-4">
+				<article class="col-lg-12 text-truncate">
+					<h2 class="text-truncate">{{activity.name}}</h2>
+					<img src="{{ activity.picture }}" class="img-fluid">
+					<p class="text-center">{{activity.city}}</p>
+					<a href="{{ path('read', {'id':activity.id}) }}" class="col-lg-12 btn btn-primary">Lire l'article</a>
+				</article>
+			</div>
+		{% endfor %}
+	</section>
+	{{ encore_entry_script_tags('activities') }}
 {% endblock %}

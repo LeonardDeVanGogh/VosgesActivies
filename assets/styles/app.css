@@ -17,7 +17,7 @@ footer{
 }
 .fa-times-circle:hover
 {
-    color:#BC0303;
+    color:darkred;
     text-decoration:none;
 }
 .fa-eye
@@ -35,7 +35,7 @@ footer{
 }
 .fa-edit:hover
 {
-    color:#AB6A02;
+    color:darkorange;
     text-decoration:none;
 }
 .fa-check, .fa-plus
