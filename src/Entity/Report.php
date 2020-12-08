@@ -7,6 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=ReportRepository::class)
+ * @ORM\HasLifecycleCallbacks()
  */
 class Report
 {
@@ -63,7 +64,7 @@ class Report
     /**
      * @ORM\PrePersist
      */
-    public function setDate($date): self
+    public function setDate(): self
     {
         $this->date = new \DateTime();
 

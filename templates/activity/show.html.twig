@@ -6,6 +6,7 @@
 {% block body %}
 	<section class="articles">
 		<article>
+			<p><img class="d-block w-100" src="{{asset('images')}}{{asset(activity.picture)}}" alt="image"></p>
 			<h1>{{activity.name}}</h1><br/>
 			<h2>Description : </h2>
 			{{activity.description | raw}}
@@ -28,7 +29,7 @@
 				</div>
 			{% endfor %}
 			</section>
-			<p><img src="{{activity.picture}}" alt="image"></p>
+
 		</article>
 
 		<section id="comments">
@@ -58,7 +59,6 @@
 												<i class="far fa-flag"></i>
 												<span>({{ comment.reports | length }})</span>
 											</a>
-
 										</div>
 									</div>
 								{% endif %}
@@ -74,7 +74,7 @@
 						<div class="modal-header">
 							<h5 class="modal-title" id="Report Comment">Report un commentaire</h5>
 							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-								<span aria-hidden="true">&times;</span>
+								<span aria-hidden="true">&times</span>
 							</button>
 						</div>
 						{{form_start(reportForm)}}
@@ -88,8 +88,7 @@
 							<button type="submit" class="btn btn-secondary">Signaler</button>
 							<button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
 						</div>
-{						{{ form_row(reportForm._token) }}
-						{{form_end(reportForm, {'render_rest': false})}}
+						{{form_end(reportForm) }}
 					</div>
 				</div>
 			</div>

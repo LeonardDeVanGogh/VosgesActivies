@@ -1,42 +1,44 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Moderation{% endblock %}
-{% block head %}{{ encore_entry_link_tags('activity_manage') }}{% endblock %}
+{% block title %}Modération{% endblock %}
+{% block head %}{{ encore_entry_link_tags('comment_moderation') }}{% endblock %}
 
 {% block body %}
-    <div class="container">
-        <div class="row">
-            <div class="h1">Mes Activités :</div>
-        </div>
-    </div>
-    <section class="articles">
-        {% for comment in comments %}
-            {% if comment.reports | length >=1 %}
-            <div class="container comment">
+
+<div class="row">
+    <div class="h1">Commentaires signalés :</div>
+</div>
+<section class="articles">
+    {% for comment in comments %}
+        {% if comment.reports | length >=1 %}
+        <div class="container comment-to-moderate">
+            <div class="row">
                 <div class="row">
-                    <div class="row">
-                        <div class="col-lg-1">{{ comment.reports | length }} report(s)</div>
-                        <div class="col-lg-8">{{ comment.content }}</div>
-                        <div class="col-lg-1">
-                            <a href="{{ path('comment_moderate', {'id':comment.id}) }}" title="Valider le commentaire">
-                                <i class="fas fa-check fa-2x"></i>
-                            </a>
-                        </div>
-                        <div class="col-lg-1">
-                            <a href="{{ path('comment_delete', {'id':comment.id}) }}" title="Effacer le commentaire">
-                                <i class="fas fa-times-circle fa-2x"></i>
-                            </a>
+                    <div class="col-lg-2">{{ comment.reports | length }} report(s)</div>
+                    <div class="col-lg-8">
+                        <div class="row">
+                            <div class="col-lg-12">{{ comment.content | raw}}</div>
+                            <div class="col-lg-12">raison(s) : </div>
+                            {% for report in comment.reports %}
+                                <div class="col-lg-12">{{ report.reason.reason }}</div>
+                            {% endfor %}
                         </div>
                     </div>
-                    <div class="row">
-                    {% for report in comment.reports %}
-                        <div class="col-lg-12">{{ report.reason.reason }}</div>
-                    {% endfor %}
+                    <div class="col-lg-1">
+                        <a href="{{ path('comment_moderate', {'id':comment.id}) }}" title="Valider le commentaire">
+                            <i class="fas fa-check fa-2x"></i>
+                        </a>
+                    </div>
+                    <div class="col-lg-1">
+                        <a href="{{ path('comment_delete', {'id':comment.id}) }}" title="Effacer le commentaire">
+                            <i class="fas fa-times-circle fa-2x"></i>
+                        </a>
                     </div>
                 </div>
             </div>
-            {% endif %}
-        {% endfor %}
-    </section>
-    {{ encore_entry_script_tags('activity_manage') }}
+        </div>
+        {% endif %}
+    {% endfor %}
+</section>
+    {{ encore_entry_script_tags('comment_moderation') }}
 {% endblock %}

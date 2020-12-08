@@ -1,5 +1,5 @@
-body {
-    background-color: lightgrey;
+.basicContainer{
+    min-height:85vh;
 }
 footer{
     margin-top:2em;

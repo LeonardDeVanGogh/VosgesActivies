@@ -14,6 +14,9 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\String\Slugger\SluggerInterface;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 
 class ActivityController extends AbstractController
@@ -64,7 +67,7 @@ class ActivityController extends AbstractController
     /**
      * @Route("/activity/new", name="activity_create")
      */
-    public function create(Request $request, EntityManagerInterface $manager){
+    public function create(Request $request, EntityManagerInterface $manager, SluggerInterface $slugger){
 
         $activity = new Activity();
 
@@ -73,12 +76,29 @@ class ActivityController extends AbstractController
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isvalid()){
+            $picture = $form->get('picture')->getData();
 
             $activity->setUser($this->getUser());
             $activity->setCreatedAt();
             $manager->persist($activity);
-
             $manager->flush();
+
+            if($picture){
+                $originalPictureName = pathinfo($picture->getClientOriginalName(), PATHINFO_FILENAME);
+                $safePictureName = $slugger->slug($originalPictureName);
+                $newPictureName = $safePictureName.'-'.uniqid().'.'.$picture->guessExtension();
+                try {
+                    $picture->move(
+                        $this->getParameter('images_directory'),
+                        $newPictureName
+                    );
+                } catch (FileException $e) {
+
+                }
+                $activity->setPicture($newPictureName);
+                $manager->persist($activity);
+                $manager->flush();
+            }
             return $this->redirectToRoute('read', ['id' => $activity->getId()]);
         }
         return $this->render('activity/create.html.twig',[

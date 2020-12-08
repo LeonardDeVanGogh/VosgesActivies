@@ -28,6 +28,8 @@ Encore
     .addEntry('activities', './assets/activities.js')
     .addEntry('show', './assets/show.js')
     .addEntry('activity_manage', './assets/activity_manage.js')
+    .addEntry('comment_moderation', './assets/comment_moderation.js')
+    .addEntry('administration', './assets/administration.js')
     //.addEntry('page1', './assets/page1.js')
     //.addEntry('page2', './assets/page2.js')
 

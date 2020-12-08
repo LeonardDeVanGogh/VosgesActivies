@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20201126153752 extends AbstractMigration
+final class Version20201202220647 extends AbstractMigration
 {
     public function getDescription() : string
     {
@@ -20,6 +20,8 @@ final class Version20201126153752 extends AbstractMigration
     public function up(Schema $schema) : void
     {
         // this up() migration is auto-generated, please modify it to your needs
+        $this->addSql('ALTER TABLE category ADD deleted_at DATETIME DEFAULT NULL');
+        $this->addSql('ALTER TABLE comment ADD moderated_at DATETIME DEFAULT NULL, ADD deleted_at DATETIME DEFAULT NULL');
         $this->addSql('ALTER TABLE report DROP FOREIGN KEY FK_C42F77849D86650F');
         $this->addSql('ALTER TABLE report DROP FOREIGN KEY FK_C42F7784D6DE06A6');
         $this->addSql('ALTER TABLE report DROP FOREIGN KEY FK_C42F7784F3D025E7');
@@ -33,11 +35,14 @@ final class Version20201126153752 extends AbstractMigration
         $this->addSql('ALTER TABLE report ADD CONSTRAINT FK_C42F77849D86650F FOREIGN KEY (user_id) REFERENCES user (id)');
         $this->addSql('ALTER TABLE report ADD CONSTRAINT FK_C42F7784D6DE06A6 FOREIGN KEY (comment_id) REFERENCES comment (id)');
         $this->addSql('ALTER TABLE report ADD CONSTRAINT FK_C42F7784F3D025E7 FOREIGN KEY (reason_id) REFERENCES report_reason (id)');
+        $this->addSql('ALTER TABLE report_reason ADD deleted_at DATETIME DEFAULT NULL');
     }
 
     public function down(Schema $schema) : void
     {
         // this down() migration is auto-generated, please modify it to your needs
+        $this->addSql('ALTER TABLE category DROP deleted_at');
+        $this->addSql('ALTER TABLE comment DROP moderated_at, DROP deleted_at');
         $this->addSql('ALTER TABLE report DROP FOREIGN KEY FK_C42F7784F8697D13');
         $this->addSql('ALTER TABLE report DROP FOREIGN KEY FK_C42F7784A76ED395');
         $this->addSql('ALTER TABLE report DROP FOREIGN KEY FK_C42F778459BB1592');
@@ -51,5 +56,6 @@ final class Version20201126153752 extends AbstractMigration
         $this->addSql('ALTER TABLE report ADD CONSTRAINT FK_C42F7784F8697D13 FOREIGN KEY (comment_id) REFERENCES comment (id)');
         $this->addSql('ALTER TABLE report ADD CONSTRAINT FK_C42F7784A76ED395 FOREIGN KEY (user_id) REFERENCES user (id)');
         $this->addSql('ALTER TABLE report ADD CONSTRAINT FK_C42F778459BB1592 FOREIGN KEY (reason_id) REFERENCES report_reason (id)');
+        $this->addSql('ALTER TABLE report_reason DROP deleted_at');
     }
 }

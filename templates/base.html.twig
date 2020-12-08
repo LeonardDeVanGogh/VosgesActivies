@@ -32,6 +32,7 @@
 						<a class="dropdown-item" href="{{ path('activity') }}">Activités</a>
 						<a class="dropdown-item" href="{{ path('activity_manage') }}">Gérer mes activités</a>
 						<a class="dropdown-item" href="{{ path('activity_create') }}">Création Activité</a>
+						<a class="dropdown-item" href="{{ path('categories') }}">Catégories</a>
 					</div>
 				</li>
 				<li class="nav-item dropdown">
@@ -51,9 +52,6 @@
 				  <li class="nav-item">
 					  <a class="nav-link" href="{{ path('security_registration') }}">Inscription</a>
 				  </li>
-				  <li class="nav-item">
-					<a class="nav-link" href="{{ path('security_login') }}">Connexion</a>
-				</li>
 	          {% else %}
 				<li class="nav-item">
 					<a class="nav-link" href="{{ path('security_logout') }}">Déconnexion</a>
@@ -62,23 +60,20 @@
 		    </ul>
 		  </div>
 		</nav>
-		<div class="container">
+		<div class="container basicContainer">
 			{% block body %}{% endblock %}
 		</div>
 		<footer class="page-footer">
-
-				<div class="col-lg-2">
-					<a href="https://github.com/LeonardDeVanGogh/VosgesActivies">
-						<i class="fab fa-github fa-2x"></i>
-					</a>
-				</div>
-				<div class="col-lg-2">
-					<span>mentions légales</span>
-				</div>
+			<div class="col-lg-2">
+				<a href="https://github.com/LeonardDeVanGogh/VosgesActivies">
+					<i class="fab fa-github fa-2x"></i>
+				</a>
+			</div>
 
 		</footer>
-        {% block javascripts %}{% endblock %}
+
 		{{ encore_entry_script_tags('app') }}
+		{% block javascripts %}{% endblock %}
     </body>
 </html>
 

@@ -1,4 +1,9 @@
 article{
-    border:solid 1px black;
     margin-bottom:1em;
+
+}
+article:hover{
+    background-color:whitesmoke;
+    margin-top:0.5em;
+    margin-left:0.5em;
 }

@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ReportReasonController!{% endblock %}
+{% block title %}Types de reports{% endblock %}
 
 {% block body %}
     <div class="container">
@@ -8,7 +8,7 @@
         <div class="row">
             <div class="col-lg-2">
                 <a href="{{ path('report_reason_create') }}">
-                    <i class="fas fa-plus"></i>
+                    <i class="fas fa-plus fa-2x"></i>
                 </a>
             </div>
         </div>
@@ -17,12 +17,12 @@
                 <div class="col-lg-6">{{ reason.reason }}</div>
                 <div class="col-lg-2">
                     <a href="{{ path('report_reason_update',{'id':reason.id}) }}">
-                        <i class="fas fa-edit"></i>
+                        <i class="fas fa-edit fa-2x"></i>
                     </a>
                 </div>
                 <div class="col-lg-2">
                     <a href="{{ path('report_reason_delete',{'id':reason.id}) }}">
-                        <i class="fas fa-times-circle"></i>
+                        <i class="fas fa-times-circle fa-2x"></i>
                     </a>
                 </div>
             </div>

@@ -27,12 +27,32 @@
   <component name="ChangeListManager">
     <list default="true" id="58d55e91-27dc-42a4-8308-c7828bf875b8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/activities.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/activities.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/styles/activities.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/activities.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/CategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CategoryController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Category.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Category.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/CategoryRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/CategoryRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/styles/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20201126153752.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20201126160752.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20201202123359.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20201202152534.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20201202204200.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/ActivityController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ActivityController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/CommentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CommentController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataFixtures/ActiviteFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/ActiviteFixtures.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Activity.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Activity.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Report.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Report.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/ActivityType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/ActivityType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/ReportType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/ReportType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/activity/create.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/activity/create.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/activity/home.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/activity/home.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/activity/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/activity/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/activity/manage.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/activity/manage.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/activity/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/activity/show.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/category/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/category/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/category/read.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/category/read.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/comment/moderation.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/comment/moderation.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/report_reason/read.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/report_reason/read.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -240,7 +260,12 @@
       <workItem from="1606474282736" duration="11722000" />
       <workItem from="1606645537903" duration="365000" />
       <workItem from="1606822554998" duration="989000" />
-      <workItem from="1606910041635" duration="26468000" />
+      <workItem from="1606910041635" duration="31034000" />
+      <workItem from="1607078340226" duration="6672000" />
+      <workItem from="1607163976378" duration="4580000" />
+      <workItem from="1607256680971" duration="6223000" />
+      <workItem from="1607340979304" duration="1280000" />
+      <workItem from="1607422408033" duration="6073000" />
     </task>
     <servers />
   </component>
@@ -281,10 +306,10 @@
     </state>
     <state x="-1366" y="-24" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1680.1010/-1920.-24.1920.1040@-1920.-24.1920.1040" timestamp="1601639008566" />
     <state x="485" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1680.1010/-1920.-24.1920.1040@0.0.1680.1010" timestamp="1602144024781" />
-    <state x="570" y="260" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1606940339429">
+    <state x="640" y="493" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1607256844599">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state x="570" y="260" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1680.1010/-1920.-24.1920.1040@0.0.1680.1010" timestamp="1606940339429" />
+    <state x="640" y="493" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1680.1010/-1920.-24.1920.1040@0.0.1680.1010" timestamp="1607256844599" />
     <state x="620" y="260" key="FileChooserDialogImpl" timestamp="1606243172751">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>

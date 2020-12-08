@@ -39,8 +39,9 @@ class CommentController extends AbstractController
             $comment->setModeratedAt(new \DateTime());
             $manager->persist($comment);
             $manager->flush();
-            return $this->redirectToRoute('comment_moderation');
+
         }
+        return $this->redirectToRoute('comment_moderation');
 
     }
     /**

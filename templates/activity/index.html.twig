@@ -9,15 +9,22 @@
 	</div>
 	<section class="articles row d-flex flex-wrap">
 		{% for activity in activities %}
+
 			<div class="col-lg-4">
-				<article class="col-lg-12 text-truncate">
+				<article class="col-lg-12 text-truncate ">
 					<h2 class="text-truncate">{{activity.name}}</h2>
 					<img src="{{ activity.picture }}" class="img-fluid">
 					<p class="text-center">{{activity.city}}</p>
-					<a href="{{ path('read', {'id':activity.id}) }}" class="col-lg-12 btn btn-primary">Lire l'article</a>
+					<a href="{{ path('read', {'id':activity.id}) }}" class="col-lg-12 btn btn-primary">détails de l'activité</a>
 				</article>
 			</div>
 		{% endfor %}
 	</section>
+{% endblock %}
+
+{% block javascripts %}
+	<script>
+		const data = {{ activities|json_encode()}};
+	</script>
 	{{ encore_entry_script_tags('activities') }}
 {% endblock %}
