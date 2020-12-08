@@ -44,7 +44,7 @@ class ActivityController extends AbstractController
     /**
     * @Route("/activity/{id}/edit", name="activity_edit")
     */
-    public function update(Activity $activity, Request $request, EntityManagerInterface $manager){
+    public function update(Activity $activity, Request $request, EntityManagerInterface $manager, SluggerInterface $slugger){
 
         $form = $this->createForm(ActivityType::class,$activity);
 
@@ -54,6 +54,27 @@ class ActivityController extends AbstractController
 
             $activity->setUpdatedAt();
             $activity->setUpdatedBy($this->getUser()->getId());
+            $picture = $form->get('picture')->getData();
+            if($picture){
+                $originalPictureName = pathinfo($picture->getClientOriginalName(), PATHINFO_FILENAME);
+                $safePictureName = $slugger->slug($originalPictureName);
+                if($activity->getPicture() !== null){
+                    $newPictureName = $activity->getPicture();
+                }else{
+                    $newPictureName = $safePictureName.'-'.uniqid().'.'.$picture->guessExtension();
+                }
+                try {
+                    $picture->move(
+                        $this->getParameter('images_directory'),
+                        $newPictureName
+                    );
+                } catch (FileException $e) {
+
+                }
+                $activity->setPicture($newPictureName);
+                $manager->persist($activity);
+                $manager->flush();
+            }
 
             $manager->flush();
             return $this->redirectToRoute('read', ['id' => $activity->getId()]);
