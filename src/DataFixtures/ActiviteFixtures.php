@@ -56,7 +56,7 @@ class ActiviteFixtures extends Fixture
                      ->setDescription($content)
                      ->setLatitude(mt_rand(48.06189,48.08687))
                      ->setLongitude(mt_rand(6.85416,6.89573))
-                     ->setPicture($faker->imageUrl())
+                     ->setPicture('default.jpg')
                      ->setCreatedAt($faker->dateTimeBetween('-6 months'))
                      ->setCity("Gerardmer")
                      ->setZipcode(88400)

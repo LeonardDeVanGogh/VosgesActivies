@@ -16,7 +16,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 
 class ActivityController extends AbstractController
@@ -55,10 +54,10 @@ class ActivityController extends AbstractController
             $activity->setUpdatedAt();
             $activity->setUpdatedBy($this->getUser()->getId());
             $picture = $form->get('picture')->getData();
-            if($picture){
+            if($picture !== null){
                 $originalPictureName = pathinfo($picture->getClientOriginalName(), PATHINFO_FILENAME);
                 $safePictureName = $slugger->slug($originalPictureName);
-                if($activity->getPicture() !== null){
+                if($activity->getPicture() !== 'activity_default.jpg'){
                     $newPictureName = $activity->getPicture();
                 }else{
                     $newPictureName = $safePictureName.'-'.uniqid().'.'.$picture->guessExtension();
@@ -97,14 +96,15 @@ class ActivityController extends AbstractController
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isvalid()){
-            $picture = $form->get('picture')->getData();
 
             $activity->setUser($this->getUser());
             $activity->setCreatedAt();
+            $activity->setPicture('activity_default.jpg');
             $manager->persist($activity);
             $manager->flush();
 
-            if($picture){
+            $picture = $form->get('picture')->getData();
+            if($picture !== null){
                 $originalPictureName = pathinfo($picture->getClientOriginalName(), PATHINFO_FILENAME);
                 $safePictureName = $slugger->slug($originalPictureName);
                 $newPictureName = $safePictureName.'-'.uniqid().'.'.$picture->guessExtension();

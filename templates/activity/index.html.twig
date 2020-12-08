@@ -13,7 +13,7 @@
 			<div class="col-lg-4">
 				<article class="col-lg-12 text-truncate ">
 					<h2 class="text-truncate">{{activity.name}}</h2>
-					<img src="{{ activity.picture }}" class="img-fluid">
+					<img src="{{ asset('images/') }}{{ activity.picture }}" class="img-fluid">
 					<p class="text-center">{{activity.city}}</p>
 					<a href="{{ path('read', {'id':activity.id}) }}" class="col-lg-12 btn btn-primary">détails de l'activité</a>
 				</article>
