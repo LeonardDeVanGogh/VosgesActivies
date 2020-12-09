@@ -7,10 +7,39 @@
 	<div class="row">
 		<h1 class="col-lg-12 text-center">Activités : </h1>
 	</div>
+
+	<div class="row text-center justify-content-center" id="filterDashboard">
+		<div class="row filterGroup justify-content-center">
+			<div class="filter unselected" data-filter="handicaped">
+				<i class="fas fa-wheelchair fa-2x"></i>
+			</div>
+			<div class="filter unselected" data-filter="animals">
+				<i class="fas fa-dog fa-2x"></i>
+			</div>
+		</div>
+		<div class="row filterGroup justify-content-center">
+			<div class="filter unselected" data-filter="indoor">
+				Intérieur
+			</div>
+			<div class="filter unselected" data-filter="outdoor">
+				Extérieur
+			</div>
+		</div>
+		{% for category in categories %}
+			<div class="filter unselected text-truncate" data-filter="{{ category.name }}"  title="{{ category.description }}">{{ category.name }}</div>
+		{% endfor %}
+	</div>
 	<section class="articles row d-flex flex-wrap">
 		{% for activity in activities %}
-
-			<div class="col-lg-4">
+			<div class="col-lg-4 activity activityDisplayed
+				{% for category in activity.category %}
+					{{ category.name }}
+				{% endfor %}
+				{% if activity.isHandicaped==1 %} handicaped{% endif %}
+				{% if activity.animals==1 %} animals{% endif %}
+				{% if activity.isIndoor==1 %} indoor{% endif %}
+				{% if activity.isOutdoor==1 %} outdoor{% endif %}"
+			>
 				<article class="col-lg-12 text-truncate ">
 					<h2 class="text-truncate">{{activity.name}}</h2>
 					<img src="{{ asset('images/') }}{{ activity.picture }}" class="img-fluid">

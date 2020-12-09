@@ -9,7 +9,9 @@ use App\Form\ActivityType;
 use App\Form\CommentType;
 use App\Form\ReportType;
 use App\Repository\ActivityRepository;
+use App\Repository\CategoryRepository;
 use App\Repository\CommentRepository;
+use App\Repository\ReportReasonRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -23,12 +25,14 @@ class ActivityController extends AbstractController
     /**
      * @Route("/Activity", name="activity")
      */
-    public function index(ActivityRepository $repo)
+    public function index(ActivityRepository $activityRepository, CategoryRepository $categoryRepository)
     {
-    	$activities = $repo->findAllActivities();
+    	$activities = $activityRepository->findAllActivities();
+    	$categories = $categoryRepository->findAllCategoriesNotDeleted();
         return $this->render('activity/index.html.twig', [
             'controller_name' => 'ActivityController',
             'activities'=> $activities,
+            'categories'=> $categories,
         ]);
     }
     /**

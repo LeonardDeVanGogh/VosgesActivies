@@ -7,3 +7,25 @@ article:hover{
     margin-top:0.5em;
     margin-left:0.5em;
 }
+.selected{
+    color:black;
+    background-color:gray;
+}
+.unselected{
+    color:gray;
+    background-color:lightgray;
+}
+.filter{
+    margin-right:0.3em;
+    margin-left:0.3em;
+    border-radius:5px;
+}
+.filterGroup{
+    margin-right:5em;
+}
+.activityDisplayed{
+    display:block;
+}
+.activityHidden{
+    display:none;
+}
