@@ -29,3 +29,6 @@ article:hover{
 .activityHidden{
     display:none;
 }
+#mapid{
+    height: 50vh;
+}

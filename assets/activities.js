@@ -1,17 +1,15 @@
 import './styles/activities.css';
-console.log(data);
 
+
+/* filter section */
 let filteredElements = document.getElementById('filterDashboard').getElementsByClassName('filter');
 let activities = document.getElementsByClassName("activity");
-let i;
+
 for(i = 0; i < filteredElements.length;i++){
     filteredElements[i].addEventListener('click',updateFilter)
-    console.log(filteredElements[i]);
 }
 
 function updateFilter(){
-
-
     if (this.classList.contains('selected')){
         this.classList.remove("selected");
         this.classList.add("unselected");
@@ -37,3 +35,27 @@ function updateFilter(){
     }
 
 }
+
+/* map section */
+
+//console.log(JSON.parse(data));
+
+let data = document.querySelectorAll('[data-activities]');
+
+let dataObject = Array.from(data).map(item => JSON.parse(item.dataset.activities));
+console.log(dataObject[0].length);
+let i;
+for (i=0;i<dataObject[0].length;i++){
+    let test = JSON.parse(dataObject[0][i]);
+    console.log(test["id"]);
+}
+
+
+var mymap = L.map('mapid').setView([48.07230, 6.87282], 13);
+L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
+    maxZoom: 18,
+    id: 'mapbox/streets-v11',
+    tileSize: 512,
+    zoomOffset: -1,
+}).addTo(mymap);
+

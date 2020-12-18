@@ -5,7 +5,7 @@
 	<h1>creation d'une activité</h1>
 	{{ form_start(formActivity) }}
 
-	{{ form_row(formActivity.name, {'attr' : {'placeholder' : "Nom"}}) }}
+	{{ form_row(formActivity.name, {'attr' : {'placeholder' : "Nom", 'title' : 'titre trop court'}}) }}
 	{{ form_row(formActivity.description, {'attr' : {'placeholder' : "Description"}}) }}
 	{{ form_row(formActivity.latitude, {'attr' : {'placeholder' : "Latitude"}}) }}
 	{{ form_row(formActivity.longitude, {'attr' : {'placeholder' : "Longitude"}}) }}

@@ -29,12 +29,10 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/activities.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/activities.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/styles/activities.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/activities.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/20171208-111329-5fcf79e728535.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/20171208-111329-5fcf7a32ce285.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/20171208-111329-5fcf84d37febd.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/20171213-110507-5fcf81faa9802.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/20171213-110507-5fcf88b77cb8f.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/ActivityController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ActivityController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/ActivityType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/ActivityType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/activity/create.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/activity/create.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/activity/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/activity/index.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -186,12 +184,12 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\wamp64\www\VosgesActivites\assets" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\wamp64\www\VosgesActivites\templates\category" />
       <recent name="C:\Users\Utilisateur\Documents" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\wamp64\www\VosgesActivites\assets" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -249,7 +247,11 @@
       <workItem from="1607256680971" duration="6223000" />
       <workItem from="1607340979304" duration="1280000" />
       <workItem from="1607422408033" duration="10350000" />
-      <workItem from="1607501966940" duration="15875000" />
+      <workItem from="1607501966940" duration="23915000" />
+      <workItem from="1607598037741" duration="600000" />
+      <workItem from="1607683495190" duration="2250000" />
+      <workItem from="1607770572797" duration="16403000" />
+      <workItem from="1608292128106" duration="4215000" />
     </task>
     <servers />
   </component>
@@ -323,10 +325,11 @@
     </state>
     <state x="-1459" y="141" key="SettingsEditor/0.0.1680.1010/-1920.-24.1920.1040@-1920.-24.1920.1040" timestamp="1601639278319" />
     <state x="403" y="160" key="SettingsEditor/0.0.1680.1010/-1920.-24.1920.1040@0.0.1680.1010" timestamp="1602847836774" />
-    <state width="498" height="446" key="SwitcherDM" timestamp="1604061459883">
-      <screen x="-1920" y="-24" width="1920" height="1040" />
+    <state width="498" height="434" key="SwitcherDM" timestamp="1607809084486">
+      <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1680.1010/-1920.-24.1920.1040@-1920.-24.1920.1040" timestamp="1604061459883" />
+    <state width="498" height="434" key="SwitcherDM/0.0.1680.1010/-1920.-24.1920.1040@0.0.1680.1010" timestamp="1607809084486" />
     <state x="442" y="115" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1604415508794">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>

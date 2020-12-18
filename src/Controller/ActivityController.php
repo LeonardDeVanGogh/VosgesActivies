@@ -18,6 +18,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
 
 
 class ActivityController extends AbstractController
@@ -28,10 +32,20 @@ class ActivityController extends AbstractController
     public function index(ActivityRepository $activityRepository, CategoryRepository $categoryRepository)
     {
     	$activities = $activityRepository->findAllActivities();
+        $encoders = [new JsonEncoder()];
+        $normalizers = [new ObjectNormalizer()];
+        $serializer = new Serializer($normalizers, $encoders);
+        foreach($activities as $activity){
+            $activitiesJson[] = $serializer->serialize($activity, 'json', [
+                'circular_reference_handler' => function ($object) {
+                    return $object->getId();
+                }]);
+        }
     	$categories = $categoryRepository->findAllCategoriesNotDeleted();
         return $this->render('activity/index.html.twig', [
             'controller_name' => 'ActivityController',
             'activities'=> $activities,
+            'activities_json'=> $activitiesJson,
             'categories'=> $categories,
         ]);
     }
@@ -160,12 +174,6 @@ class ActivityController extends AbstractController
             $manager->flush();
             return $this->redirectToRoute('read', ['id'=>$activity->getId()]);
         }
-
-
-
-
-
-
 
     	return $this->render('activity/show.html.twig',[
     		'activity' => $activity,
