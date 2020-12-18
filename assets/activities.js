@@ -43,19 +43,31 @@ function updateFilter(){
 let data = document.querySelectorAll('[data-activities]');
 
 let dataObject = Array.from(data).map(item => JSON.parse(item.dataset.activities));
-console.log(dataObject[0].length);
 let i;
-for (i=0;i<dataObject[0].length;i++){
-    let test = JSON.parse(dataObject[0][i]);
-    console.log(test["id"]);
-}
 
 
-var mymap = L.map('mapid').setView([48.07230, 6.87282], 13);
+
+let test = JSON.parse(dataObject[0][0]);
+
+var mymap = L.map('mapid').setView([48.07220, 6.87284], 13);
 L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
     maxZoom: 18,
     id: 'mapbox/streets-v11',
     tileSize: 512,
     zoomOffset: -1,
 }).addTo(mymap);
+
+
+for(i=0;i<dataObject[0].length;i++){
+    let test = JSON.parse(dataObject[0][i]);
+    let marker = new L.marker([test['latitude'],test['longitude']]).addTo(mymap)
+        .bindPopup(test['name'])
+
+
+    marker.addEventListener('click', function () {
+        document.location.href='/activity/read/' + test['id'];
+    });
+
+}
+
 
