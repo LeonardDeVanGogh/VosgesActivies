@@ -27,7 +27,7 @@
   <component name="ChangeListManager">
     <list default="true" id="58d55e91-27dc-42a4-8308-c7828bf875b8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/activities.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/activities.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataFixtures/ActiviteFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/ActiviteFixtures.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/activity/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/activity/index.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -246,7 +246,7 @@
       <workItem from="1607598037741" duration="600000" />
       <workItem from="1607683495190" duration="2250000" />
       <workItem from="1607770572797" duration="16403000" />
-      <workItem from="1608292128106" duration="10753000" />
+      <workItem from="1608292128106" duration="12203000" />
     </task>
     <servers />
   </component>

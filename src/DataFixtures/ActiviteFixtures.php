@@ -54,8 +54,8 @@ class ActiviteFixtures extends Fixture
             $content = '<p>' . join($faker->paragraphs(5), '</p><p>') . '</p>';
             $activite->setName($faker->sentence())
                      ->setDescription($content)
-                     ->setLatitude(mt_rand(48.06189,48.08687))
-                     ->setLongitude(mt_rand(6.85416,6.89573))
+                     ->setLatitude(mt_rand(4806189,4808687)/100000)
+                     ->setLongitude(mt_rand(685416,689573)/100000)
                      ->setPicture('activity_default.jpg')
                      ->setCreatedAt($faker->dateTimeBetween('-6 months'))
                      ->setCity("Gerardmer")
