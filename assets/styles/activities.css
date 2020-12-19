@@ -19,14 +19,23 @@ article:hover{
     margin-right:0.3em;
     margin-left:0.3em;
     border-radius:5px;
+    padding:5px;
+    border:10px black;
 }
+.filter:hover, .viewsOptions:hover{
+    color:dimgray;
+    box-shadow:1px 1px;
+    text-decoration:none;
+    cursor:pointer;
+}
+
 .filterGroup{
     margin-right:5em;
 }
-.activityDisplayed{
+.displayed{
     display:block;
 }
-.activityHidden{
+.hidden{
     display:none;
 }
 #mapid{

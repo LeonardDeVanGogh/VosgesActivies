@@ -3,8 +3,11 @@
 namespace App\Repository;
 
 use App\Entity\Activity;
+use App\Entity\Category;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+
+use Doctrine\ORM\Query\Expr\Join;
 
 /**
  * @method Activity|null find($id, $lockMode = null, $lockVersion = null)
@@ -25,9 +28,29 @@ class ActivityRepository extends ServiceEntityRepository
             ->andWhere('a.deleted_at is NULL')
             ->orderBy('a.name', 'ASC')
             ->getQuery()
-            ->getResult()
-            ;
+            ->getResult();
     }
+    public function findAllActivitiesJson()
+    {
+        return $this->createQueryBuilder('a')
+            ->leftJoin('a.Category', 'c')
+            ->select('a.id,
+                            a.name, 
+                            a.city, 
+                            a.longitude,
+                            a.latitude,
+                            a.is_indoor,
+                            a.is_outdoor,
+                            a.is_handicaped,
+                            a.animals'
+            )
+            ->andWhere('a.deleted_at is NULL')
+            ->orderBy('a.name', 'ASC')
+            ->getQuery()
+            ->getResult();
+    }
+
+
     public function findActivitiesByUser($value)
     {
         return $this->createQueryBuilder('a')
@@ -36,8 +59,7 @@ class ActivityRepository extends ServiceEntityRepository
             ->setParameter('val', $value)
             ->orderBy('a.name', 'ASC')
             ->getQuery()
-            ->getResult()
-            ;
+            ->getResult();
     }
 
 
