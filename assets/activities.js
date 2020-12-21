@@ -23,14 +23,19 @@ for(i=0;i<activitiesJson.length;i++){
     }).addTo(mymap)
         .bindPopup('<h6>' + activitiesJson[i].name + '</h6>' +
                     '</p>' +
-                        '<span> Intérieur : </span><span> ' + indoor + '</span><span>     Extérieur : </span><span>' + outdoor + '</span>' +
+                        '<span> Intérieur : </span>' +
+                        '<span> ' + indoor + '</span>' +
+                        '<span>     Extérieur : </span>' +
+                        '<span>' + outdoor + '</span>' +
                     '</p>' +
                     '</p>' + isHandicaped + animals + '</p>' +
                     '<p>' +
-                        '<a class="btn btn-transparent" href="/activity/read/' + activitiesJson[i].id + '"><i class="fas fa-info"></i><span> détails</span></a>' +
+                        '<a class="btn btn-transparent" href="/activity/read/' + activitiesJson[i].id + '">' +
+                            '<i class="fas fa-info"></i>' +
+                            '<span> détails</span>' +
+                        '</a>' +
                     '</p>'
         )
-
 }
 
 /* filter section */
