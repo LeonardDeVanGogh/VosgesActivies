@@ -1,7 +1,6 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Home{% endblock %}
-{% block head %}{{ encore_entry_link_tags('activity_manage') }}{% endblock %}
 
 {% block body %}
 
@@ -11,7 +10,7 @@
 
     <section class="articles">
         {% for activity in activities %}
-            <div class="activity">
+            <div class="regularList">
                 <div class="row">
                     <div class="col-lg-9">Nom : {{ activity.name }}</div>
                     <div class="col-lg-1">
@@ -28,12 +27,11 @@
                         <a type="button" data-toggle="modal" data-target="#ActivityDeleteModal" title="Effacer l'activité">
                             <i class="fas fa-times-circle fa-2x"></i>
                         </a>
-
                         <div class="modal fade" id="ActivityDeleteModal" tabindex="-1" role="dialog" aria-labelledby="ActivityDeleteModal" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Confirmation</h5>
+                                        <h5 class="modal-title">Confirmation</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
@@ -53,5 +51,4 @@
             </div>
         {% endfor %}
     </section>
-    {{ encore_entry_script_tags('comment_moderation') }}
 {% endblock %}

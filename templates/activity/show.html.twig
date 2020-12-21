@@ -5,13 +5,33 @@
 
 {% block body %}
 
+
 	<section class="articles">
 		<article>
-			<p><img class="d-block w-100" src="{{asset('images')}}{{asset(activity.picture)}}" alt="image"></p>
-			<h1>{{activity.name}}</h1><br/>
-			<h2>Description : </h2>
-			{{activity.description | raw}}
-			<p>Adresse : {{ activity.streetNumber}}, {{ activity.street}} {{ activity.zipcode}} {{activity.city}}</p>
+			<div class="row justify-content-center">
+				<div class="col-lg-12" align="center">
+					<h1>{{activity.name}}</h1><br/>
+				</div>
+			</div>
+			<img src="{{ asset('images/'~ activity.picture) }}" alt="{{ activity.name }}" class="img-fluid">
+			<div class="row subCategory">
+				<div class="col-lg-12"align="center">
+					<h2>Description : </h2>
+				</div>
+
+				<div class="col-lg-12">
+					{{activity.description | raw}}
+				</div>
+			</div>
+
+			<div class="row subCategory">
+				<div class="col-lg-12" align="center">
+					Adresse :
+				</div>
+				<div class="col-lg-12" align="center">
+					{{ activity.streetNumber}}, {{ activity.street}} {{ activity.zipcode}} {{activity.city}}
+				</div>
+			</div>
 			<p>Extérieur : {% if activity.isOutdoor==1 %} oui {%else %} non {% endif%}</p>
 			<p>Intérieur : {% if activity.isIndoor==1 %} oui {%else %} non {% endif%}</p>
 			<p>Accès aux personnes à mobilité réduite : {% if activity.isHandicaped==1 %} oui {%else %} non {% endif%}</p>

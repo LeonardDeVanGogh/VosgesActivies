@@ -4,23 +4,28 @@
 
 {% block body %}
     <div class="container">
-        <h1>Types de reports : </h1>
-        <div class="row">
-            <div class="col-lg-2">
+        <div class="row justify-content-center">
+            <div class="col-lg-6" align="center">
+                <h1>Types de reports : </h1>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-2" align="center">
                 <a href="{{ path('report_reason_create') }}">
-                    <i class="fas fa-plus fa-2x"></i>
+                    <i class="fas fa-plus fa-3x"></i>
                 </a>
             </div>
         </div>
         {% for reason in reasons %}
-            <div class="row">
-                <div class="col-lg-6">{{ reason.reason }}</div>
-                <div class="col-lg-2">
+            <div class="row regularList">
+                <div class="col-lg-10">{{ reason.reason }}</div>
+                <div class="col-lg-1">
                     <a href="{{ path('report_reason_update',{'id':reason.id}) }}">
                         <i class="fas fa-edit fa-2x"></i>
                     </a>
                 </div>
-                <div class="col-lg-2">
+                <div class="col-lg-1">
                     <a href="{{ path('report_reason_delete',{'id':reason.id}) }}">
                         <i class="fas fa-times-circle fa-2x"></i>
                     </a>

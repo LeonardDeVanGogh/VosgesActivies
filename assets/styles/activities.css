@@ -11,11 +11,11 @@ article:hover{
     color:black;
     background-color:gray;
 }
-.unselected{
+.unselected, .viewsOptions{
     color:gray;
     background-color:lightgray;
 }
-.filter{
+.filter, .viewsOptions{
     margin-right:0.3em;
     margin-left:0.3em;
     border-radius:5px;
@@ -39,5 +39,8 @@ article:hover{
     display:none;
 }
 #mapid{
-    height: 50vh;
+    height: 60vh;
+}
+.row{
+    margin-bottom:1em;
 }
