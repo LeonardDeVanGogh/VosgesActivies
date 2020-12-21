@@ -13,13 +13,23 @@ L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
 
 
 for(i=0;i<activitiesJson.length;i++){
+    let isHandicaped = activitiesJson[i].is_handicaped===true?'<i class="fas fa-wheelchair fa-2x"></i>':'';
+    let animals = activitiesJson[i].animals===true?'<i class="fas fa-paw fa-2x"></i>':'';
+    let indoor = activitiesJson[i].is_indoor===true?'<i class="fas fa-check"></i>':'<i class="fas fa-times"></i>';
+    let outdoor = activitiesJson[i].animals===true?'<i class="fas fa-check"></i>':'<i class="fas fa-times"></i>';
+    let marker = new L.marker([activitiesJson[i].latitude,activitiesJson[i].longitude], {
+        title: activitiesJson[i].name,
 
-    let marker = new L.marker([activitiesJson[i].latitude,activitiesJson[i].longitude]).addTo(mymap)
-        .bindPopup(activitiesJson[i].name)
-
-    marker.addEventListener('click', function () {
-        document.location.href='/activity/read/' + activitiesJson[i].id;
-    });
+    }).addTo(mymap)
+        .bindPopup('<h6>' + activitiesJson[i].name + '</h6>' +
+                    '</p>' +
+                        '<span> Intérieur : </span><span> ' + indoor + '</span><span>     Extérieur : </span><span>' + outdoor + '</span>' +
+                    '</p>' +
+                    '</p>' + isHandicaped + animals + '</p>' +
+                    '<p>' +
+                        '<a class="btn btn-transparent" href="/activity/read/' + activitiesJson[i].id + '"><i class="fas fa-info"></i><span> détails</span></a>' +
+                    '</p>'
+        )
 
 }
 

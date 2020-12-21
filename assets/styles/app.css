@@ -11,11 +11,11 @@ footer{
     border:solid 1px black;
     margin:1px;
 }
-.fa-times-circle
+.fa-times-circle, .fa-times
 {
     color:red;
 }
-.fa-times-circle:hover
+.fa-times-circle:hover, .fa-times:hover
 {
     color:darkred;
     text-decoration:none;

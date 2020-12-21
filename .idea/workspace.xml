@@ -27,17 +27,8 @@
   <component name="ChangeListManager">
     <list default="true" id="58d55e91-27dc-42a4-8308-c7828bf875b8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/styles/activities.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/activities.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/styles/activity_manage.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/activities.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/activities.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/styles/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/styles/show.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/show.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/activity/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/activity/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/activity/manage.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/activity/manage.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/activity/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/activity/show.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/category/read.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/category/read.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/comment/moderation.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/comment/moderation.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/report_reason/read.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/report_reason/read.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -258,7 +249,7 @@
       <workItem from="1608292128106" duration="13321000" />
       <workItem from="1608370799317" duration="32908000" />
       <workItem from="1608475141731" duration="6296000" />
-      <workItem from="1608578319933" duration="1585000" />
+      <workItem from="1608578319933" duration="5256000" />
     </task>
     <servers />
   </component>
