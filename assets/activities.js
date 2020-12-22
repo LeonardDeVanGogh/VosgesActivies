@@ -1,4 +1,7 @@
 import './styles/activities.css';
+
+let i;
+
 /* map section */
 let activitiesJson = JSON.parse(data);
 console.log(activitiesJson);
@@ -11,7 +14,6 @@ L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
     zoomOffset: -1,
 }).addTo(mymap);
 
-
 for(i=0;i<activitiesJson.length;i++){
     let isHandicaped = activitiesJson[i].is_handicaped===true?'<i class="fas fa-wheelchair fa-2x"></i>':'';
     let animals = activitiesJson[i].animals===true?'<i class="fas fa-paw fa-2x"></i>':'';
@@ -19,7 +21,6 @@ for(i=0;i<activitiesJson.length;i++){
     let outdoor = activitiesJson[i].animals===true?'<i class="fas fa-check"></i>':'<i class="fas fa-times"></i>';
     let marker = new L.marker([activitiesJson[i].latitude,activitiesJson[i].longitude], {
         title: activitiesJson[i].name,
-
     }).addTo(mymap)
         .bindPopup('<h6>' + activitiesJson[i].name + '</h6>' +
                     '</p>' +
@@ -28,9 +29,11 @@ for(i=0;i<activitiesJson.length;i++){
                         '<span>     Extérieur : </span>' +
                         '<span>' + outdoor + '</span>' +
                     '</p>' +
-                    '</p>' + isHandicaped + animals + '</p>' +
+                    '</p>' +
+                        '<span title="Accessible aux personnes à mobilité réduite">' + isHandicaped + '</span>' +
+                        '<span title="animaux acceptés">' + animals + '</span></p>' +
                     '<p>' +
-                        '<a class="btn btn-transparent" href="/activity/read/' + activitiesJson[i].id + '">' +
+                        '<a class="btn btn-transparent" title="voir l\'activité" href="/activity/read/' + activitiesJson[i].id + '">' +
                             '<i class="fas fa-info"></i>' +
                             '<span> détails</span>' +
                         '</a>' +
@@ -41,7 +44,6 @@ for(i=0;i<activitiesJson.length;i++){
 /* filter section */
 let filteredElements = document.getElementById('filterDashboard').getElementsByClassName('filter');
 let activities = document.getElementsByClassName("activity");
-let i;
 for(i = 0; i < filteredElements.length;i++){
     filteredElements[i].addEventListener('click',updateFilter);
 }

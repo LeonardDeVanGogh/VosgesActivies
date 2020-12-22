@@ -7,10 +7,6 @@ footer{
 .fa-github{
     color:black;
 }
-.comment{
-    border:solid 1px black;
-    margin:1px;
-}
 .fa-times-circle, .fa-times
 {
     color:red;
@@ -20,11 +16,11 @@ footer{
     color:darkred;
     text-decoration:none;
 }
-.fa-eye
+.fa-eye, .fa-flag
 {
     color:black;
 }
-.fa-eye:hover
+.fa-eye:hover, .fa-flag:hover
 {
     color:#2E2E2E;
     text-decoration:none;

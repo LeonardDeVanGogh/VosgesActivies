@@ -10,10 +10,14 @@
 		<article>
 			<div class="row justify-content-center">
 				<div class="col-lg-12" align="center">
-					<h1>{{activity.name}}</h1><br/>
+					<h1>{{activity.name}}</h1>
 				</div>
 			</div>
-			<img src="{{ asset('images/'~ activity.picture) }}" alt="{{ activity.name }}" class="img-fluid">
+			{% if activity.picture != "activity_default.jpg" %}
+			<div class="row justify-content-center">
+				<img src="{{ asset('images/'~ activity.picture) }}" alt="{{ activity.name }}" class="img-fluid w-50">
+			</div>
+			{% endif %}
 			<div class="row subCategory">
 				<div class="col-lg-12"align="center">
 					<h2>Description : </h2>
@@ -24,40 +28,68 @@
 				</div>
 			</div>
 
-			<div class="row subCategory">
+			<div class="row subCategory align-middle">
 				<div class="col-lg-12" align="center">
-					Adresse :
+					Adresse : {{ activity.streetNumber}}, {{ activity.street}} {{ activity.zipcode}} {{activity.city}}
 				</div>
 				<div class="col-lg-12" align="center">
-					{{ activity.streetNumber}}, {{ activity.street}} {{ activity.zipcode}} {{activity.city}}
+					<span>Itinéraire : </span>
+					<a href="https://www.google.com/maps/search/?api=1&query={{ activity.latitude }},{{ activity.longitude }}">
+						<i class="fas fa-map-marked fa-2x"></i>
+					</a>
 				</div>
 			</div>
-			<p>Extérieur : {% if activity.isOutdoor==1 %} oui {%else %} non {% endif%}</p>
-			<p>Intérieur : {% if activity.isIndoor==1 %} oui {%else %} non {% endif%}</p>
-			<p>Accès aux personnes à mobilité réduite : {% if activity.isHandicaped==1 %} oui {%else %} non {% endif%}</p>
-			<p>Animaux acceptés : {% if activity.Animals==1 %} oui {%else %} non {% endif%}</p>
-			<section id="categories">
-			{% for category in activity.category %}
-				<div class="category">
+			<div class="row justify-content-center">
+				<div class="col-lg-2 subCategory" align="center">
+					<span>Extérieur : </span>
+					<span>{% if activity.isOutdoor==1 %} <i class="fas fa-check"></i> {%else %} <i class="fas fa-times"></i> {% endif%}</span>
+				</div><div class="col-lg-2 subCategory" align="center">
+					<span>Intérieur : </span>
+					<span>{% if activity.isIndoor==1 %} <i class="fas fa-check"></i> {%else %} <i class="fas fa-times"></i> {% endif%}</span>
+				</div>
+			</div>
+			<div class="row justify-content-center">
+				<div class="col-lg-4 subCategory" align="center">
+					<span>
+						<i class="fas fa-wheelchair"></i>
+					</span>
+					<span>Accès aux personnes à mobilité réduite : </span>
+					<span>{% if activity.isHandicaped==1 %} <i class="fas fa-check"></i> {%else %} <i class="fas fa-times"></i> {% endif%}</span>
+				</div><div class="col-lg-4 subCategory" align="center">
+					<span>
+						<i class="fas fa-paw"></i>
+					</span>
+					<span>Animaux acceptés : </span>
+					<span>{% if activity.Animals==1 %} <i class="fas fa-check"></i> {%else %} <i class="fas fa-times"></i> {% endif%}</span>
+				</div>
+			</div>
+			{% if activity.category|length>0 %}
+				<section class="categories subCategory">
 					<div class="row">
-						<div class="col-3">
-							Catégorie(s) :
-						</div>
-						<div class="col-3">
-							{{category.name }}
+						<div class="col-12" align="center">
+							<h2>Catégorie(s) :</h2>
 						</div>
 					</div>
-				</div>
-			{% endfor %}
-			</section>
+					<div class="row justify-content-center">
+						{% for category in activity.category %}
+							<div class="col-2 text-truncate" align="center">
+								{{category.name }}
+							</div>
+						{% endfor %}
+					</div>
+				</section>
+			{% endif %}
 
 		</article>
 
-		<section id="comments">
-			<h1>{{ activity.comments | length }} Commentaire(s) : </h1>
+		<section class="row" id="comments">
+			<div class="col-lg-12">
+				<h1>{{ activity.comments | length }} Commentaire(s) : </h1>
+			</div>
+
 			{% for comment in activity.comments %}
 				{% if comment.deletedAt is null %}
-					<div class="comment">
+					<div class="comment subCategory">
 						<div class="row">
 							<div class="col-lg-3">
 								{{ comment.user.username }} (<small>{{ comment.createdAt | date('d/m/Y à H:i') }}</small>)
@@ -76,9 +108,8 @@
 								{% if comment.moderatedAt is null %}
 									<div class="row">
 										<div class="col-lg-1">
-											<a type="button" class="openReportModal" data-toggle="modal" data-comment-id="{{ comment.id }}" data-target="#CommentReportModal">
+											<a type="button" class="openReportModal" title="signaler" data-toggle="modal" data-comment-id="{{ comment.id }}" data-target="#CommentReportModal">
 												<i class="far fa-flag"></i>
-												<span>({{ comment.reports | length }})</span>
 											</a>
 										</div>
 									</div>
