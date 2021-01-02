@@ -29,6 +29,7 @@ Encore
     .addEntry('show', './assets/show.js')
     .addEntry('comment_moderation', './assets/comment_moderation.js')
     .addEntry('administration', './assets/administration.js')
+    .addEntry('test', './assets/test.js')
     //.addEntry('page1', './assets/page1.js')
     //.addEntry('page2', './assets/page2.js')
 

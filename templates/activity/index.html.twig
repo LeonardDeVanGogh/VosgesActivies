@@ -74,11 +74,10 @@
 		</section>
 	</div>
 
-	<div class="d-none" data-activities="{{ activities_json|raw|json_encode()}}"></div>
 {% endblock %}
 {% block javascripts %}
 	<script>
-		const data = '{{ activities_json|json_encode()|raw}}';
+		const data = '{{ activitiesJson|raw}}';
 	</script>
 	{{ encore_entry_script_tags('activities') }}
 	<script src="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/leaflet.markercluster.js"></script>

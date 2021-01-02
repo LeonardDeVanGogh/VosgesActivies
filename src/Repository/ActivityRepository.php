@@ -33,17 +33,6 @@ class ActivityRepository extends ServiceEntityRepository
     public function findAllActivitiesJson()
     {
         return $this->createQueryBuilder('a')
-            ->leftJoin('a.Category', 'c')
-            ->select('a.id,
-                            a.name, 
-                            a.city, 
-                            a.longitude,
-                            a.latitude,
-                            a.is_indoor,
-                            a.is_outdoor,
-                            a.is_handicaped,
-                            a.animals'
-            )
             ->andWhere('a.deleted_at is NULL')
             ->orderBy('a.name', 'ASC')
             ->getQuery()

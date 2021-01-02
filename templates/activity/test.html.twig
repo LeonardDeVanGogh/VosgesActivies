@@ -1,10 +1,22 @@
 {% extends 'base.html.twig' %}
 
-
-{% block body %}
- <h1>test</h1>
- {{form_start(reportForm)}}
- {{ form_row(reportForm.reason_id) }}
- <button type="submit" class="btn btn-success">Signaler</button>
- {{form_end(reportForm)}}
+{% block head %}
+  {{ encore_entry_link_tags('test') }}
 {% endblock %}
+{% block stylesheets %}
+  <style>
+    #calendar{
+     width:80%;
+     margin:auto;
+    }
+  </style>
+{% endblock %}
+{% block body %}
+  <h1>test</h1>
+  <div id="calendar"></div>
+{% endblock %}
+{% block javascripts %}
+  {{ encore_entry_script_tags('test') }}
+
+
+{% endblock%}

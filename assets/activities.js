@@ -4,7 +4,6 @@ let i;
 
 /* map section */
 let activitiesJson = JSON.parse(data);
-console.log(activitiesJson);
 
 var mymap = L.map('mapid').setView([48.07220, 6.87284], 13);
 L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
@@ -15,10 +14,10 @@ L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
 }).addTo(mymap);
 
 for(i=0;i<activitiesJson.length;i++){
-    let isHandicaped = activitiesJson[i].is_handicaped===true?'<i class="fas fa-wheelchair fa-2x"></i>':'';
-    let animals = activitiesJson[i].animals===true?'<i class="fas fa-paw fa-2x"></i>':'';
-    let indoor = activitiesJson[i].is_indoor===true?'<i class="fas fa-check"></i>':'<i class="fas fa-times"></i>';
-    let outdoor = activitiesJson[i].animals===true?'<i class="fas fa-check"></i>':'<i class="fas fa-times"></i>';
+    let isHandicaped = activitiesJson[i].isHandicaped===true?'<i class="fas fa-wheelchair fa-2x"></i>':'';
+    let animals = activitiesJson[i].isAnimalsFriendly===true?'<i class="fas fa-paw fa-2x"></i>':'';
+    let indoor = activitiesJson[i].isIndoor===true?'<i class="fas fa-check"></i>':'<i class="fas fa-times"></i>';
+    let outdoor = activitiesJson[i].isOutdoor===true?'<i class="fas fa-check"></i>':'<i class="fas fa-times"></i>';
     let marker = new L.marker([activitiesJson[i].latitude,activitiesJson[i].longitude], {
         title: activitiesJson[i].name,
     }).addTo(mymap)

@@ -114,6 +114,7 @@ class Activity
      * @ORM\Column(type="boolean", nullable=true)
      */
     private $animals;
+    //rename animalFriendly
 
     /**
      * @ORM\Column(type="boolean", nullable=true)

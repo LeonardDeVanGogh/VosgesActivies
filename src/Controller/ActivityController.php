@@ -8,6 +8,7 @@ use App\Entity\Report;
 use App\Form\ActivityType;
 use App\Form\CommentType;
 use App\Form\ReportType;
+use App\Formatter\ActivityToJsonFormatter;
 use App\Repository\ActivityRepository;
 use App\Repository\CategoryRepository;
 use App\Repository\CommentRepository;
@@ -28,17 +29,25 @@ use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
 
 class ActivityController extends AbstractController
 {
+    /** @var ActivityToJsonFormatter */
+    private $activityToJsonFormatter;
+
+    public function __construct(ActivityToJsonFormatter $activityToJsonFormatter)
+    {
+        $this->activityToJsonFormatter = $activityToJsonFormatter;
+    }
+
     /**
      * @Route("/Activity", name="activity")
      */
-    public function index(ActivityRepository $activityRepository, CategoryRepository $categoryRepository, NormalizerInterface  $normalizer)
-    {
+    public function index(
+        ActivityRepository $activityRepository,
+        CategoryRepository $categoryRepository,
+        NormalizerInterface  $normalizer
+    ) {
     	$activities = $activityRepository->findAllActivities();
-
-    	$activitiesTest = $activityRepository->findAllActivitiesJson();
-        $activitiesJson = $activityRepository->findAllActivities();
-
-
+        $activitiesJson = $this->activityToJsonFormatter->format($activities);
+        dump($this->activityToJsonFormatter->format($activities));
 
         /*$encoders = [new JsonEncoder()];
         $normalizers = [new ObjectNormalizer()];
@@ -53,8 +62,8 @@ class ActivityController extends AbstractController
         return $this->render('activity/index.html.twig', [
             'controller_name' => 'ActivityController',
             'activities'=> $activities,
-            'activities_json'=> $activitiesTest,
             'categories'=> $categories,
+            'activitiesJson'=> $activitiesJson,
         ]);
     }
     /**
@@ -192,19 +201,11 @@ class ActivityController extends AbstractController
 
     }
     /**
-     * @Route("/activity/test", name="test")
+     * @Route("/Activity/test", name="test")
      */
-    public function test(Request $request)
+    public function test()
     {
-    $comment = new Comment();
-        $report = new Report();
-        $formReport = $this->createForm(ReportType::class, $report);
-        $formReport->handleRequest($request);
-
-        return $this->render('activity/test.html.twig',[
-            'reportForm' => $formReport->createView()
-
-        ]);
+        return $this->render('activity/test.html.twig');
     }
 
 
