@@ -65,6 +65,11 @@ class User implements UserInterface
      */
     private $activites;
 
+    /**
+     * @ORM\OneToOne(targetEntity=Bookings::class, mappedBy="booked_by", cascade={"persist", "remove"})
+     */
+    private $bookings;
+
     public function __construct()
     {
         $this->reports = new ArrayCollection();
@@ -205,4 +210,23 @@ class User implements UserInterface
 
         return $this;
     }
+
+    public function getBookings(): ?Bookings
+    {
+        return $this->bookings;
+    }
+
+    public function setBookings(?Bookings $bookings): self
+    {
+        $this->bookings = $bookings;
+
+        // set (or unset) the owning side of the relation if necessary
+        $newBooked_by = null === $bookings ? null : $this;
+        if ($bookings->getBookedBy() !== $newBooked_by) {
+            $bookings->setBookedBy($newBooked_by);
+        }
+
+        return $this;
+    }
+
 }

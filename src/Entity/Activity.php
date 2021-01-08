@@ -127,10 +127,16 @@ class Activity
      */
     private $user;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Bookings::class, mappedBy="activity", orphanRemoval=true)
+     */
+    private $bookings;
+
     public function __construct()
     {
         $this->Category = new ArrayCollection();
         $this->comments = new ArrayCollection();
+        $this->bookings = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -419,4 +425,36 @@ class Activity
 
         return $this;
     }
+
+    /**
+     * @return Collection|Bookings[]
+     */
+    public function getBookings(): Collection
+    {
+        return $this->bookings;
+    }
+
+    public function addBooking(Bookings $booking): self
+    {
+        if (!$this->bookings->contains($booking)) {
+            $this->bookings[] = $booking;
+            $booking->setActivity($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBooking(Bookings $booking): self
+    {
+        if ($this->bookings->contains($booking)) {
+            $this->bookings->removeElement($booking);
+            // set the owning side to null (unless already changed)
+            if ($booking->getActivity() === $this) {
+                $booking->setActivity(null);
+            }
+        }
+
+        return $this;
+    }
+
 }
