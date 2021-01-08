@@ -7,6 +7,7 @@ use App\Entity\Bookings;
 use App\Form\BookingsType;
 use App\Formatter\ActivityToJsonFormatter;
 use App\Repository\BookingsRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -110,14 +111,11 @@ class BookingsController extends AbstractController
     /**
      * @Route("/{id}", name="bookings_delete", methods={"DELETE"})
      */
-    public function delete(Request $request, Bookings $booking): Response
+    public function delete(Activity $activity, Bookings $booking, Request $request, EntityManagerInterface $manager)
     {
-        if ($this->isCsrfTokenValid('delete'.$booking->getId(), $request->request->get('_token'))) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->remove($booking);
-            $entityManager->flush();
-        }
-
-        return $this->redirectToRoute('bookings_index');
+        $booking->setDeletedAt(new \DateTime());
+        $manager->persist($booking);
+        $manager->flush();
+        return $this->redirectToRoute('bookings_index', ['id' => $booking->getActivity()->getId()]);
     }
 }
