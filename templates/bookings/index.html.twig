@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Bookings index{% endblock %}
-
+{% block head %}{{ encore_entry_link_tags('booking_index') }}{% endblock %}
 {% block body %}
     <h1>Bookings index</h1>
 
@@ -27,13 +27,25 @@
                     <a href="{{ path('bookings_edit', {'id': booking.id}) }}">edit</a>
                 </td>
             </tr>
+
         {% else %}
             <tr>
                 <td colspan="5">no records found</td>
             </tr>
+
         {% endfor %}
         </tbody>
     </table>
-
     <a href="{{ path('bookings_new') }}">Create new</a>
+
+
+    <div id="calendar"></div>
+
+    {% block javascripts %}
+        <script>
+            const activityId = {{ activity.id }}
+        </script>
+
+        {{ encore_entry_script_tags('booking_index') }}
+    {% endblock %}
 {% endblock %}

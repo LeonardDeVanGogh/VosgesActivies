@@ -16,11 +16,17 @@ footer{
     color:darkred;
     text-decoration:none;
 }
-.fa-eye, .fa-flag
+.fa-eye,
+.fa-flag,
+.fa-calendar-alt,
+.fa-map-marked
 {
     color:black;
 }
-.fa-eye:hover, .fa-flag:hover
+.fa-eye:hover,
+.fa-flag:hover,
+.fa-calendar-alt:hover,
+.fa-map-marked:hover
 {
     color:#2E2E2E;
     text-decoration:none;

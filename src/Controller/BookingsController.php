@@ -2,27 +2,55 @@
 
 namespace App\Controller;
 
+use App\Entity\Activity;
 use App\Entity\Bookings;
 use App\Form\BookingsType;
+use App\Formatter\ActivityToJsonFormatter;
 use App\Repository\BookingsRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Formatter\BookingToJsonFormatter;
 
 /**
  * @Route("/bookings")
  */
 class BookingsController extends AbstractController
 {
-    /**
-     * @Route("/", name="bookings_index", methods={"GET"})
-     */
-    public function index(BookingsRepository $bookingsRepository): Response
+    /** @var BookingToJsonFormatter */
+    private $bookingToJsonFormatter;
+
+    public function __construct(bookingToJsonFormatter $bookingToJsonFormatter)
     {
-        return $this->render('bookings/index.html.twig', [
-            'bookings' => $bookingsRepository->findAll(),
-        ]);
+        $this->bookingToJsonFormatter = $bookingToJsonFormatter;
+    }
+
+    /**
+     * @Route("/{id}", name="bookings_index", methods={"GET"})
+     */
+    public function index(BookingsRepository $bookingsRepository, Activity $activity): Response
+    {
+        $bookings = $bookingsRepository->findAllBookingsByActivity($activity->getId());
+        if($activity->getDeletedAt() == null){
+            return $this->render('bookings/index.html.twig', [
+                'bookings' => $bookings,
+                'activity' => $activity,
+            ]);
+        }else{
+            return $this->redirectToRoute('home');
+        }
+    }
+    /**
+     * @Route("/calendar/read/{id}", name="bookings_calendar_read", methods={"GET"})
+     */
+    public function readBookingsForCalendar(BookingsRepository $bookingsRepository, Activity $activity)
+    {
+        $bookings = $bookingsRepository->findAllBookingsByActivity($activity->getId());
+        $bookingsJson = $this->bookingToJsonFormatter->format($bookings);
+        $response = new Response($bookingsJson, 200, ["Content-Type" => "application/json"]);
+
+        return $response;
     }
 
     /**
@@ -30,6 +58,7 @@ class BookingsController extends AbstractController
      */
     public function new(Request $request): Response
     {
+
         $booking = new Bookings();
         $form = $this->createForm(BookingsType::class, $booking);
         $form->handleRequest($request);
@@ -61,7 +90,7 @@ class BookingsController extends AbstractController
     /**
      * @Route("/{id}/edit", name="bookings_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, Bookings $booking): Response
+    public function edit(Request $request, Bookings $booking, Activity $activity): Response
     {
         $form = $this->createForm(BookingsType::class, $booking);
         $form->handleRequest($request);
@@ -69,7 +98,7 @@ class BookingsController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('bookings_index');
+            return $this->redirectToRoute('bookings_index', ['id' => $booking->getActivity()->getId()]);
         }
 
         return $this->render('bookings/edit.html.twig', [

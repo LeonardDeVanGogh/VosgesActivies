@@ -47,17 +47,6 @@ class ActivityController extends AbstractController
     ) {
     	$activities = $activityRepository->findAllActivities();
         $activitiesJson = $this->activityToJsonFormatter->format($activities);
-        dump($this->activityToJsonFormatter->format($activities));
-
-        /*$encoders = [new JsonEncoder()];
-        $normalizers = [new ObjectNormalizer()];
-        $serializer = new Serializer($normalizers, $encoders);
-        foreach($activitiesTest as $activity){
-            $activitiesJson[] = $serializer->serialize($activity, 'json', [
-                'circular_reference_handler' => function ($object) {
-                    return $object->getId();
-                }]);
-        }*/
     	$categories = $categoryRepository->findAllCategoriesNotDeleted();
         return $this->render('activity/index.html.twig', [
             'controller_name' => 'ActivityController',

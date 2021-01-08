@@ -4,15 +4,20 @@
 
 {% block body %}
 
-        <div class="row">
-            <div class="h1">Mes Activités :</div>
-        </div>
+    <div class="row justify-content-center">
+        <h1 class="col-lg-6 text-center">Mes Activités :</h1>
+    </div>
 
     <section class="articles">
         {% for activity in activities %}
             <div class="regularList">
                 <div class="row">
-                    <div class="col-lg-9">Nom : {{ activity.name }}</div>
+                    <div class="col-lg-8">Nom : {{ activity.name }}</div>
+                    <div class="col-lg-1">
+                        <a href="{{ path('bookings_index', {'id':activity.id}) }}" title="Réservations">
+                            <i class="far fa-calendar-alt fa-2x"></i>
+                        </a>
+                    </div>
                     <div class="col-lg-1">
                         <a href="{{ path('read', {'id':activity.id}) }}" title="Consulter l'activité">
                             <i class="fas fa-eye fa-2x"></i>

@@ -19,10 +19,23 @@ class BookingsRepository extends ServiceEntityRepository
         parent::__construct($registry, Bookings::class);
     }
 
+
+    public function findAllBookingsByActivity($id)
+    {
+        return $this->createQueryBuilder('b')
+            ->andWhere('b.deleted_at is NULL')
+            ->andWhere('b.activity = :id')
+            ->setParameter('id', $id)
+            ->orderBy('b.id', 'ASC')
+            ->getQuery()
+            ->getResult();
+    }
     // /**
     //  * @return Bookings[] Returns an array of Bookings objects
     //  */
     /*
+
+
     public function findByExampleField($value)
     {
         return $this->createQueryBuilder('b')

@@ -39,7 +39,6 @@ class ActivityRepository extends ServiceEntityRepository
             ->getResult();
     }
 
-
     public function findActivitiesByUser($value)
     {
         return $this->createQueryBuilder('a')
@@ -50,7 +49,6 @@ class ActivityRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
-
 
     // /**
     //  * @return Activity[] Returns an array of Activity objects

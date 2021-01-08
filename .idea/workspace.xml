@@ -27,9 +27,16 @@
   <component name="ChangeListManager">
     <list default="true" id="58d55e91-27dc-42a4-8308-c7828bf875b8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20201208111611.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Activity.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Activity.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/styles/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/ActivityController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ActivityController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/BookingsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/BookingsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/ActivityRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/ActivityRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/BookingsRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/BookingsRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/activity/manage.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/activity/manage.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/bookings/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/bookings/edit.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/bookings/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/bookings/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/bookings/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/bookings/new.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -255,7 +262,7 @@
       <workItem from="1608980248193" duration="4469000" />
       <workItem from="1609586591355" duration="10425000" />
       <workItem from="1609930961737" duration="606000" />
-      <workItem from="1610129315840" duration="6402000" />
+      <workItem from="1610129315840" duration="16959000" />
     </task>
     <servers />
   </component>
@@ -304,10 +311,10 @@
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state x="570" y="252" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1680.1010/-1920.-24.1920.1040@0.0.1680.1010" timestamp="1608479861484" />
-    <state x="640" y="493" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1607256844599">
+    <state x="640" y="493" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1610144510445">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state x="640" y="493" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1680.1010/-1920.-24.1920.1040@0.0.1680.1010" timestamp="1607256844599" />
+    <state x="640" y="493" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1680.1010/-1920.-24.1920.1040@0.0.1680.1010" timestamp="1610144510445" />
     <state x="620" y="260" key="FileChooserDialogImpl" timestamp="1606243172751">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
