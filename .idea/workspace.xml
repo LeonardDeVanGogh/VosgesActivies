@@ -26,8 +26,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="58d55e91-27dc-42a4-8308-c7828bf875b8" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/VosgesActivites.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/VosgesActivites.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/booking_index.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/booking_index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/BookingsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/BookingsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Formatter/BookingToJsonFormatter.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Formatter/BookingToJsonFormatter.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/bookings/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/bookings/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/bookings/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/bookings/new.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -253,7 +259,8 @@
       <workItem from="1608980248193" duration="4469000" />
       <workItem from="1609586591355" duration="10425000" />
       <workItem from="1609930961737" duration="606000" />
-      <workItem from="1610129315840" duration="17393000" />
+      <workItem from="1610129315840" duration="18215000" />
+      <workItem from="1610190837170" duration="6213000" />
     </task>
     <servers />
   </component>
@@ -365,6 +372,11 @@
           <url>file://$PROJECT_DIR$/src/Controller/ActivityController.php</url>
           <line>4</line>
           <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/src/Controller/BookingsController.php</url>
+          <line>52</line>
+          <option name="timeStamp" value="9" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

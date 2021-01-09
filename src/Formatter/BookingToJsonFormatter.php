@@ -10,15 +10,15 @@ class BookingToJsonFormatter
     {
         $bookingsJson = [];
         foreach($bookings as $booking){
-            $backgroundColor = $booking->getBookedBy()==null?"#008000":"#808080";
+            $bookedBy = $booking->getBookedBy()==null?"libre":"Réservé";
             $bookingsJson[] = [
                 'id' => $booking->getId(),
-                'title' => 'test',
+                'title' => $bookedBy,
                 'start' => $booking->getStartedAt()->format('Y-m-d H:i:s'),
                 'end' => $booking->getEndAt()->format('Y-m-d H:i:s'),
-                'background-color' => $backgroundColor,
+                'color' => $booking->getBookedBy() === null ? "#008000" : "#808080",
             ];
         }
-        return json_encode($bookingsJson, JSON_UNESCAPED_UNICODE);
+        return $bookingsJson;
     }
 }

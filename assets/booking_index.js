@@ -21,7 +21,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 url: 'calendar/read/' + activityId,
                 method: 'GET',
             }
-        ]
+        ],
+
     });
     calendar.render();
 });

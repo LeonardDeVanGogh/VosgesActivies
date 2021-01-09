@@ -5,10 +5,11 @@ namespace App\Controller;
 use App\Entity\Activity;
 use App\Entity\Bookings;
 use App\Form\BookingsType;
-use App\Formatter\ActivityToJsonFormatter;
+use App\Repository\ActivityRepository;
 use App\Repository\BookingsRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -28,7 +29,7 @@ class BookingsController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="bookings_index", methods={"GET"})
+     * @Route("/{id}", name="bookings_index", methods={"GET"}, requirements={"id"="\d+"})
      */
     public function index(BookingsRepository $bookingsRepository, Activity $activity): Response
     {
@@ -45,31 +46,31 @@ class BookingsController extends AbstractController
     /**
      * @Route("/calendar/read/{id}", name="bookings_calendar_read", methods={"GET"})
      */
-    public function readBookingsForCalendar(BookingsRepository $bookingsRepository, Activity $activity)
+    public function readBookingsForCalendar(BookingsRepository $bookingsRepository, Activity $activity): JsonResponse
     {
         $bookings = $bookingsRepository->findAllBookingsByActivity($activity->getId());
         $bookingsJson = $this->bookingToJsonFormatter->format($bookings);
-        $response = new Response($bookingsJson, 200, ["Content-Type" => "application/json"]);
+        return new JsonResponse($bookingsJson);
 
-        return $response;
     }
 
     /**
      * @Route("/new", name="bookings_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request, ActivityRepository $activityRepository): Response
     {
-
+        $activity = $activityRepository->find($_GET['activity']);
         $booking = new Bookings();
         $form = $this->createForm(BookingsType::class, $booking);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $booking->setActivity($activity);
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($booking);
             $entityManager->flush();
 
-            return $this->redirectToRoute('bookings_index');
+            return $this->redirectToRoute('bookings_index', ['id'=> $activity->getId()]);
         }
 
         return $this->render('bookings/new.html.twig', [
