@@ -28,11 +28,8 @@
     <list default="true" id="58d55e91-27dc-42a4-8308-c7828bf875b8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/activities.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/activities.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/ActivityController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ActivityController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/BookingsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/BookingsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/Api/ApiController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Api/ApiController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Formatter/ActivityToJsonFormatter.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Formatter/ActivityToJsonFormatter.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/ActivityRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/ActivityRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/activity/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/activity/index.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -270,7 +267,8 @@
       <workItem from="1611427800552" duration="2074000" />
       <workItem from="1611688889355" duration="596000" />
       <workItem from="1611770406005" duration="599000" />
-      <workItem from="1611939895396" duration="9720000" />
+      <workItem from="1611939895396" duration="11084000" />
+      <workItem from="1611963448681" duration="290000" />
     </task>
     <servers />
   </component>

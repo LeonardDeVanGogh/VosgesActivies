@@ -10,12 +10,21 @@ class ActivityToJsonFormatter
     {
         $activitiesJson = [];
         foreach($activities as $activity){
-
             $activityCategories =  [];
             foreach($activity->getCategory() as $category){
                $activityCategories[] =  [
                    'name' => $category->getName(),
                ];
+               /*
+                for (i=0;i<"all my $_POST".length;i++){
+                    if (category->getName() === $_POST[i]){
+                        $activitiesJson[] = [
+                            ici mon Json
+                        ]
+                   }
+               }
+               */
+
             }
 
             $activitiesJson[] = [

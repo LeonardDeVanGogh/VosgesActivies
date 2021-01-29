@@ -12,11 +12,14 @@ L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
     zoomOffset: -1,
 }).addTo(mymap);
 
-
-
-let request = new XMLHttpRequest();
+let filteredElements = document.getElementById('filterDashboard').getElementsByClassName('filter');
 let formData = new FormData();
-formData.append("filterSelected", "false");
+let j;
+for(j=0;j<filteredElements.length;j++){
+    filteredElements[j].classList.contains('selected')?formData.append(filteredElements[j].dataset.filter, 1):formData.append(filteredElements[j].dataset.filter, 0);
+}
+let request = new XMLHttpRequest();
+
 request.open('POST', '/api/activitiesToJson');
 request.addEventListener('load', function () {
     let activitiesJson = JSON.parse(request.response);
@@ -61,7 +64,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
 }).addTo(mymap);*/
 
 /* filter section */
-let filteredElements = document.getElementById('filterDashboard').getElementsByClassName('filter');
+
 let activities = document.getElementsByClassName("activity");
 for(i = 0; i < filteredElements.length;i++){
     filteredElements[i].addEventListener('click',updateFilter);
@@ -102,8 +105,6 @@ function updateFilter(){
         tileSize: 512,
         zoomOffset: -1,
     }).addTo(mymap);
-    formData.delete("filterSelected");
-    let j
     for(j=0;j<filteredElements.length;j++){
         filteredElements[j].classList.contains('selected')?formData.append(filteredElements[j].dataset.filter, 1):formData.append(filteredElements[j].dataset.filter, 0);
     }

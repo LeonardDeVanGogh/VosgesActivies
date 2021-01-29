@@ -22,16 +22,12 @@ class ApiController extends AbstractController
      */
     public function activitiesJson(ActivityRepository $activityRepository): JsonResponse
     {
-        if(isset($_POST['filterSelected']) && $_POST['filterSelected']==="false"){
-            $activities = $activityRepository->findAllActivities();
-        }else{
-            $isOutdoor = $_POST['outdoor'];
-            $isIndoor = $_POST['indoor'];
-            $isAnimalsFriendly = $_POST['animals'];
-            $isHandicapedFriendly = $_POST['handicaped'];
-            $activities = $activityRepository->findFilteredActivities($isOutdoor,$isIndoor,$isAnimalsFriendly,$isHandicapedFriendly);
+        $isOutdoor = $_POST['outdoor'];
+        $isIndoor = $_POST['indoor'];
+        $isAnimalsFriendly = $_POST['animals'];
+        $isHandicapedFriendly = $_POST['handicaped'];
+        $activities = $activityRepository->findFilteredActivities($isOutdoor,$isIndoor,$isAnimalsFriendly,$isHandicapedFriendly);
 
-        }
         $activitiesJson = $this->activityToJsonFormatter->format($activities);
         return new JsonResponse($activitiesJson);
     }
