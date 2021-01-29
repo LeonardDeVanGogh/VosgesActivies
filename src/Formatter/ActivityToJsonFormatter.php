@@ -30,6 +30,6 @@ class ActivityToJsonFormatter
                     'categories' => $activityCategories,
                 ];
         }
-            return json_encode($activitiesJson, JSON_UNESCAPED_UNICODE);
+            return $activitiesJson;
     }
 }

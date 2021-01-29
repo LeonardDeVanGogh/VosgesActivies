@@ -42,8 +42,7 @@ class ActivityController extends AbstractController
      */
     public function index(
         ActivityRepository $activityRepository,
-        CategoryRepository $categoryRepository,
-        NormalizerInterface  $normalizer
+        CategoryRepository $categoryRepository
     ) {
     	$activities = $activityRepository->findAllActivities();
         $activitiesJson = $this->activityToJsonFormatter->format($activities);
@@ -52,7 +51,7 @@ class ActivityController extends AbstractController
             'controller_name' => 'ActivityController',
             'activities'=> $activities,
             'categories'=> $categories,
-            'activitiesJson'=> $activitiesJson,
+            'activitiesJson'=> json_encode($activitiesJson, JSON_UNESCAPED_UNICODE),
         ]);
     }
     /**

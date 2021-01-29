@@ -49,6 +49,22 @@ class ActivityRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
+    public function findFilteredActivities($isOutdoor, $isIndoor, $isAnimalsFriendly, $isHandicapedFriendly)
+    {
+        return $this->createQueryBuilder('a')
+            ->andWhere('a.deleted_at is NULL')
+            ->andWhere('a.is_outdoor >= :outdoor')
+            ->andWhere('a.is_indoor >= :indoor')
+            ->andWhere('a.animals >= :animals')
+            ->andWhere('a.is_handicaped >= :handicaped')
+            ->setParameter('outdoor', $isOutdoor)
+            ->setParameter('indoor', $isIndoor)
+            ->setParameter('animals', $isAnimalsFriendly)
+            ->setParameter('handicaped', $isHandicapedFriendly)
+            ->orderBy('a.name', 'ASC')
+            ->getQuery()
+            ->getResult();
+    }
 
     // /**
     //  * @return Activity[] Returns an array of Activity objects

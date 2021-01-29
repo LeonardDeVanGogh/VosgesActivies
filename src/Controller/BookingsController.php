@@ -51,7 +51,6 @@ class BookingsController extends AbstractController
         $bookings = $bookingsRepository->findAllBookingsByActivity($activity->getId());
         $bookingsJson = $this->bookingToJsonFormatter->format($bookings);
         return new JsonResponse($bookingsJson);
-
     }
 
     /**
