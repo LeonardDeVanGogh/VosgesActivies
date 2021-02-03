@@ -30,16 +30,16 @@
 			</a>
 		</div>
 		<div class="row filterGroup justify-content-center">
-			<a class="filter option unselected" data-filter="indoor">
+			<a class="filter constraint unselected" data-filter="indoor">
 				Intérieur
 			</a>
-			<a class="filter option unselected" data-filter="outdoor">
+			<a class="filter constraint unselected" data-filter="outdoor">
 				Extérieur
 			</a>
 		</div>
 		<div class="row filterGroup justify-content-center">
 			{% for category in categories %}
-				<a class="filter option unselected text-truncate" data-filter="{{ category.name }}"  title="{{ category.description }}">{{ category.name }}</a>
+				<a class="filter option unselected text-truncate" data-filter="{{ category.id }}"  title="{{ category.description }}">{{ category.name }}</a>
 			{% endfor %}
 		</div>
 

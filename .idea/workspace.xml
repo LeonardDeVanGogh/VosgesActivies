@@ -29,7 +29,10 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/activities.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/activities.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/Api/ApiController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Api/ApiController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Formatter/ActivityToJsonFormatter.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Formatter/ActivityToJsonFormatter.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Activity.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Activity.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Category.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Category.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/ActivityRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/ActivityRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/activity/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/activity/index.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -268,7 +271,9 @@
       <workItem from="1611688889355" duration="596000" />
       <workItem from="1611770406005" duration="599000" />
       <workItem from="1611939895396" duration="11084000" />
-      <workItem from="1611963448681" duration="290000" />
+      <workItem from="1611963448681" duration="951000" />
+      <workItem from="1612004968697" duration="4934000" />
+      <workItem from="1612369810568" duration="2876000" />
     </task>
     <servers />
   </component>

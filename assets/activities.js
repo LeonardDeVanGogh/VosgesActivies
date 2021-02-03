@@ -18,6 +18,17 @@ let j;
 for(j=0;j<filteredElements.length;j++){
     filteredElements[j].classList.contains('selected')?formData.append(filteredElements[j].dataset.filter, 1):formData.append(filteredElements[j].dataset.filter, 0);
 }
+let selectedCategories = [];
+let categories = document.getElementsByClassName('option');
+for(i=0;i<categories.length;i++){
+    if(categories[i].classList.contains('selected')){
+        selectedCategories.push(categories[i].dataset.filter)
+    }
+}
+formData.append('selectedCategories', selectedCategories);
+console.log(selectedCategories);
+formData.append('categories', categories);
+
 let request = new XMLHttpRequest();
 
 request.open('POST', '/api/activitiesToJson');
@@ -108,6 +119,15 @@ function updateFilter(){
     for(j=0;j<filteredElements.length;j++){
         filteredElements[j].classList.contains('selected')?formData.append(filteredElements[j].dataset.filter, 1):formData.append(filteredElements[j].dataset.filter, 0);
     }
+    let selectedCategories = [];
+    let categories = document.getElementsByClassName('option');
+    for(i=0;i<categories.length;i++){
+        if(categories[i].classList.contains('selected')){
+            selectedCategories.push(categories[i].dataset.filter)
+        }
+    }
+    formData.append('selectedCategories', selectedCategories);
+    //ici faire un array categories[1,2,3]
     let request = new XMLHttpRequest();
 
 
@@ -151,7 +171,6 @@ function updateFilter(){
 
 let viewsOptions = document.getElementsByClassName("viewsOptions");
 for(i = 0; i < viewsOptions.length;i++){
-    console.log(viewsOptions);
     viewsOptions[i].addEventListener('click',updateView);
 }
 

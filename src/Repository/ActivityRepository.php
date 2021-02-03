@@ -49,21 +49,44 @@ class ActivityRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
-    public function findFilteredActivities($isOutdoor, $isIndoor, $isAnimalsFriendly, $isHandicapedFriendly)
+    public function findFilteredActivities($isOutdoor, $isIndoor, $isAnimalsFriendly, $isHandicapedFriendly,$categories)
     {
-        return $this->createQueryBuilder('a')
+
+        $qb = $this->createQueryBuilder('a')
             ->andWhere('a.deleted_at is NULL')
-            ->andWhere('a.is_outdoor >= :outdoor')
-            ->andWhere('a.is_indoor >= :indoor')
-            ->andWhere('a.animals >= :animals')
-            ->andWhere('a.is_handicaped >= :handicaped')
-            ->setParameter('outdoor', $isOutdoor)
-            ->setParameter('indoor', $isIndoor)
-            ->setParameter('animals', $isAnimalsFriendly)
-            ->setParameter('handicaped', $isHandicapedFriendly)
             ->orderBy('a.name', 'ASC')
-            ->getQuery()
-            ->getResult();
+        ;
+        if($isOutdoor){
+            $qb
+                ->andWhere('a.is_outdoor = :outdoor')
+                ->setParameter('outdoor', $isOutdoor)
+            ;
+        }
+        if($isIndoor){
+            $qb
+                ->andWhere('a.is_indoor = :indoor')
+                ->setParameter('indoor', $isIndoor)
+            ;
+        }
+        if($isAnimalsFriendly){
+            $qb
+                ->andWhere('a.animals = :animals')
+                ->setParameter('animals', $isAnimalsFriendly)
+            ;
+        }
+        if($isHandicapedFriendly){
+            $qb
+                ->andWhere('a.is_handicaped = :handicaped')
+                ->setParameter('handicaped', $isHandicapedFriendly)
+            ;
+        }
+        if(!empty($categories)){
+            $qb
+                ->innerJoin('a.Category', 'c')
+                ->andWhere('c IN (:categories)')
+                ->setParameter('categories', $categories);
+        }
+        return $qb->getQuery()->getResult();
     }
 
     // /**

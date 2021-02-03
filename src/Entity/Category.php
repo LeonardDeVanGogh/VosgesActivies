@@ -34,6 +34,7 @@ class Category
      * @ORM\ManyToMany(targetEntity=Activity::class, mappedBy="Category")
      */
     private $Activity;
+    //to rename activites
 
     /**
      * @ORM\Column(type="datetime", nullable=true)

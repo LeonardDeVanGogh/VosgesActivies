@@ -59,6 +59,7 @@ class Activity
      * @ORM\ManyToMany(targetEntity=Category::class, inversedBy="Activity")
      */
     private $Category;
+    //to rename categories
 
     /**
      * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="activity", orphanRemoval=true)

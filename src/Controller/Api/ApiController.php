@@ -6,6 +6,7 @@ use App\Formatter\ActivityToJsonFormatter;
 use App\Repository\ActivityRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 class ApiController extends AbstractController
@@ -20,13 +21,17 @@ class ApiController extends AbstractController
     /**
      * @Route("/api/activitiesToJson", name="activities_to_json")
      */
-    public function activitiesJson(ActivityRepository $activityRepository): JsonResponse
+    public function activitiesJson(ActivityRepository $activityRepository, Request $request): JsonResponse
     {
-        $isOutdoor = $_POST['outdoor'];
+        $categories = $request->request->get('selectedCategories');
+
+
+        $isOutdoor = $request->request->get('outdoor');
         $isIndoor = $_POST['indoor'];
         $isAnimalsFriendly = $_POST['animals'];
         $isHandicapedFriendly = $_POST['handicaped'];
-        $activities = $activityRepository->findFilteredActivities($isOutdoor,$isIndoor,$isAnimalsFriendly,$isHandicapedFriendly);
+
+        $activities = $activityRepository->findFilteredActivities($isOutdoor,$isIndoor,$isAnimalsFriendly,$isHandicapedFriendly,$categories);
 
         $activitiesJson = $this->activityToJsonFormatter->format($activities);
         return new JsonResponse($activitiesJson);
