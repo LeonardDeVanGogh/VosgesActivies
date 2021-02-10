@@ -59,3 +59,31 @@ footer{
     box-shadow:0.5em 0.5em lightgray;
     background-color:gray;
 }
+.appThemeColorOne{
+    color:#304025;
+}
+.appThemeBackgroundColorOne{
+    background-color:#304025;
+}
+.appThemeColorTwo{
+    color:#6D8C3E;
+}.appThemeBackgroundColorTwo{
+    background-color:#6D8C3E;
+}
+.appThemeColorThree{
+    color:#D2D904;
+}.appThemeBackgroundColorThree{
+    background-color:#D2D904;
+}
+.appThemeColorFour{
+ color:#D5D971;
+}
+.appThemeBackgroundColorFour{
+ background-color:#D5D971;
+}
+.appThemeColorFive{
+    color:#D9D5A3;
+}
+.appThemeBackgroundColorFive{
+    background-color:#D9D5A3;
+}

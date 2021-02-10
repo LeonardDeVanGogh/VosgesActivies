@@ -2,3 +2,10 @@
     background-color:lightgray;
     margin:1em;
 }
+.isUnavailableForThisActivity{
+    opacity:0.3;
+}
+.activityConstraints{
+    border-radius:20px;
+    padding:10px;
+}

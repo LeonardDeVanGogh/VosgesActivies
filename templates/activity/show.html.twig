@@ -5,6 +5,58 @@
 
 {% block body %}
 
+	<div class="row justify-content-end">
+		<div class="row appThemeBackgroundColorFive activityConstraints">
+			<div class="col-lg-3" align="center" title="activité pratiquée en intérieur">
+			<span>
+				<i class="
+					fas fa-cloud-rain fa-3x
+					{% if activity.isIndoor==1 %}
+						appThemeColorOne
+					{% else %}
+						appThemeColorTwo isUnavailableForThisActivity
+					{% endif %}
+				">
+				</i>
+			</span>
+			</div>
+			<div class="col-lg-3" align="center" title="activité pratiquée en extérieur">
+			<span>
+				<i class="
+					fas fa-sun fa-3x
+					{% if activity.isOutdoor==1 %}
+						appThemeColorOne
+					{% else %}
+						appThemeColorTwo isUnavailableForThisActivity
+					{% endif %}
+				">
+				</i>
+			</span>
+			</div>
+			<div class="col-lg-3" align="center" title="activité accessible aux personnes à mobilité réduite">
+				<i class="
+					fas fa-wheelchair fa-3x
+					{% if activity.isHandicaped==1 %}
+						appThemeColorOne
+					{% else %}
+						appThemeColorTwo isUnavailableForThisActivity
+					{% endif %}
+				">
+				</i>
+			</div>
+			<div class="col-lg-3" align="center" title="animaux acceptés">
+				<i class="
+					fas fa-paw fa-3x
+					{% if activity.animals==1 %}
+						appThemeColorOne
+					{% else %}
+						appThemeColorTwo isUnavailableForThisActivity
+					{% endif %}
+				">
+				</i>
+			</div>
+		</div>
+	</div>
 
 	<section class="articles">
 		<article>
@@ -18,8 +70,8 @@
 				<img src="{{ asset('images/'~ activity.picture) }}" alt="{{ activity.name }}" class="img-fluid w-50">
 			</div>
 			{% endif %}
-			<div class="row subCategory">
-				<div class="col-lg-12"align="center">
+			<div class="row">
+				<div class="col-lg-12" align="center">
 					<h2>Description : </h2>
 				</div>
 
@@ -28,39 +80,15 @@
 				</div>
 			</div>
 
-			<div class="row subCategory align-middle">
-				<div class="col-lg-12" align="center">
+			<div class="row align-middle">
+				<div class="col-lg-12 subCategory" align="center">
 					Adresse : {{ activity.streetNumber}}, {{ activity.street}} {{ activity.zipcode}} {{activity.city}}
 				</div>
 				<div class="col-lg-12" align="center">
 					<span>Itinéraire : </span>
 					<a href="https://www.google.com/maps/search/?api=1&query={{ activity.latitude }},{{ activity.longitude }}">
-						<i class="fas fa-map-marked fa-2x"></i>
+						<i class="fas fa-map-marked fa-2x" title="https://www.google.com/maps/search/?api=1&query={{ activity.latitude }},{{ activity.longitude }}"></i>
 					</a>
-				</div>
-			</div>
-			<div class="row justify-content-center">
-				<div class="col-lg-2 subCategory" align="center">
-					<span>Extérieur : </span>
-					<span>{% if activity.isOutdoor==1 %} <i class="fas fa-check"></i> {%else %} <i class="fas fa-times"></i> {% endif%}</span>
-				</div><div class="col-lg-2 subCategory" align="center">
-					<span>Intérieur : </span>
-					<span>{% if activity.isIndoor==1 %} <i class="fas fa-check"></i> {%else %} <i class="fas fa-times"></i> {% endif%}</span>
-				</div>
-			</div>
-			<div class="row justify-content-center">
-				<div class="col-lg-4 subCategory" align="center">
-					<span>
-						<i class="fas fa-wheelchair"></i>
-					</span>
-					<span>Accès aux personnes à mobilité réduite : </span>
-					<span>{% if activity.isHandicaped==1 %} <i class="fas fa-check"></i> {%else %} <i class="fas fa-times"></i> {% endif%}</span>
-				</div><div class="col-lg-4 subCategory" align="center">
-					<span>
-						<i class="fas fa-paw"></i>
-					</span>
-					<span>Animaux acceptés : </span>
-					<span>{% if activity.Animals==1 %} <i class="fas fa-check"></i> {%else %} <i class="fas fa-times"></i> {% endif%}</span>
 				</div>
 			</div>
 			{% if activity.category|length>0 %}

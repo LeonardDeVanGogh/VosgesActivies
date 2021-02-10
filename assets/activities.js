@@ -1,6 +1,9 @@
 import './styles/activities.css';
 
 let i;
+let j;
+let filteredElements = document.getElementById('filterDashboard').getElementsByClassName('filter');
+let formData = new FormData();
 
 /* map section */
 
@@ -12,9 +15,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
     zoomOffset: -1,
 }).addTo(mymap);
 
-let filteredElements = document.getElementById('filterDashboard').getElementsByClassName('filter');
-let formData = new FormData();
-let j;
+
 for(j=0;j<filteredElements.length;j++){
     filteredElements[j].classList.contains('selected')?formData.append(filteredElements[j].dataset.filter, 1):formData.append(filteredElements[j].dataset.filter, 0);
 }
@@ -26,7 +27,6 @@ for(i=0;i<categories.length;i++){
     }
 }
 formData.append('selectedCategories', selectedCategories);
-console.log(selectedCategories);
 formData.append('categories', categories);
 
 let request = new XMLHttpRequest();
@@ -59,24 +59,14 @@ request.addEventListener('load', function () {
                 '</a>' +
                 '</p>'
             )
+        //ici integration du html avec innerHTML
     }
 });
 
 request.send(formData);
 
-/*mymap.eachLayer((layer) => {
-    layer.remove();
-});
-L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
-    maxZoom: 18,
-    id: 'mapbox/streets-v11',
-    tileSize: 512,
-    zoomOffset: -1,
-}).addTo(mymap);*/
-
 /* filter section */
 
-let activities = document.getElementsByClassName("activity");
 for(i = 0; i < filteredElements.length;i++){
     filteredElements[i].addEventListener('click',updateFilter);
 }
@@ -91,22 +81,6 @@ function updateFilter(){
         this.classList.add("selected");
     }
 
-    /*
-    for(i=0;i<activities.length;i++){
-        if(activities[i].classList.contains('hidden')){
-            activities[i].classList.remove('hidden');
-            activities[i].classList.add('displayed');
-        }
-        let j;
-        for(j=0;j<filteredElements.length;j++){
-            if(filteredElements[j].classList.contains('selected')){
-                if(!activities[i].classList.contains(filteredElements[j].dataset.filter)){
-                    activities[i].classList.remove('displayed');
-                    activities[i].classList.add('hidden');
-                }
-            }
-        }
-    }*/
     mymap.eachLayer((layer) => {
         layer.remove();
     });
