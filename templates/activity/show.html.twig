@@ -6,7 +6,7 @@
 {% block body %}
 
 	<div class="row justify-content-end">
-		<div class="row appThemeBackgroundColorFive activityConstraints">
+		<div class="row activitySectionBody activitySectionTitle">
 			<div class="col-lg-3" align="center" title="activité pratiquée en intérieur">
 			<span>
 				<i class="
@@ -60,7 +60,7 @@
 
 	<section class="articles">
 		<article>
-			<div class="row justify-content-center">
+			<div class="row justify-content-center activitySectionTitle activitySectionBody">
 				<div class="col-lg-12" align="center">
 					<h1>{{activity.name}}</h1>
 				</div>
@@ -70,9 +70,9 @@
 				<img src="{{ asset('images/'~ activity.picture) }}" alt="{{ activity.name }}" class="img-fluid w-50">
 			</div>
 			{% endif %}
-			<div class="row">
-				<div class="col-lg-12" align="center">
-					<h2>Description : </h2>
+			<div class="row activitySectionBody">
+				<div class="col-lg-12 activitySectionTitle" align="center">
+					<h2 class="">Description :</h2>
 				</div>
 
 				<div class="col-lg-12">
@@ -80,17 +80,29 @@
 				</div>
 			</div>
 
-			<div class="row align-middle">
-				<div class="col-lg-12 subCategory" align="center">
-					Adresse : {{ activity.streetNumber}}, {{ activity.street}} {{ activity.zipcode}} {{activity.city}}
+			<div class="row activitySectionBody">
+				<div class="col-lg-12 activitySectionTitle" align="center">
+					<h2 class="">Adresse :</h2>
 				</div>
-				<div class="col-lg-12" align="center">
-					<span>Itinéraire : </span>
-					<a href="https://www.google.com/maps/search/?api=1&query={{ activity.latitude }},{{ activity.longitude }}">
-						<i class="fas fa-map-marked fa-2x" title="https://www.google.com/maps/search/?api=1&query={{ activity.latitude }},{{ activity.longitude }}"></i>
+				<div class="col-lg-4" align="center">
+					<a role="button" href="https://www.google.com/maps/search/?api=1&query={{ activity.latitude }},{{ activity.longitude }}">
+						<i class="fas fa-map-marked fa-3x appThemeColorOne" title="https://www.google.com/maps/search/?api=1&query={{ activity.latitude }},{{ activity.longitude }}"></i>
 					</a>
 				</div>
+				<div class="col-lg-8">
+					<div class="row">
+						<div class="col-lg-12">
+							Ville : {{activity.city}} ({{ activity.zipcode}})
+						</div>
+						<div class="col-lg-12">
+							Rue : {{ activity.streetNumber}}, {{ activity.street}}
+						</div>
+
+					</div>
+				</div>
+
 			</div>
+
 			{% if activity.category|length>0 %}
 				<section class="categories subCategory">
 					<div class="row">

@@ -1,3 +1,11 @@
+:root {
+    --app-theme-color-one: #304025;
+    --app-theme-color-two: #6D8C3E;
+    --app-theme-color-three: #D2D904;
+    --app-theme-color-four: #D5D971;
+    --app-theme-color-five: #D9D5A3;
+}
+
 .basicContainer{
     min-height:85vh;
 }
@@ -60,30 +68,30 @@ footer{
     background-color:gray;
 }
 .appThemeColorOne{
-    color:#304025;
+    color:var(--app-theme-color-one);
 }
 .appThemeBackgroundColorOne{
-    background-color:#304025;
+    background-color:var(--app-theme-color-one);
 }
 .appThemeColorTwo{
-    color:#6D8C3E;
+    color:var(--app-theme-color-two);;
 }.appThemeBackgroundColorTwo{
-    background-color:#6D8C3E;
+    background-color:var(--app-theme-color-two);
 }
 .appThemeColorThree{
-    color:#D2D904;
+    color:var(--app-theme-color-three);
 }.appThemeBackgroundColorThree{
-    background-color:#D2D904;
+    background-color:var(--app-theme-color-three);
 }
 .appThemeColorFour{
- color:#D5D971;
+    color:var(--app-theme-color-four);
 }
 .appThemeBackgroundColorFour{
- background-color:#D5D971;
+    background-color:var(--app-theme-color-four);
 }
 .appThemeColorFive{
-    color:#D9D5A3;
+    color:var(--app-theme-color-five);
 }
 .appThemeBackgroundColorFive{
-    background-color:#D9D5A3;
+    background-color:var(--app-theme-color-five);
 }
