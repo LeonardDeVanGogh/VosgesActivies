@@ -27,7 +27,6 @@
   <component name="ChangeListManager">
     <list default="true" id="58d55e91-27dc-42a4-8308-c7828bf875b8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/styles/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/app.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/styles/show.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/show.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/activity/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/activity/show.html.twig" afterDir="false" />
     </list>
@@ -275,7 +274,7 @@
       <workItem from="1612615018164" duration="3272000" />
       <workItem from="1612630116766" duration="3322000" />
       <workItem from="1612882094173" duration="615000" />
-      <workItem from="1612952113520" duration="14763000" />
+      <workItem from="1612952113520" duration="29953000" />
     </task>
     <servers />
   </component>
