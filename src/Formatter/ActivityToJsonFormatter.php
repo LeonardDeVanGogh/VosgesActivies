@@ -15,21 +15,13 @@ class ActivityToJsonFormatter
                $activityCategories[] =  [
                    'name' => $category->getName(),
                ];
-               /*
-                for (i=0;i<"all my $_POST".length;i++){
-                    if (category->getName() === $_POST[i]){
-                        $activitiesJson[] = [
-                            ici mon Json
-                        ]
-                   }
-               }
-               */
-
             }
 
             $activitiesJson[] = [
                     'id' => $activity->getId(),
                     'name' => $activity->getName(),
+                    'city' => $activity->getCity(),
+                    'picture' => $activity->getPicture(),
                     'longitude' => $activity->getLongitude(),
                     'latitude' => $activity->getLatitude(),
                     'isIndoor' => $activity->getIsIndoor(),

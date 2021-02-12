@@ -31,10 +31,10 @@
 		</div>
 		<div class="row filterGroup justify-content-center">
 			<a class="filter constraint unselected" data-filter="indoor">
-				Intérieur
+				<i class="fas fa-home fa-2x"></i>
 			</a>
 			<a class="filter constraint unselected" data-filter="outdoor">
-				Extérieur
+				<i class="fas fa-campground fa-2x"></i>
 			</a>
 		</div>
 		<div class="row filterGroup justify-content-center">
@@ -52,25 +52,11 @@
 	</div>
 	<div class="activitiesViews displayed" id="mapid"></div>
 	<div class="activitiesViews hidden" id="isList">
-		<section class="articles row d-flex flex-wrap">
-			{% for activity in activities %}
-				<div class="col-lg-4 activity activityDisplayed displayed">
-					<article class="col-lg-12 text-truncate ">
-						<h2 class="text-truncate">{{activity.name}}</h2>
-						<img src="{{ asset('images/'~ activity.picture) }}" alt="{{ activity.name }}" class="img-fluid">
-						<p class="text-center">{{activity.city}}</p>
-						<a href="{{ path('read', {'id':activity.id}) }}" class="col-lg-12 btn btn-primary">détails de l'activité</a>
-					</article>
-				</div>
-			{% endfor %}
-		</section>
+		<section class="articles row d-flex flex-wrap"></section>
 	</div>
 
 {% endblock %}
 {% block javascripts %}
-	<script>
-		const data = '{{ activitiesJson|raw}}';
-	</script>
 	{{ encore_entry_script_tags('activities') }}
 	<script src="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/leaflet.markercluster.js"></script>
 	<script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v1.0.0/leaflet.markercluster.js'></script>

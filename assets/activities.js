@@ -4,6 +4,8 @@ let i;
 let j;
 let filteredElements = document.getElementById('filterDashboard').getElementsByClassName('filter');
 let formData = new FormData();
+let selectedCategories = [];
+let categories = document.getElementsByClassName('option');
 
 /* map section */
 
@@ -19,13 +21,13 @@ L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
 for(j=0;j<filteredElements.length;j++){
     filteredElements[j].classList.contains('selected')?formData.append(filteredElements[j].dataset.filter, 1):formData.append(filteredElements[j].dataset.filter, 0);
 }
-let selectedCategories = [];
-let categories = document.getElementsByClassName('option');
+
 for(i=0;i<categories.length;i++){
     if(categories[i].classList.contains('selected')){
         selectedCategories.push(categories[i].dataset.filter)
     }
 }
+
 formData.append('selectedCategories', selectedCategories);
 formData.append('categories', categories);
 
@@ -34,7 +36,20 @@ let request = new XMLHttpRequest();
 request.open('POST', '/api/activitiesToJson');
 request.addEventListener('load', function () {
     let activitiesJson = JSON.parse(request.response);
+
     for(i=0;i<activitiesJson.length;i++){
+        console.log(document.getElementsByClassName('articles')[0].childElementCount);
+        let elementAdded = document.createElement('div');
+        elementAdded.className = "col-lg-4 activity activityDisplayed displayed";
+        elementAdded.innerHTML = '' +
+            '<article class="col-lg-12 text-truncate ">' +
+            '<h2 class="text-truncate">' + activitiesJson[i].name + '</h2>' +
+            '<img src="/images/' + activitiesJson[i].picture + ' " alt=" ' + activitiesJson[i].name + ' " class="img-fluid">' +
+            '<p class="text-center">' + activitiesJson[i].city + ' </p>' +
+            '<a href="/activity/read/ ' + activitiesJson[i].id + ' " class="col-lg-12 btn btn-primary">détails de l\'activité</a>' +
+            '</article>'
+        ;
+        document.body.getElementsByClassName('articles')[0].appendChild(elementAdded);
         let isHandicaped = activitiesJson[i].isHandicaped===true?'<i class="fas fa-wheelchair fa-2x"></i>':'';
         let animals = activitiesJson[i].isAnimalsFriendly===true?'<i class="fas fa-paw fa-2x"></i>':'';
         let indoor = activitiesJson[i].isIndoor===true?'<i class="fas fa-check"></i>':'<i class="fas fa-times"></i>';
@@ -59,7 +74,6 @@ request.addEventListener('load', function () {
                 '</a>' +
                 '</p>'
             )
-        //ici integration du html avec innerHTML
     }
 });
 
@@ -101,16 +115,25 @@ function updateFilter(){
         }
     }
     formData.append('selectedCategories', selectedCategories);
-    //ici faire un array categories[1,2,3]
     let request = new XMLHttpRequest();
-
 
     request.open('POST', '/api/activitiesToJson');
     request.addEventListener('load', function () {
         let activitiesJson = JSON.parse(request.response);
+        document.getElementsByClassName('articles')[0].innerHTML = '';
 
         for(i=0;i<activitiesJson.length;i++){
-
+            let elementAdded = document.createElement('div');
+            elementAdded.className = "col-lg-4 activity activityDisplayed displayed";
+            elementAdded.innerHTML = '' +
+                '<article class="col-lg-12 text-truncate ">' +
+                '<h2 class="text-truncate">' + activitiesJson[i].name + '</h2>' +
+                '<img src="/images/' + activitiesJson[i].picture + ' " alt=" ' + activitiesJson[i].name + ' " class="img-fluid">' +
+                '<p class="text-center">' + activitiesJson[i].city + ' </p>' +
+                '<a href="/activity/read/ ' + activitiesJson[i].id + ' " class="col-lg-12 btn btn-primary">détails de l\'activité</a>' +
+                '</article>'
+            ;
+            document.body.getElementsByClassName('articles')[0].appendChild(elementAdded);
             let isHandicaped = activitiesJson[i].isHandicaped===true?'<i class="fas fa-wheelchair fa-2x"></i>':'';
             let animals = activitiesJson[i].isAnimalsFriendly===true?'<i class="fas fa-paw fa-2x"></i>':'';
             let indoor = activitiesJson[i].isIndoor===true?'<i class="fas fa-check"></i>':'<i class="fas fa-times"></i>';
@@ -147,7 +170,6 @@ let viewsOptions = document.getElementsByClassName("viewsOptions");
 for(i = 0; i < viewsOptions.length;i++){
     viewsOptions[i].addEventListener('click',updateView);
 }
-
 
 function updateView(){
     let views = document.getElementsByClassName("activitiesViews");
