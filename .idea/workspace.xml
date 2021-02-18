@@ -27,10 +27,13 @@
   <component name="ChangeListManager">
     <list default="true" id="58d55e91-27dc-42a4-8308-c7828bf875b8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/activities.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/activities.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Formatter/ActivityToJsonFormatter.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Formatter/ActivityToJsonFormatter.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/activity/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/activity/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/booking_index.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/booking_index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/show.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/show.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/styles/show.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/show.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/activity/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/activity/show.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/bookings/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/bookings/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -277,7 +280,12 @@
       <workItem from="1612630116766" duration="3322000" />
       <workItem from="1612882094173" duration="615000" />
       <workItem from="1612952113520" duration="30160000" />
-      <workItem from="1613131007489" duration="5014000" />
+      <workItem from="1613131007489" duration="14354000" />
+      <workItem from="1613213861498" duration="3089000" />
+      <workItem from="1613390893720" duration="1912000" />
+      <workItem from="1613472071695" duration="11127000" />
+      <workItem from="1613565068362" duration="685000" />
+      <workItem from="1613641736515" duration="3232000" />
     </task>
     <servers />
   </component>
@@ -337,17 +345,12 @@
     <state width="498" height="434" key="SwitcherDM" timestamp="1607809084486">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state width="498" height="446" key="SwitcherDM/0.0.1680.1010/-1920.-24.1920.1040@-1920.-24.1920.1040" timestamp="1604061459883" />
     <state width="498" height="434" key="SwitcherDM/0.0.1680.1010/-1920.-24.1920.1040@0.0.1680.1010" timestamp="1607809084486" />
-    <state x="442" y="115" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1604415508794">
-      <screen x="0" y="0" width="1680" height="1010" />
-    </state>
-    <state x="442" y="115" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1680.1010/-1920.-24.1920.1040@0.0.1680.1010" timestamp="1604415508794" />
-    <state x="547" y="104" width="585" height="801" key="find.popup" timestamp="1612615095317">
+    <state x="547" y="104" width="585" height="801" key="find.popup" timestamp="1613476208313">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state x="-1295" y="83" width="669" height="825" key="find.popup/0.0.1680.1010/-1920.-24.1920.1040@-1920.-24.1920.1040" timestamp="1605875505037" />
-    <state x="547" y="104" width="585" height="801" key="find.popup/0.0.1680.1010/-1920.-24.1920.1040@0.0.1680.1010" timestamp="1612615095317" />
+    <state x="547" y="104" width="585" height="801" key="find.popup/0.0.1680.1010/-1920.-24.1920.1040@0.0.1680.1010" timestamp="1613476208313" />
     <state x="503" y="217" width="672" height="678" key="search.everywhere.popup" timestamp="1607507884603">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>

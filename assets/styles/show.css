@@ -19,14 +19,14 @@
 .activityConstraints{
     padding:10px;
 }
-#toRouteInstructions{
+#toRouteInstructions, #toBookingsView{
     color:black;
     background-color:var(--app-theme-color-four);
     border-radius:15px;
     padding:10px;
     text-align:center;
 }
-#toRouteInstructions:hover{
+#toRouteInstructions:hover, #toBookingsView:hover{
     color:black;
     text-decoration:none;
     background-color:var(--app-theme-color-two);

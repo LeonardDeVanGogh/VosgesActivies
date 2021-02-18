@@ -1,19 +1,26 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Bookings index{% endblock %}
-{% block head %}{{ encore_entry_link_tags('booking_index') }}{% endblock %}
+{% block title %}Activitité : {{ activity.name }} {% endblock %}
+{% block head %}
+    {{ encore_entry_link_tags('booking_index') }}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+{% endblock %}
+
 {% block body %}
+
     <h1>Bookings index</h1>
 
     <table class="table">
         <thead>
-            <tr>
-                <th>Id</th>
-                <th>Started_at</th>
-                <th>End_at</th>
-                <th>Deleted_at</th>
-                <th>actions</th>
-            </tr>
+        <tr>
+            <th>Id</th>
+            <th>Started_at</th>
+            <th>End_at</th>
+            <th>Deleted_at</th>
+            <th>actions</th>
+        </tr>
         </thead>
         <tbody>
         {% for booking in bookings %}
@@ -38,14 +45,34 @@
     </table>
     <a href="{{ path('bookings_new', {activity : activity.id}) }}">Create new</a>
 
+    <div class="row">
+        <div id="calendar" class="col-lgl-12"></div>
+    </div>
 
-    <div id="calendar"></div>
+    <div class="modal fade" id="bookingOptions" data-bookingId="" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>Réserver</p>
+                    <button type="button" id="bookingReservation" class="btn btn-primary">Réserver l'activité</button>
+                    <button type="button" id="bookingCancellation" class="btn btn-primary">Annuler la réservation</button>
+                    <button type="button" id="bookingRemoval" class="btn btn-primary">Effacer la réservation</button>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
 
-    {% block javascripts %}
-        <script>
-            const activityId = {{ activity.id }}
-        </script>
+        </div>
+    </div>
 
-        {{ encore_entry_script_tags('booking_index') }}
-    {% endblock %}
+    <script>
+        let activityId = {{ activity.id }};
+        let user = {{ app.user.id }};
+    </script>
+
+    {{ encore_entry_script_tags('booking_index') }}
 {% endblock %}

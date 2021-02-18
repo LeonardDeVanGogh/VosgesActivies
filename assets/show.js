@@ -1,8 +1,5 @@
 import './styles/show.css';
 
-
-
-
 let comments = document.getElementsByClassName("openReportModal");
 let i;
 for (i = 0; i < comments.length; i++) {
