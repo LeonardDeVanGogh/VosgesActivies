@@ -30,17 +30,37 @@ class ApiController extends AbstractController
     public function activitiesJson(ActivityRepository $activityRepository, Request $request): JsonResponse
     {
         $categories = $request->request->get('selectedCategories');
-
-
         $isOutdoor = $request->request->get('outdoor');
-        $isIndoor = $_POST['indoor'];
-        $isAnimalsFriendly = $_POST['animals'];
-        $isHandicapedFriendly = $_POST['handicaped'];
+        $isIndoor = $request->request->get('indoor');
+        $isAnimalsFriendly = $request->request->get('animals');;
+        $isHandicapedFriendly = $request->request->get('handicaped');;
 
         $activities = $activityRepository->findFilteredActivities($isOutdoor,$isIndoor,$isAnimalsFriendly,$isHandicapedFriendly,$categories);
 
         $activitiesJson = $this->activityToJsonFormatter->format($activities);
         return new JsonResponse($activitiesJson);
+    }
+    /**
+     * @Route("/api/bookingCreation/{id}", name="booking_creation")
+     */
+    public function bookingCreation(Activity $activity, Request $request, BookingsRepository $bookingsRepository, EntityManagerInterface $manager)
+    {
+        $newBookingStartAt = $request->request->get('newBookingStartAt');
+        $newBookingEndAt = $request->request->get('newBookingEndAt');
+        $booking = new Bookings();
+        $booking->setActivity($activity)
+            ->setStartedAt(new \DateTime($newBookingStartAt) )
+            ->setEndAt(new \DateTime($newBookingEndAt))
+        ;
+        $manager->persist($booking);
+        $manager->flush();
+        $test = $booking->getId();
+        $response = new Response(
+            $test,
+            Response::HTTP_OK,
+            ['content-type' => 'text/html']
+        );
+        return $response->send();
     }
     /**
      * @Route("/api/bookingReservation/{id}", name="booking_reservation")
@@ -90,26 +110,5 @@ class ApiController extends AbstractController
         );
         return $response->send();
     }
-    /**
-     * @Route("/api/bookingCreation/{id}", name="booking_creation")
-     */
-    public function bookingCreation(Activity $activity, Request $request, BookingsRepository $bookingsRepository, EntityManagerInterface $manager)
-    {
-        $newBookingStartAt = $request->request->get('newBookingStartAt');
-        $newBookingEndAt = $request->request->get('newBookingEndAt');
-        $booking = new Bookings();
-        $booking->setActivity($activity)
-                ->setStartedAt(new \DateTime($newBookingStartAt) )
-                ->setEndAt(new \DateTime($newBookingEndAt))
-        ;
-        $manager->persist($booking);
-        $manager->flush();
-        $test = $booking->getId();
-        $response = new Response(
-            $test,
-            Response::HTTP_OK,
-            ['content-type' => 'text/html']
-        );
-        return $response->send();
-    }
+
 }

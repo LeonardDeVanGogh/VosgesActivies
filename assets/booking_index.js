@@ -43,14 +43,11 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     calendar.render();
     function setBookingId(info){
-        document.getElementById("bookingOptions").dataset.bookingId = info.event.id;
         bookingId = info.event.id ;
     }
     function setBookingStartEndDateTime(info){
         newBookingStartAt = info.startStr;
         newBookingEndAt = info.endStr;
-        document.getElementById("bookingCreation").dataset.start = info.startStr;
-        document.getElementById("bookingCreation").dataset.end = info.endStr;
     }
 
     document.getElementById('bookingAdd').addEventListener('click', function bookingAdd() {
@@ -63,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function() {
             calendar.refetchEvents();
         });
         request.send(formData);
-            console.log('Create from ' + newEvent.dataset.start + " to " + newEvent.dataset.end);
+        $("#bookingCreation .close").click();
     });
 
     if(document.getElementById('bookingReservation')) {
@@ -74,6 +71,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 calendar.refetchEvents();
             });
             request.send(formData);
+            $("#bookingOptions .close").click();
         });
     }
 
@@ -85,6 +83,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 calendar.refetchEvents();
             });
             request.send(formData);
+            $("#bookingOptions .close").click();
         })
     }
 
@@ -96,6 +95,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 calendar.refetchEvents();
             });
             request.send(formData);
+            $("#bookingOptions .close").click();
         })
     }
 });
