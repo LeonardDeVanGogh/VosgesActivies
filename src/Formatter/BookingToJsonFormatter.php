@@ -10,7 +10,8 @@ class BookingToJsonFormatter
     {
         $bookingsJson = [];
         foreach($bookings as $booking){
-            $bookedBy = $booking->getBookedBy()==null?"libre":"Réservé";
+
+            $bookedBy = $booking->getBookedBy()==null?"Réserver":$booking->getActivity()->getUser()->getUsername();
             $bookingsJson[] = [
                 'id' => $booking->getId(),
                 'title' => $bookedBy,
