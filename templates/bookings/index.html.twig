@@ -43,7 +43,7 @@
         {% endfor %}
         </tbody>
     </table>
-    <a href="{{ path('bookings_new', {activity : activity.id}) }}">Create new</a>
+    <a href="/bookings/new/{{ activity.id }}">Create new</a>
 
     <div class="row">
         <div id="calendar" class="col-lgl-12"></div>
@@ -60,6 +60,25 @@
                     <button type="button" id="bookingReservation" class="btn btn-primary">Réserver l'activité</button>
                     <button type="button" id="bookingCancellation" class="btn btn-primary">Annuler la réservation</button>
                     <button type="button" id="bookingRemoval" class="btn btn-primary">Effacer la réservation</button>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    
+    <div class="modal fade" id="bookingCreation"  data-start="" data-end="" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>Réserver</p>
+                    <button type="button" id="bookingAdd" class="btn btn-primary">Créer une réservation</button>
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

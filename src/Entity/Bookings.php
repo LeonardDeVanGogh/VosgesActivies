@@ -24,7 +24,7 @@ class Bookings
     private $activity;
 
     /**
-     * @ORM\OneToOne(targetEntity=User::class, inversedBy="bookings", cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="bookings", cascade={"persist", "remove"})
      */
     private $booked_by;
 

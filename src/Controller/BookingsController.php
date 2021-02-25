@@ -33,6 +33,7 @@ class BookingsController extends AbstractController
      */
     public function index(BookingsRepository $bookingsRepository, Activity $activity): Response
     {
+
         $bookings = $bookingsRepository->findAllBookingsByActivity($activity->getId());
         if($activity->getDeletedAt() == null){
             return $this->render('bookings/index.html.twig', [
@@ -54,11 +55,10 @@ class BookingsController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="bookings_new", methods={"GET","POST"})
+     * @Route("/new/{id}", name="bookings_new", methods={"GET","POST"})
      */
-    public function new(Request $request, ActivityRepository $activityRepository): Response
+    public function new(Request $request, ActivityRepository $activityRepository, Activity $activity): Response
     {
-        $activity = $activityRepository->find($_GET['activity']);
         $booking = new Bookings();
         $form = $this->createForm(BookingsType::class, $booking);
         $form->handleRequest($request);

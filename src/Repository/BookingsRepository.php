@@ -30,6 +30,15 @@ class BookingsRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
+    public function findAllBookingById($id)
+    {
+        return $this->createQueryBuilder('b')
+            ->andWhere('b = :id')
+            ->setParameter('id', $id)
+            ->getQuery()
+            ->getResult();
+    }
+
     // /**
     //  * @return Bookings[] Returns an array of Bookings objects
     //  */

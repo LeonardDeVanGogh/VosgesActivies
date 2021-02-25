@@ -66,7 +66,7 @@ class User implements UserInterface
     private $activites;
 
     /**
-     * @ORM\OneToOne(targetEntity=Bookings::class, mappedBy="booked_by", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity=Bookings::class, mappedBy="booked_by", cascade={"persist", "remove"})
      */
     private $bookings;
 
