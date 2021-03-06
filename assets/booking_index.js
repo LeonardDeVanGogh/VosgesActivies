@@ -12,6 +12,7 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
 
 document.addEventListener('DOMContentLoaded', function() {
+
     let calendarEl = document.getElementById('calendar');
 
     let calendar = new Calendar(calendarEl, {
@@ -42,6 +43,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     });
     calendar.render();
+
+    request.addEventListener('load', function () {
+        calendar.refetchEvents();
+    });
+
     function setBookingId(info){
         bookingId = info.event.id ;
     }
@@ -56,9 +62,6 @@ document.addEventListener('DOMContentLoaded', function() {
         formData.append('newBookingStartAt', newBookingStartAt);
         formData.append('newBookingEndAt', newBookingEndAt);
         request.open('POST', '/api/bookingCreation/' + activityId);
-        request.addEventListener('load', function () {
-            calendar.refetchEvents();
-        });
         request.send(formData);
         $("#bookingCreation .close").click();
     });
@@ -67,9 +70,6 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('bookingReservation').addEventListener('click', function bookingReserve() {
             formData.append('bookingId', bookingId);
             request.open('POST', '/api/bookingReservation/' + bookingId);
-            request.addEventListener('load', function () {
-                calendar.refetchEvents();
-            });
             request.send(formData);
             $("#bookingOptions .close").click();
         });
@@ -79,9 +79,6 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('bookingCancellation').addEventListener('click',function bookingCancel(){
             formData.append('bookingId', bookingId);
             request.open('POST', '/api/bookingCancellation/' + bookingId);
-            request.addEventListener('load', function () {
-                calendar.refetchEvents();
-            });
             request.send(formData);
             $("#bookingOptions .close").click();
         })
@@ -91,9 +88,6 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('bookingRemoval').addEventListener('click', function bookingDelete() {
             formData.append('bookingId', bookingId);
             request.open('POST', '/api/bookingDelete/' + bookingId);
-            request.addEventListener('load', function () {
-                calendar.refetchEvents();
-            });
             request.send(formData);
             $("#bookingOptions .close").click();
         })
