@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     document.getElementById('bookingAdd').addEventListener('click', function bookingAdd() {
-            //ici mon ajax
+        //ici mon ajax
         let newEvent = document.getElementById("bookingCreation")
         formData.append('newBookingStartAt', newBookingStartAt);
         formData.append('newBookingEndAt', newBookingEndAt);
