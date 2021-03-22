@@ -32,7 +32,11 @@ class BookingToJsonFormatter
     }
     private function isCurrentUserTheOwnerOfThisActivity($booking)
     {
-        $currentUser = $this->security->getUser()->getId();
+        $currentUser = "";
+        if($this->security->getUser()){
+            $currentUser = $this->security->getUser()->getId();
+        }
+
         $activityOwner = $booking->getActivity()->getUser()->getId();
 
         return $currentUser===$activityOwner;

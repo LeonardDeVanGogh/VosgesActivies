@@ -11,39 +11,8 @@
 {% block body %}
 
     <h1>Bookings index</h1>
-
-    <table class="table">
-        <thead>
-        <tr>
-            <th>Id</th>
-            <th>Started_at</th>
-            <th>End_at</th>
-            <th>Deleted_at</th>
-            <th>actions</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for booking in bookings %}
-            <tr>
-                <td>{{ booking.id }}</td>
-                <td>{{ booking.startedAt ? booking.startedAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ booking.endAt ? booking.endAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ booking.deletedAt ? booking.deletedAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>
-                    <a href="{{ path('bookings_show', {'id': booking.id}) }}">show</a>
-                    <a href="{{ path('bookings_edit', {'id': booking.id}) }}">edit</a>
-                </td>
-            </tr>
-
-        {% else %}
-            <tr>
-                <td colspan="5">no records found</td>
-            </tr>
-
-        {% endfor %}
-        </tbody>
-    </table>
-    <a href="/bookings/new/{{ activity.id }}">Create new</a>
+    <i class="fas fa-rocket"></i>
+    
 
     <div class="row">
         <div id="calendar" class="col-lgl-12"></div>
@@ -55,43 +24,50 @@
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
-                <div class="modal-body">
-                    <p>Réservation :</p>
-                    <button type="button" id="bookingReservation" class="btn btn-primary">Réserver l'activité</button>
-                    {% if app.user %}
-                        {% if app.user.id() == activity.user.id() %}
-                            <button type="button" id="bookingCancellation" class="btn btn-primary">Annuler la réservation</button>
-                            <button type="button" id="bookingRemoval" class="btn btn-primary">Effacer la réservation</button>
+
+                    <div class="modal-body">
+                        {% if app.user %}
+                            <p>Réservation :</p>
+                            <button type="button" id="bookingReservation" class="btn btn-primary">Réserver</button>
+                            {% if app.user.id() == activity.user.id() %}
+                                <button type="button" id="bookingCancellation" class="btn btn-warning">Annuler</button>
+                                <button type="button" id="bookingRemoval" class="btn btn-danger">Effacer</button>
+                            {% endif %}
+                        {% else %}
+                            <p>log toi</p>
                         {% endif %}
-                    {% endif %}
+                    </div>
 
-
-                </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
                 </div>
             </div>
 
         </div>
     </div>
-    
-    <div class="modal fade" id="bookingCreation" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <p>Réserver</p>
-                    <button type="button" id="bookingAdd" class="btn btn-primary">Créer une réservation</button>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+
+    {% if app.user %}
+        {% if app.user.id() == activity.user.id() %}
+            <div class="modal fade" id="bookingCreation" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Réserver</p>
+                            <button type="button" id="bookingAdd" class="btn btn-primary">Créer une réservation</button>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
                 </div>
             </div>
+        {% endif %}
+    {% endif %}
 
-        </div>
-    </div>
 
     <script>
         let activityId = {{ activity.id }};
