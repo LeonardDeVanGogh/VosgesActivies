@@ -27,7 +27,7 @@
 
                     <div class="modal-body">
                         {% if app.user %}
-                            <p>Réservation :</p>
+                            <p id="bookingOptionsTitle"></p>
                             <button type="button" id="bookingReservation" class="btn btn-primary">Réserver</button>
                             {% if app.user.id() == activity.user.id() %}
                                 <button type="button" id="bookingCancellation" class="btn btn-warning">Annuler</button>

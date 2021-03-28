@@ -25,8 +25,12 @@
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
-                    <p>Réservation :</p>
+                    <p id="bookingOptionsTitle"></p>
                     <button type="button" id="bookingCancellation" class="btn btn-warning">Annuler</button>
+                    <a href="" id="activityLink">
+                        <button type="button" class="btn btn-primary">détails</button>
+                    </a>
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
@@ -38,7 +42,6 @@
 
 
     <script>
-        let activityId = 14;
         {% if app.user%}
         let user = {{ app.user.id }};
         {% endif %}

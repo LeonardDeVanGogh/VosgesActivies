@@ -41,6 +41,7 @@ class BookingToJsonFormatter
                 'title' => $booking->getActivity()->getName(),
                 'start' => $booking->getStartedAt()->format('Y-m-d H:i:s'),
                 'end' => $booking->getEndAt()->format('Y-m-d H:i:s'),
+                'url' => '/activity/read/' . $booking->getActivity()->getId(),
             ];
         }
         return $bookingsJson;

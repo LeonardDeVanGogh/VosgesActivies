@@ -126,7 +126,7 @@ class ApiController extends AbstractController
         return new JsonResponse($bookingsJson);
     }
     /**
-     * @Route("/api/calendar/readMyBookings/{id}", name="bookings_calendar_read", methods={"GET"})
+     * @Route("/api/calendar/readMyBookings/{id}", name="my_bookings_calendar_read", methods={"GET"})
      */
     public function readMyBookingsForCalendar(BookingsRepository $bookingsRepository): JsonResponse
     {

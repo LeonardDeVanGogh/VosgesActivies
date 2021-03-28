@@ -4,6 +4,7 @@ let formData = new FormData();
 let bookingId;
 let newBookingStartAt;
 let newBookingEndAt;
+moment.locale('fr');
 /* FullCalendar_integration */
 
 import { Calendar } from '@fullcalendar/core';
@@ -11,6 +12,7 @@ import timeGridPlugin from '@fullcalendar/timegrid';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import frLocale from '@fullcalendar/core/locales/fr';
+import moment from "moment";
 
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -33,7 +35,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 $("#bookingCreation").modal();
                 setBookingStartEndDateTime(info);
             }
-
         },
         height:'auto',
         navLinks: 'true',
@@ -56,7 +57,8 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     function setBookingId(info){
-        bookingId = info.event.id ;
+        bookingId = info.event.id
+        document.getElementById('bookingOptionsTitle').innerText = moment(info.event.start).format('LLL');
     }
     function setBookingStartEndDateTime(info){
         newBookingStartAt = info.startStr;

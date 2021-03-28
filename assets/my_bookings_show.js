@@ -1,12 +1,11 @@
 import './styles/my_bookings_show.css';
 
-console.log('test');
-
 let request = new XMLHttpRequest();
 let formData = new FormData();
 let bookingId;
 let newBookingStartAt;
 let newBookingEndAt;
+moment.locale('fr');
 /* FullCalendar_integration */
 
 import { Calendar } from '@fullcalendar/core';
@@ -14,6 +13,8 @@ import timeGridPlugin from '@fullcalendar/timegrid';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import frLocale from '@fullcalendar/core/locales/fr';
+import listPlugin from '@fullcalendar/list';
+import moment from "moment";
 
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -21,21 +22,24 @@ document.addEventListener('DOMContentLoaded', function() {
     let calendarEl = document.getElementById('calendar');
 
     let calendar = new Calendar(calendarEl, {
-        plugins: [ timeGridPlugin, dayGridPlugin,interactionPlugin],
+        plugins: [ timeGridPlugin, dayGridPlugin,interactionPlugin, listPlugin],
+        initialView: 'listYear',
         locale:frLocale,
         timeZone: 'Europe/Paris',
         selectable: true,
         allDaySlot:false,
         headerToolbar: {
-            start:'prev,next today',
+            start:'prev,next',
             center: 'title',
-            end: 'dayGridMonth,timeGridDay',
+            end: 'dayGridMonth,timeGridDay,listYear',
         },
         height:'auto',
         navLinks: 'true',
         eventClick: function(info) {
+            info.jsEvent.preventDefault();
             $("#bookingOptions").modal();
             setBookingId(info);
+
         },
         eventSources: [
             {
@@ -53,6 +57,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function setBookingId(info){
         bookingId = info.event.id ;
+        document.getElementById('activityLink').href = info.event.url
+        document.getElementById('bookingOptionsTitle').innerText = moment(info.event.start).format('LLL');
+
+
     }
 
     if(document.getElementById('bookingCancellation')){
