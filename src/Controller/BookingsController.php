@@ -44,15 +44,8 @@ class BookingsController extends AbstractController
             return $this->redirectToRoute('home');
         }
     }
-    /**
-     * @Route("/calendar/read/{id}", name="bookings_calendar_read", methods={"GET"})
-     */
-    public function readBookingsForCalendar(BookingsRepository $bookingsRepository, Activity $activity): JsonResponse
-    {
-        $bookings = $bookingsRepository->findAllBookingsByActivity($activity->getId());
-        $bookingsJson = $this->bookingToJsonFormatter->format($bookings);
-        return new JsonResponse($bookingsJson);
-    }
+
+
 
     /**
      * @Route("/new/{id}", name="bookings_new", methods={"GET","POST"})
@@ -77,6 +70,7 @@ class BookingsController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+
 
     /**
      * @Route("/{id}", name="bookings_show", methods={"GET"})

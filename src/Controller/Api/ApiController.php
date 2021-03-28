@@ -14,15 +14,16 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Formatter\BookingToJsonFormatter;
 
 class ApiController extends AbstractController
 {
-    /** @var ActivityToJsonFormatter */
-    private $activityToJsonFormatter;
+    /** @var BookingToJsonFormatter */
+    private $bookingToJsonFormatter;
 
-    public function __construct(ActivityToJsonFormatter $activityToJsonFormatter)
+    public function __construct(bookingToJsonFormatter $bookingToJsonFormatter)
     {
-        $this->activityToJsonFormatter = $activityToJsonFormatter;
+        $this->bookingToJsonFormatter = $bookingToJsonFormatter;
     }
     /**
      * @Route("/api/activitiesToJson", name="activities_to_json")
@@ -109,6 +110,15 @@ class ApiController extends AbstractController
             ['content-type' => 'text/html']
         );
         return $response->send();
+    }
+    /**
+     * @Route("/api/calendar/read/{id}", name="bookings_calendar_read", methods={"GET"})
+     */
+    public function readBookingsForCalendar(BookingsRepository $bookingsRepository, Activity $activity): JsonResponse
+    {
+        $bookings = $bookingsRepository->findAllBookingsByActivity($activity->getId());
+        $bookingsJson = $this->bookingToJsonFormatter->format($bookings);
+        return new JsonResponse($bookingsJson);
     }
 
 }

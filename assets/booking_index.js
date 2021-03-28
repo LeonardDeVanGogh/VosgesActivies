@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         eventSources: [
             {
-                url: 'calendar/read/' + activityId,
+                url: '/api/calendar/read/' + activityId,
                 method: 'GET',
             }
         ],
