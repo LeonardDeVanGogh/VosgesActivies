@@ -44,10 +44,20 @@ class BookingsController extends AbstractController
             return $this->redirectToRoute('home');
         }
     }
-
-
-
     /**
+     * @Route("/myBookings", name="read_my_bookings", methods={"GET"})
+     */
+    public function readMyBookings(BookingsRepository $bookingsRepository)
+    {
+        $bookings = $bookingsRepository->findAllBookingsByUser($this->getUser()->getId());
+        return $this->render('bookings/my_bookings_show.html.twig', [
+            'bookings' => $bookings,
+        ]);
+
+
+    }
+
+        /**
      * @Route("/new/{id}", name="bookings_new", methods={"GET","POST"})
      */
     public function new(Request $request, ActivityRepository $activityRepository, Activity $activity): Response

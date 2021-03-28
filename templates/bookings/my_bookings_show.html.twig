@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Activitité : {% endblock %}
+{% block head %}
+
+    {{ encore_entry_link_tags('my_bookings_show') }}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+{% endblock %}
+
+{% block body %}
+
+    <h1>Mes Réservations</h1>
+
+    {% for booking in bookings %}
+        <p>{{ booking.activity.name }}</p>
+    {% endfor %}
+
+    <div class="row">
+        <div id="calendar" class="col-lgl-12"></div>
+    </div>
+
+    <div class="modal fade" id="bookingOptions" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>Réservation :</p>
+                    <button type="button" id="bookingCancellation" class="btn btn-warning">Annuler</button>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script>
+        let activityId = 14;
+        {% if app.user%}
+        let user = {{ app.user.id }};
+        {% endif %}
+    </script>
+    {{ encore_entry_script_tags('my_bookings_show') }}
+{% endblock %}

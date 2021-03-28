@@ -30,6 +30,21 @@ class BookingToJsonFormatter
         }
         return $bookingsJson;
     }
+    public function formatMyBookings(array $bookings)
+    {
+        $bookingsJson = [];
+
+        foreach($bookings as $booking){
+
+            $bookingsJson[] = [
+                'id' => $booking->getId(),
+                'title' => $booking->getActivity()->getName(),
+                'start' => $booking->getStartedAt()->format('Y-m-d H:i:s'),
+                'end' => $booking->getEndAt()->format('Y-m-d H:i:s'),
+            ];
+        }
+        return $bookingsJson;
+    }
     private function isCurrentUserTheOwnerOfThisActivity($booking)
     {
         $currentUser = "";

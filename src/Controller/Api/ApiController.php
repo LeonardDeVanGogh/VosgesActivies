@@ -18,13 +18,18 @@ use App\Formatter\BookingToJsonFormatter;
 
 class ApiController extends AbstractController
 {
+    /** @var ActivityToJsonFormatter */
+    private $activityToJsonFormatter;
+
     /** @var BookingToJsonFormatter */
     private $bookingToJsonFormatter;
 
-    public function __construct(bookingToJsonFormatter $bookingToJsonFormatter)
+    public function __construct(bookingToJsonFormatter $bookingToJsonFormatter, ActivityToJsonFormatter $activityToJsonFormatter)
     {
+        $this->activityToJsonFormatter = $activityToJsonFormatter;
         $this->bookingToJsonFormatter = $bookingToJsonFormatter;
     }
+
     /**
      * @Route("/api/activitiesToJson", name="activities_to_json")
      */
@@ -118,6 +123,15 @@ class ApiController extends AbstractController
     {
         $bookings = $bookingsRepository->findAllBookingsByActivity($activity->getId());
         $bookingsJson = $this->bookingToJsonFormatter->format($bookings);
+        return new JsonResponse($bookingsJson);
+    }
+    /**
+     * @Route("/api/calendar/readMyBookings/{id}", name="bookings_calendar_read", methods={"GET"})
+     */
+    public function readMyBookingsForCalendar(BookingsRepository $bookingsRepository): JsonResponse
+    {
+        $bookings = $bookingsRepository->findAllBookingsByUser($this->getUser()->getId());
+        $bookingsJson = $this->bookingToJsonFormatter->formatMyBookings($bookings);
         return new JsonResponse($bookingsJson);
     }
 

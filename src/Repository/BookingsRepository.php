@@ -38,6 +38,16 @@ class BookingsRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
+    public function findAllBookingsByUser($id){
+        return $this->createQueryBuilder('b')
+            ->andWhere('b.deleted_at is NULL')
+            ->andWhere('b.booked_by = :id')
+            ->setParameter('id', $id)
+            ->orderBy('b.started_at', 'ASC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 
     // /**
     //  * @return Bookings[] Returns an array of Bookings objects

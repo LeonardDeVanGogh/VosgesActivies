@@ -7,9 +7,12 @@
   <component name="ChangeListManager">
     <list default="true" id="58d55e91-27dc-42a4-8308-c7828bf875b8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/booking_index.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/booking_index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/Api/ApiController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Api/ApiController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/BookingsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/BookingsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Formatter/BookingToJsonFormatter.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Formatter/BookingToJsonFormatter.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/BookingsRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/BookingsRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/_navBar.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/_navBar.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -275,7 +278,7 @@
       <workItem from="1615658118203" duration="1334000" />
       <workItem from="1615985443129" duration="1208000" />
       <workItem from="1616349782608" duration="2371000" />
-      <workItem from="1616950439193" duration="1511000" />
+      <workItem from="1616950439193" duration="7836000" />
     </task>
     <servers />
   </component>
