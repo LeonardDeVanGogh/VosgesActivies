@@ -47,14 +47,9 @@ class BookingsController extends AbstractController
     /**
      * @Route("/myBookings", name="read_my_bookings", methods={"GET"})
      */
-    public function readMyBookings(BookingsRepository $bookingsRepository)
+    public function readMyBookings()
     {
-        $bookings = $bookingsRepository->findAllBookingsByUser($this->getUser()->getId());
-        return $this->render('bookings/my_bookings_show.html.twig', [
-            'bookings' => $bookings,
-        ]);
-
-
+        return $this->render('bookings/my_bookings_show.html.twig');
     }
 
         /**
