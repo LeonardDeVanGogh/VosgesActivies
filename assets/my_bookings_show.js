@@ -6,6 +6,7 @@ let bookingId;
 let newBookingStartAt;
 let newBookingEndAt;
 moment.locale('fr');
+
 /* FullCalendar_integration */
 
 import { Calendar } from '@fullcalendar/core';
@@ -57,8 +58,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function setBookingId(info){
         bookingId = info.event.id ;
+        console.log(moment(info.event.start).format('LLLL'));
         document.getElementById('activityLink').href = info.event.url
-        document.getElementById('bookingOptionsTitle').innerText = moment(info.event.start).format('LLL');
+        document.getElementById('bookingOptionsTitle').innerText = moment(info.event.start).format('LLLL');
 
 
     }
