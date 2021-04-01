@@ -70,6 +70,12 @@ class User implements UserInterface
      */
     private $bookings;
 
+    /**
+     * @var array
+     * @ORM\Column(type="json")
+     */
+    private $roles;
+
     public function __construct()
     {
         $this->reports = new ArrayCollection();
@@ -132,10 +138,15 @@ class User implements UserInterface
     
     public function getSalt(){}
 
-    public function getRoles()
+    public function getRoles():array
     {
-        return ['ROLE_USER'];
+        $roles = $this->roles;
+        if(empty($roles)){
+            $roles[] = 'ROLE_USER';
+        }
+        return array_unique($roles);
     }
+
 
     public function getPhoneNumber(): ?string
     {
@@ -227,6 +238,11 @@ class User implements UserInterface
         }
 
         return $this;
+    }
+
+    public function setRoles(array $roles): void
+    {
+        $this->roles = $roles;
     }
 
 }
