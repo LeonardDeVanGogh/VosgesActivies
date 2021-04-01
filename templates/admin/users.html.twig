@@ -9,7 +9,8 @@
 			<th>id</th>
 			<th>email</th>
 			<th>username</th>
-			<th>Actions</th>
+			<th>Rôles</th>
+			<th>Modifier</th>
 		</thead>
 		<tbody>
 			{% for user in users %}
@@ -17,7 +18,22 @@
 					<td>{{ user.id }}</td>
 					<td>{{ user.email }}</td>
 					<td>{{ user.username }}</td>
-					<td></td>
+					<td>
+						{% for role in  user.roles %}
+							{% if role == "ROLE_USER" %}
+								Utilisateur
+							{% elseif role == "ROLE_EDITOR" %}
+								Gestionnaire d'activité
+							{% elseif role == "ROLE_MODERATOR" %}
+								Modérateur
+							{% elseif role == "ROLE_ADMIN" %}
+								Administrateur
+							{% endif %}
+						{% endfor %}
+					</td>
+					<td>
+						<a href="{{ path('admin_user_role_update', {'id': user.id }) }}" class="btn btn-primary">Modifier</a>
+					</td>
 				</tr>
 			{% else  %}
 				<tr>
