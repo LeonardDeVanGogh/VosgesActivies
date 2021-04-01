@@ -13,7 +13,7 @@ use App\Repository\UserRepository;
 class AdminController extends AbstractController
 {
 	 /**
-     * @Route("/", name="admin_index")
+     * @Route("/", name="index")
      */
 
     public function index()
@@ -24,7 +24,7 @@ class AdminController extends AbstractController
     }
 
 	 /**
-     * @Route("/users", name="admin_users")
+     * @Route("/users", name="users")
      */
     public function usersList(UserRepository $users){
     	return $this->render('admin/users.html.twig', [
