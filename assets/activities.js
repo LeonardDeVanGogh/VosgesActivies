@@ -38,7 +38,6 @@ request.addEventListener('load', function () {
     let activitiesJson = JSON.parse(request.response);
 
     for(i=0;i<activitiesJson.length;i++){
-        console.log(document.getElementsByClassName('articles')[0].childElementCount);
         let elementAdded = document.createElement('div');
         elementAdded.className = "col-lg-4 activity activityDisplayed displayed";
         elementAdded.innerHTML = '' +

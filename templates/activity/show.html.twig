@@ -4,265 +4,217 @@
 {% block head %}{{ encore_entry_link_tags('show') }}{% endblock %}
 
 {% block body %}
-	<!-- Button trigger modal -->
-	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-		Launch demo modal
-	</button>
-
-	<!-- Modal -->
-	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					...
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-primary">Save changes</button>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="row justify-content-end">
-		<div class="row activitySectionBody activitySectionTitle activityConstraints">
-			<div class="col-lg-3"
-				 title="{% if activity.isIndoor==1 %}cette activité se pratique en intérieur{% else %}la pratique de cette activité n'est pas possible en intérieur{% endif %}">
-			<span>
-				<i class="
-					fas fa-home fa-3x
-					{% if activity.isIndoor==1 %}
-						appThemeColorOne
-					{% else %}
-						appThemeColorTwo isUnavailableForThisActivity
-					{% endif %}
-				">
-				</i>
-			</span>
-			</div>
-			<div class="col-lg-3"
-				 title="{% if activity.isOutdoor==1 %}cette activité se pratique en extérieur{% else %}la pratique de cette activité n'est pas possible en extérieur{% endif %}"
-			>
-			<span>
-				<i class="
-					fas fa-campground fa-3x
-					{% if activity.isOutdoor==1 %}
-						appThemeColorOne
-					{% else %}
-						appThemeColorTwo isUnavailableForThisActivity
-					{% endif %}
-				">
-				</i>
-			</span>
-			</div>
-			<div class="col-lg-3"
-				 title="{% if activity.isHandicaped==1 %}cette activité est accessible aux personnes à mobilité réduite{% else %}la pratique de cette activité n'est pas possible pour les personnes à mobilité réduite{% endif %}"
-			>
-				<i class="
-					fas fa-wheelchair fa-3x
-					{% if activity.isHandicaped==1 %}
-						appThemeColorOne
-					{% else %}
-						appThemeColorTwo isUnavailableForThisActivity
-					{% endif %}
-				">
-				</i>
-			</div>
-			<div class="col-lg-3"
-				 title="{% if activity.animals==1 %}nos amis les animaux sont les bienvenus{% else %}nos amis les animaux ne sont pas les bienvenus{% endif %}"
-			>
-				<i class="
-					fas fa-paw fa-3x
-					{% if activity.animals==1 %}
-						appThemeColorOne
-					{% else %}
-						appThemeColorTwo isUnavailableForThisActivity
-					{% endif %}
-				">
-				</i>
-			</div>
-		</div>
-	</div>
-
-	<section class="articles">
-		<article>
-			<div class="row justify-content-center activitySectionBody">
-				<div class="col-lg-12 activitySectionTitle">
-					<h1>{{activity.name}}</h1>
-				</div>
-			</div>
-
-			{% if activity.picture != "activity_default.jpg" %}
-			<div class="row justify-content-center">
-				<img src="{{ asset('images/'~ activity.picture) }}" alt="{{ activity.name }}" class="img-fluid w-50">
-			</div>
-			{% endif %}
-			<div class="row activitySectionBody">
-				<div class="col-lg-12 activitySectionTitle">
-					<h2 class="">Description :</h2>
-				</div>
-				<div class="col-lg-12">
-					{{activity.description | raw}}
-				</div>
-			</div>
-			{% if activity.category|length>0 %}
-				<div class="row activitySectionBody">
-					<div class="col-lg-12">
-						<div class="row">
-							<div class="col-lg-12 activitySectionTitle">
-								<h2>Catégorie(s) :</h2>
-							</div>
-						</div>
-						<div class="row">
-							{% for category in activity.category %}
-								<div class="categories">
-									{{category.name }}
-								</div>
-							{% endfor %}
-						</div>
+	<section class="bg-light">
+		<div class="container pb-5">
+			<div class="row">
+				<div class="col-lg-5 mt-5">
+					<div class="card mb-3">
+						<img class="card-img img-fluid" src="
+						{% if activity.picture != "activity_default.jpg" %}
+							{{ asset('images/'~ activity.picture) }}" alt="{{ activity.name }}
+						{% else %}
+							{{ asset('images/activity_default.jpg') }}" alt="image default
+						{% endif %}
+						" alt="Card image cap" id="product-detail">
 					</div>
 				</div>
-			{% endif %}
-
-			<div class="row activitySectionBody">
-				<div class="col-lg-12 activitySectionTitle">
-					<h2>Réservation :</h2>
-				</div>
-				<div class="col-lg-12">
-					<div class="row">
-						<a role="button" id="toBookingsView" class="col-lg-12" href="{{ path('bookings_index', {'id' :  activity.id }) }}" title="Réserver une date pour cette activité">
-						<i class="fas fa-calendar-alt fa-2x appThemeColorOne"></i>
-						</a>
-					</div>
-				</div>
-			</div>
-
-
-
-			<div class="row activitySectionBody">
-				<div class="col-lg-12 activitySectionTitle">
-					<h2 class="">Adresse :</h2>
-				</div>
-				<div class="col-lg-12">
-					<div class="row">
-						<div class="col-lg-12">
-							Ville : {{activity.city}} ({{ activity.zipcode}})
-						</div>
-
-					</div>
-					<div class="row">
-						<div class="col-lg-12">
-							Rue : {{ activity.streetNumber}}, {{ activity.street}}
-						</div>
-					</div>
-					<div class="row">
-						<a class="col-lg-12" role="button"
-						   id="toRouteInstructions"
-						   href="https://www.google.com/maps/search/?api=1&query={{ activity.latitude }},{{ activity.longitude }}"
-						   title="https://www.google.com/maps/search/?api=1&query={{ activity.latitude }},{{ activity.longitude }}"
-						>
-							<i class="far fa-user fa-2x appThemeColorOne"></i>
-							<i class="fas fa-long-arrow-alt-right fa-2x appThemeColorOne"></i>
-							<i class="fas fa-route fa-2x appThemeColorOne"></i>
-						</a>
-					</div>
-				</div>
-			</div>
-		</article>
-
-		<section>
-			<div class="row activitySectionBody">
-				<div class="col-lg-12 activitySectionTitle">
-					<h2>{{ activity.comments | length }} Commentaire(s) : </h2>
-				</div>
-				{% if app.user %}
-					<div class="col-lg-11 mx-auto" id="commentForm">
-						{{form_start(commentForm)}}
-						<div class="row">
-							<div class="col-lg-12">
-								{{ form_row(commentForm.content, {'attr': {'placeholder' : "Votre commentaire"}}) }}
-							</div>
-							<div class="col-lg-12">
-								<button type="submit" class="col-lg-12 btn btn-primary">
-									<i class="fas fa-envelope"></i>
-									<span> Commenter</span>
-								</button>
-							</div>
-						</div>
-						{{form_end(commentForm)}}
-					</div>
-
-				{% else %}
-					<h2>vous ne pouvez pas commenter si vous n'êtes pas connecté</h2>
-					<a class="btn btn-primary" href="{{ path('security_login') }}">Connexion</a>
-				{% endif %}
-				{% for comment in activity.comments %}
-					{% if comment.deletedAt is null %}
-						<div class="col-lg-11 mx-auto comments">
-							<div class="row">
-								<div class="col-lg-3 appThemeBackgroundColorFive">
-									{{ comment.user.username }} (<small>{{ comment.createdAt | date('d/m/Y à H:i') }}</small>)
-									<div class="row">
-										{%if app.user and app.user.id==comment.user.id%}
-											<div class="col-lg-1">
-												<a href="{{ path('comment_delete', {'id':comment.id}) }}" title="supprimer le commentaire">
-													<i class="fas fa-times-circle"></i>
-												</a>
-											</div>
-										{% endif %}
+				<div class="col-lg-7 mt-5">
+					<div class="card">
+						<div class="card-body">
+							<p>
+							<div class="row justify-content-end">
+								<div class="row">
+									<div class="col-lg-3"
+										 title="{% if activity.isIndoor==1 %}cette activité se pratique en intérieur{% else %}la pratique de cette activité n'est pas possible en intérieur{% endif %}"><span><i class="fas fa-home fa-3x
+											{% if activity.isIndoor==1 %}
+												appThemeColorOne
+											{% else %}
+												appThemeColorTwo isUnavailableForThisActivity
+											{% endif %}"></i></span>
+									</div>
+									<div class="col-lg-3"
+										 title="{% if activity.isOutdoor==1 %}cette activité se pratique en extérieur{% else %}la pratique de cette activité n'est pas possible en extérieur{% endif %}"
+									>
+									<span>
+										<i class="
+											fas fa-campground fa-3x
+											{% if activity.isOutdoor==1 %}
+												appThemeColorOne
+											{% else %}
+												appThemeColorTwo isUnavailableForThisActivity
+											{% endif %}
+										">
+										</i>
+									</span>
+									</div>
+									<div class="col-lg-3"
+										 title="{% if activity.isHandicaped==1 %}cette activité est accessible aux personnes à mobilité réduite{% else %}la pratique de cette activité n'est pas possible pour les personnes à mobilité réduite{% endif %}"
+									>
+										<i class="
+											fas fa-wheelchair fa-3x
+												{% if activity.isHandicaped==1 %}
+													appThemeColorOne
+												{% else %}
+													appThemeColorTwo isUnavailableForThisActivity
+												{% endif %}
+											">
+										</i>
+									</div>
+									<div class="col-lg-3"
+										 title="{% if activity.animals==1 %}nos amis les animaux sont les bienvenus{% else %}nos amis les animaux ne sont pas les bienvenus{% endif %}"
+									>
+										<i class="
+											fas fa-paw fa-3x
+											{% if activity.animals==1 %}
+												appThemeColorOne
+											{% else %}
+												appThemeColorTwo isUnavailableForThisActivity
+											{% endif %}
+										">
+										</i>
 									</div>
 								</div>
-								<div class="col-9">
-									{{ comment.content | raw }}
-									{% if comment.moderatedAt is null %}
-										<div class="row justify-content-end">
-											<div class="col-lg-1 report">
-												<a type="button" class="openReportModal" title="signaler" data-toggle="modal" data-comment-id="{{ comment.id }}" data-target="#CommentReportModal">
-													<i class="far fa-flag fa-2x"></i>
-												</a>
+							</div>
+							</p>
+							<h1 class="h2">{{ activity.name }}</h1>
+							<h6>Description:</h6>
+							<p>{{activity.description | raw}}</p>
+
+
+							<ul class="list-unstyled pb-3">
+								{% if activity.category|length>0 %}
+								<div class="row">
+									<div class="col-lg-12">
+										<div class="row">
+											<div class="col-lg-12">
+												<h6>Catégorie(s) :</h6>
 											</div>
+										</div>
+										<div class="row">
+											{% for category in activity.category %}
+												<div class="categories">
+													{{category.name }}
+												</div>
+											{% endfor %}
+										</div>
+									</div>
+								</div>
+								{% endif %}
+							</ul>
+							<p>
+								<div class="row">
+									<div class="col-lg-12">
+										<h6 class="">Adresse :</h6>
+									</div>
+									<div class="col-lg-12">
+										<div class="row">
+											<div class="col-lg-12">
+												Ville : {{ activity.streetNumber}} {{ activity.street}}, {{activity.city}} ({{ activity.zipcode}})
+											</div>
+										</div>
+										<div class="row">
+											<a class="col-lg-6" role="button"
+											   id="toRouteInstructions"
+											   href="https://www.google.com/maps/search/?api=1&query={{ activity.latitude }},{{ activity.longitude }}"
+											   title="https://www.google.com/maps/search/?api=1&query={{ activity.latitude }},{{ activity.longitude }}"
+											>
+												<i class="far fa-user fa-2x appThemeColorOne"></i>
+												<i class="fas fa-long-arrow-alt-right fa-2x appThemeColorOne"></i>
+												<i class="fas fa-route fa-2x appThemeColorOne"></i>
+											</a>
+										</div>
+									</div>
+								</div>
+							</p>
+							<p>
+							<div class="row">
+								<div class="col-lg-12">
+									<h6>Réservation :</h6>
+								</div>
+								<div class="col-lg-12">
+									<div class="row">
+										<a role="button" id="toBookingsView" class="col-lg-6" href="{{ path('bookings_index', {'id' :  activity.id }) }}" title="Réserver une date pour cette activité">
+											<i class="fas fa-calendar-alt fa-2x appThemeColorOne"></i>
+										</a>
+									</div>
+								</div>
+							</div>
+							</p>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+	</section>
+
+
+	<section class="bg-light">
+		<div class="container pb-5">
+			<p>
+			<div class="col-lg-12">
+				<h2>{{ activity.comments | length }} Commentaire(s) : </h2>
+			</div>
+			{% if app.user %}
+				<div class="col-lg-11 mx-auto" id="commentForm">
+					{{form_start(commentForm)}}
+					<div class="row">
+						<div class="col-lg-12">
+							{{ form_row(commentForm.content, {'attr': {'placeholder' : "Votre commentaire"}}) }}
+						</div>
+						<div class="col-lg-12">
+							<button type="submit" class="col-lg-12 btn btn-success">
+								<i class="fas fa-envelope"></i>
+								<span> Commenter</span>
+							</button>
+						</div>
+					</div>
+					{{form_end(commentForm)}}
+				</div>
+
+			{% else %}
+				<h2>vous ne pouvez pas commenter si vous n'êtes pas connecté</h2>
+				<a class="btn btn-primary" href="{{ path('security_login') }}">Connexion</a>
+			{% endif %}
+			{% for comment in activity.comments %}
+				{% if comment.deletedAt is null %}
+					<div class="col-lg-11 mx-auto comments">
+						<div class="row">
+							<div class="col-lg-3 appThemeBackgroundColorFive">
+								{{ comment.user.username }} (<small>{{ comment.createdAt | date('d/m/Y à H:i') }}</small>)
+								<div class="row">
+									{%if app.user and app.user.id==comment.user.id%}
+										<div class="col-lg-1">
+											<a href="{{ path('comment_delete', {'id':comment.id}) }}" title="supprimer le commentaire">
+												<i class="fas fa-times-circle"></i>
+											</a>
 										</div>
 									{% endif %}
 								</div>
 							</div>
+							<div class="col-9">
+								{{ comment.content | raw }}
+								{% if comment.moderatedAt is null %}
+									<div class="row justify-content-end">
+										<div class="col-lg-1 report">
+											<a type="button" class="openReportModal" title="signaler" data-toggle="modal" data-comment-id="{{ comment.id }}" data-target="#CommentReportModal">
+												<i class="far fa-flag fa-2x"></i>
+											</a>
+										</div>
+									</div>
+								{% endif %}
+							</div>
 						</div>
-					{% endif %}
-				{% endfor %}
-			</div>
-
-			<div class="modal fade" id="CommentReportModal" tabindex="-1" role="dialog" aria-labelledby="CommentReportModal" aria-hidden="true">
-				<div class="modal-dialog" role="document">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h5 class="modal-title" id="Report Comment">Report un commentaire</h5>
-							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-								<span aria-hidden="true">&times</span>
-							</button>
-						</div>
-						{{form_start(reportForm)}}
-						<div class="modal-body">
-							{{ form_label(reportForm.reason) }}
-							{{ form_widget(reportForm.reason) }}
-							{{ form_errors(reportForm.reason) }}
-						</div>
-						<input type="hidden" name="comment_id" id="comment_id" value="">
-						<div class="modal-footer">
-							<button type="submit" class="btn btn-secondary">Signaler</button>
-							<button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-						</div>
-						{{form_end(reportForm) }}
 					</div>
-				</div>
-			</div>
-
-
-
-		</section>
+				{% endif %}
+			{% endfor %}
+		</div>
+			</p>
+		</div>
 	</section>
+
 	{{ encore_entry_script_tags('show') }}
 {% endblock %}

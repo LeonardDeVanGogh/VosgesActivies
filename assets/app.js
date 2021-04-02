@@ -9,6 +9,7 @@
 import './styles/app.css';
 import './styles/templatemo.min.css';
 import './templatemo.min.js';
+import './slick.min.js';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 require('@fortawesome/fontawesome-free/css/all.min.css');
