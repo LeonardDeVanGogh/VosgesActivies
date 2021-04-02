@@ -1,56 +1,103 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="/">Vosges Activités</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+<nav class="navbar navbar-expand-lg bg-dark navbar-light d-none d-lg-block" id="templatemo_nav_top">
+    <div class="container text-light">
+        <div class="w-100 d-flex justify-content-between">
+            <div>
+                <i class="fa fa-envelope mx-2"></i>
+                <a class="navbar-sm-brand text-light text-decoration-none" href="mailto:bryan.razyk@gmail.com">bryan.razyk@gmail.com</a>
+                <i class="fa fa-phone mx-2"></i>
+                <a class="navbar-sm-brand text-light text-decoration-none" href="tel:+33642727988">06.42.72.79.88</a>
+            </div>
+            <div>
+                <a class="text-light" href="#" target="_blank" rel="sponsored"><i class="fab fa-facebook-f fa-sm fa-fw me-2"></i></a>
+                <a class="text-light" href="#" target="_blank"><i class="fab fa-instagram fa-sm fa-fw me-2"></i></a>
+                <a class="text-light" href="#" target="_blank"><i class="fab fa-twitter fa-sm fa-fw me-2"></i></a>
+                <a class="text-light" href="#" target="_blank"><i class="fab fa-linkedin fa-sm fa-fw"></i></a>
+            </div>
+        </div>
+    </div>
+</nav>
 
-    <div class="collapse navbar-collapse" id="navbarColor03">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="{{ path('home') }}">
-                    <i class="fa fa-home fa-lg"></i>
-                    <span>Home</span>
-                </a>
-            </li>
-            <li class="nav-item dropdown">
-                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Activités
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="{{ path('activity') }}">Activités</a>
-                    <a class="dropdown-item" href="{{ path('activity_manage') }}">Gérer mes activités</a>
-                    <a class="dropdown-item" href="{{ path('read_my_bookings') }}">Gérer mes Réservations</a>
-                    <a class="dropdown-item" href="{{ path('activity_create') }}">Création Activité</a>
-                    <a class="dropdown-item" href="{{ path('categories') }}">Catégories</a>
-                </div>
-            </li>
-            {% if is_granted('ROLE_MODERATOR') %}
-                <li class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Modération
-                    </a>
+<nav class="navbar navbar-expand-lg navbar-light shadow">
+    <div class="container d-flex justify-content-between align-items-center">
 
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="{{ path('comment_moderation') }}">Modération</a>
-                        <a class="dropdown-item" href="{{ path('report_reason') }}">Type de report</a>
-                    </div>
+        <a class="navbar-brand text-success logo h1 align-self-center" href="/">
+            <i class="fas fa-home"></i>
+        </a>
 
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#templatemo_main_nav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-                </li>
-            {% endif %}
+        <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between" id="templatemo_main_nav">
+            <div class="flex-fill">
+                <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Activités
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="{{ path('activity') }}">Activités</a>
+                            {% if is_granted('ROLE_EDITOR') %}
+                                <a class="dropdown-item" href="{{ path('activity_manage') }}">Gérer mes activités</a>
+                                <a class="dropdown-item" href="{{ path('activity_create') }}">Création Activité</a>
+                            {% endif %}
+                            {% if is_granted('ROLE_ADMIN') %}
+                                <a class="dropdown-item" href="{{ path('categories') }}">Catégories</a>
+                            {% endif %}
+                        </div>
+                    </li>
+                    {% if is_granted('ROLE_MODERATOR') %}
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Modération
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="{{ path('comment_moderation') }}">Modération</a>
+                                {%  if is_granted('ROLE_ADMIN') %}
+                                    <a class="dropdown-item" href="{{ path('report_reason') }}">Type de report</a>
+                                {% endif %}
+                            </div>
+                        </li>
+                    {% endif %}
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Administration
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="{{ path('admin_users') }}">Rôles Utilisateurs</a>
+                            </div>
+                        </li>
+                    {% endif %}
+                    {% if not app.user %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('security_login') }}">Connexion</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('security_registration') }}">Inscription</a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {{ app.user.username }}
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="/">Mon Espace</a>
+                                <a class="dropdown-item" href="{{ path('read_my_bookings') }}">Gérer mes Réservations</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('security_logout') }}">
+                                <i class="fas fa-sign-out-alt"></i>
+                                <span>Déconnexion</span>
+                            </a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
 
-            {% if not app.user %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ path('security_login') }}">Connexion</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ path('security_registration') }}">Inscription</a>
-                </li>
-            {% else %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ path('security_logout') }}">Déconnexion</a>
-                </li>
-            {% endif %}
-        </ul>
     </div>
 </nav>
