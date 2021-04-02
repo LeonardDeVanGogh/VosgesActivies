@@ -25,6 +25,7 @@ use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 
 class ActivityController extends AbstractController
@@ -64,6 +65,7 @@ class ActivityController extends AbstractController
     }
 
     /**
+    * @isGranted("ROLE_EDITOR")
     * @Route("/activity/{id}/edit", name="activity_edit")
     */
     public function update(Activity $activity, Request $request, EntityManagerInterface $manager, SluggerInterface $slugger){
@@ -108,6 +110,7 @@ class ActivityController extends AbstractController
     }
 
     /**
+     * @isGranted("ROLE_EDITOR")
      * @Route("/activity/new", name="activity_create")
      */
     public function create(Request $request, EntityManagerInterface $manager, SluggerInterface $slugger){
@@ -198,6 +201,7 @@ class ActivityController extends AbstractController
 
 
     /**
+     * @isGranted("ROLE_EDITOR")
      * @Route("/activity/manage", name="activity_manage")
      */
     public function manage(ActivityRepository $repo)

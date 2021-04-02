@@ -15,16 +15,6 @@ use App\Repository\UserRepository;
 
 class AdminController extends AbstractController
 {
-	 /**
-     * @Route("/", name="index")
-     */
-
-    public function index()
-    {
-        return $this->render('admin/index.html.twig', [
-            'controller_name' => 'AdminController',
-        ]);
-    }
 
 	 /**
      * @Route("/users", name="users")

@@ -24,15 +24,20 @@
                     <a class="dropdown-item" href="{{ path('categories') }}">Catégories</a>
                 </div>
             </li>
-            <li class="nav-item dropdown">
-                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Modération
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="{{ path('comment_moderation') }}">Modération</a>
-                    <a class="dropdown-item" href="{{ path('report_reason') }}">Type de report</a>
-                </div>
-            </li>
+            {% if is_granted('ROLE_MODERATOR') %}
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Modération
+                    </a>
+
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="{{ path('comment_moderation') }}">Modération</a>
+                        <a class="dropdown-item" href="{{ path('report_reason') }}">Type de report</a>
+                    </div>
+
+
+                </li>
+            {% endif %}
 
             {% if not app.user %}
                 <li class="nav-item">
