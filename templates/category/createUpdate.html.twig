@@ -17,10 +17,10 @@
                 </h1>
 
                 {{ form_start(formCategory) }}
-                {{ form_label(formCategory.name) }}
+                {{ form_label(formCategory.name, "Catégorie :") }}
                 {{ form_widget(formCategory.name) }}
                 {{ form_errors(formCategory.name) }}
-                {{ form_label(formCategory.description) }}
+                {{ form_label(formCategory.description, "Description :") }}
                 {{ form_widget(formCategory.description) }}
                 {{ form_errors(formCategory.description) }}
                 <button type="submit" class="btn btn-success col-lg-8">
