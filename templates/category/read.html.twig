@@ -4,32 +4,39 @@
 {% block head %}{{ encore_entry_link_tags('comment_moderation') }}{% endblock %}
 
 {% block body %}
-    <div class="container">
-        <div class="row justify-content-center">
-            <h1 class="col-lg-6" align="center">Catégories : </h1>
-        </div>
+    <section class="container py-5">
+        <div class="row text-center pt-5 pb-3">
+            <div class="col-lg-3 m-auto">
+                <h1 class="h1">Catégories : </h1>
+                <div class="row justify-content-center">
+                    <a class="h-100 py-5 services-icon-wap shadow col-lg-8" href="{{ path('category_create') }}" title="Créer une nouvelle catégorie">
+                        <i class="fas fa-plus fa-3x"></i>
+                    </a>
+                </div>
 
-        <div class="row justify-content-center">
-            <div class="col-lg-2" align="center">
-                <a href="{{ path('category_create') }}">
-                    <i class="fas fa-plus fa-3x"></i>
-                </a>
             </div>
         </div>
-        {% for category in categories %}
-            <div class="row category regularList">
-                <div class="col-lg-10">{{ category.name }}</div>
-                <div class="col-lg-1">
-                    <a href="{{ path('category_update',{'id':category.id}) }}">
-                        <i class="fas fa-edit fa-2x"></i>
-                    </a>
+        <div class="row">
+            {% for category in categories %}
+                <div class="col-lg-10 mx-auto">
+                    <div class="row h-100 py-5 services-icon-wap shadow">
+                        <div class="col-lg-10">
+                            <div class="col-lg-12 h2">{{ category.name }}</div>
+                            <div class="col-lg-12">{{ category.description }}</div>
+                        </div>
+                        <div class="col-lg-1">
+                            <a href="{{ path('category_update',{'id':category.id}) }}" title="Editer">
+                                <i class="fas fa-edit fa-2x"></i>
+                            </a>
+                        </div>
+                        <div class="col-lg-1">
+                            <a href="{{ path('category_delete',{'id':category.id}) }}" title="Effacer">
+                                <i class="fas fa-times-circle fa-2x"></i>
+                            </a>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-lg-1">
-                    <a href="{{ path('category_delete',{'id':category.id}) }}">
-                        <i class="fas fa-times-circle fa-2x"></i>
-                    </a>
-                </div>
-            </div>
-        {% endfor %}
-    </div>
+            {% endfor %}
+        </div>
+    </section>
 {% endblock %}
