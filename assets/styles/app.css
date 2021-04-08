@@ -9,6 +9,9 @@
 .basicContainer{
     min-height:85vh;
 }
+#navbarOptions{
+    min-width:80%;
+}
 footer{
     margin-top:2em;
 }
