@@ -1,46 +1,46 @@
 {%  extends 'base.html.twig' %}
 
+{% block title %}Utilisateurs : administration{% endblock %}
 
 {% block body %}
-	<h1>Utilisateurs</h1>
-
-	<table class="table">
-		<thead>
-			<th>id</th>
-			<th>email</th>
-			<th>username</th>
-			<th>Rôles</th>
-			<th>Modifier</th>
-		</thead>
-		<tbody>
+	<section class="container py-5">
+		<div class="row text-center pt-5 pb-3">
+			<div class="col-lg-6 m-auto">
+				<h1 class="h1">Gestion utilisateurs :</h1>
+			</div>
+		</div>
+		<div class="row">
 			{% for user in users %}
-				<tr>
-					<td>{{ user.id }}</td>
-					<td>{{ user.email }}</td>
-					<td>{{ user.username }}</td>
-					<td>
-						{% for role in  user.roles %}
-							{% if role == "ROLE_USER" %}
-								Utilisateur
-							{% elseif role == "ROLE_EDITOR" %}
-								Gestionnaire d'activité
-							{% elseif role == "ROLE_MODERATOR" %}
-								Modérateur
-							{% elseif role == "ROLE_ADMIN" %}
-								Administrateur
-							{% endif %}
-						{% endfor %}
-					</td>
-					<td>
-						<a href="{{ path('admin_user_role_update', {'id': user.id }) }}" class="btn btn-primary">Modifier</a>
-					</td>
-				</tr>
+				<div class="col-lg-12 mx-auto">
+					<div class="row h-100 py-5 services-icon-wap shadow">
+						<div class="col-lg-1">{{ user.id }}</div>
+						<div class="col-lg-3">{{ user.username }}</div>
+						<div class="col-lg-3">{{ user.email }}</div>
+						<div class="col-lg-3">
+							{% for role in  user.roles %}
+								{% if role == "ROLE_USER" %}
+									Utilisateur
+								{% elseif role == "ROLE_EDITOR" %}
+									Gestionnaire d'activité
+								{% elseif role == "ROLE_MODERATOR" %}
+									Modérateur
+								{% elseif role == "ROLE_ADMIN" %}
+									Administrateur
+								{% endif %}
+							{% endfor %}
+						</div>
+						<div class="col-lg-2 ">
+							<a href="{{ path('admin_user_role_update', {'id': user.id }) }}" class="btn btn-primary">Modifier</a>
+						</div>
+					</div>
+				</div>
 			{% else  %}
-				<tr>
-					<td>Il n'y a pas d'utilisateur inscrit</td>
-				</tr>
+				<div class="row">
+					<div class="col-lg-12">
+						Il n'y a pas d'utilisateur inscrit
+					</div>
+				</div>
 			{% endfor  %}
-		</tbody>
-	</table>
-
+		</div>
+	</section>
 {% endblock %}
