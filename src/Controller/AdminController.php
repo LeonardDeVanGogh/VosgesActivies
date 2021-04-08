@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\User;
-use App\Form\EditUserType;
+use App\Form\EditRoleUserType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -25,10 +25,10 @@ class AdminController extends AbstractController
     	]);
     }
     /**
-     * @Route("/user/update/{id}", name="user_role_update")
+     * @Route("/user/role/update/{id}", name="user_role_update")
      */
     public function userRoleUpdate(User $user, Request $request){
-        $form = $this->createForm(EditUserType::class, $user);
+        $form = $this->createForm(EditRoleUserType::class, $user);
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()){
             $entityManager = $this->getDoctrine()->getManager();
@@ -37,7 +37,7 @@ class AdminController extends AbstractController
             $this->addFlash('message', 'Utilisateur modifié avec succès');
             return $this->redirectToRoute('admin_users');
         }
-        return $this->render('admin/edit_user.html.twig', [
+        return $this->render('admin/edit_role_user.html.twig', [
             'userForm' => $form->createView(),
         ]);
     }
