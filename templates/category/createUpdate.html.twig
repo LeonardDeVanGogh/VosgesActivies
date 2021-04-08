@@ -2,19 +2,37 @@
 
 
 {% block body %}
-    <h1>{% if editMode %}Modification{% else%}Création{% endif%} d'une activité</h1>
-    {{ form_start(formCategory) }}
-    {{ form_widget(formCategory.name) }}
-    {{ form_errors(formCategory.name) }}
-    {{ form_widget(formCategory.description) }}
-    {{ form_errors(formCategory.description) }}
-    <button type="submit" class="btn btn-success">
-        {% if editMode %}
-            Modifier
-        {% else %}
-            Créer
-        {% endif %}
-    </button>
-    {{ form_end(formCategory) }}
+
+
+    <section class="container py-5">
+        <div class="row text-center pt-5 pb-3">
+            <div class="col-lg-12 m-auto">
+                <h1 class="h1">
+                    {% if editMode %}
+                        Modification
+                    {% else%}
+                        Création
+                    {% endif%}
+                    d'une activité
+                </h1>
+
+                {{ form_start(formCategory) }}
+                {{ form_label(formCategory.name) }}
+                {{ form_widget(formCategory.name) }}
+                {{ form_errors(formCategory.name) }}
+                {{ form_label(formCategory.description) }}
+                {{ form_widget(formCategory.description) }}
+                {{ form_errors(formCategory.description) }}
+                <button type="submit" class="btn btn-success col-lg-8">
+                    {% if editMode %}
+                        Modifier
+                    {% else %}
+                        Créer
+                    {% endif %}
+                </button>
+                {{ form_end(formCategory) }}
+            </div>
+        </div>
+    </section>
 
 {% endblock %}
