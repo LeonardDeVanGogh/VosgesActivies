@@ -1,0 +1,24 @@
+<div class="modal fade" id="CommentReportModal" tabindex="-1" role="dialog" aria-labelledby="CommentReportModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="Report Comment">Report un commentaire</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times</span>
+                </button>
+            </div>
+            {{form_start(reportForm)}}
+            <div class="modal-body">
+                {{ form_label(reportForm.reason) }}
+                {{ form_widget(reportForm.reason) }}
+                {{ form_errors(reportForm.reason) }}
+            </div>
+            <input type="hidden" name="comment_id" id="comment_id" value="">
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-secondary">Signaler</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+            </div>
+            {{form_end(reportForm) }}
+        </div>
+    </div>
+</div>

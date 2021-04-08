@@ -153,66 +153,67 @@
 
 	<section class="bg-light">
 		<div class="container pb-5">
-			<p>
+
 			<div class="col-lg-12">
 				<h2>{{ activity.comments | length }} Commentaire(s) : </h2>
 			</div>
-			{% if app.user %}
-				<div class="col-lg-11 mx-auto" id="commentForm">
-					{{form_start(commentForm)}}
-					<div class="row">
-						<div class="col-lg-12">
-							{{ form_row(commentForm.content, {'attr': {'placeholder' : "Votre commentaire"}}) }}
-						</div>
-						<div class="col-lg-12">
-							<button type="submit" class="col-lg-12 btn btn-success">
-								<i class="fas fa-envelope"></i>
-								<span> Commenter</span>
-							</button>
-						</div>
-					</div>
-					{{form_end(commentForm)}}
-				</div>
-
-			{% else %}
-				<h2>vous ne pouvez pas commenter si vous n'êtes pas connecté</h2>
-				<a class="btn btn-primary" href="{{ path('security_login') }}">Connexion</a>
-			{% endif %}
-			{% for comment in activity.comments %}
-				{% if comment.deletedAt is null %}
-					<div class="col-lg-11 mx-auto comments">
+				{% if app.user %}
+					<div class="col-lg-11 mx-auto" id="commentForm">
+						{{form_start(commentForm)}}
 						<div class="row">
-							<div class="col-lg-3 appThemeBackgroundColorFive">
-								{{ comment.user.username }} (<small>{{ comment.createdAt | date('d/m/Y à H:i') }}</small>)
-								<div class="row">
-									{%if app.user and app.user.id==comment.user.id%}
-										<div class="col-lg-1">
-											<a href="{{ path('comment_delete', {'id':comment.id}) }}" title="supprimer le commentaire">
-												<i class="fas fa-times-circle"></i>
-											</a>
+							<div class="col-lg-12">
+								{{ form_row(commentForm.content, {'attr': {'placeholder' : "Votre commentaire"}}) }}
+							</div>
+							<div class="col-lg-12">
+								<button type="submit" class="col-lg-12 btn btn-success">
+									<i class="fas fa-envelope"></i>
+									<span> Commenter</span>
+								</button>
+							</div>
+						</div>
+						{{form_end(commentForm)}}
+					</div>
+
+				{% else %}
+					<h2>vous ne pouvez pas commenter si vous n'êtes pas connecté</h2>
+					<a class="btn btn-primary" href="{{ path('security_login') }}">Connexion</a>
+				{% endif %}
+				{% for comment in activity.comments %}
+					{% if comment.deletedAt is null %}
+						<div class="col-lg-11 mx-auto comments">
+							<div class="row">
+								<div class="col-lg-3 appThemeBackgroundColorFive">
+									{{ comment.user.username }} (<small>{{ comment.createdAt | date('d/m/Y à H:i') }}</small>)
+									<div class="row">
+										{%if app.user and app.user.id==comment.user.id%}
+											<div class="col-lg-1">
+												<a href="{{ path('comment_delete', {'id':comment.id}) }}" title="supprimer le commentaire">
+													<i class="fas fa-times-circle"></i>
+												</a>
+											</div>
+										{% endif %}
+									</div>
+								</div>
+								<div class="col-9">
+									{{ comment.content | raw }}
+									{% if comment.moderatedAt is null %}
+										<div class="row justify-content-end">
+											<div class="col-lg-1 report">
+												<a type="button" class="openReportModal" title="signaler" data-toggle="modal" data-comment-id="{{ comment.id }}" data-target="#CommentReportModal">
+													<i class="far fa-flag fa-2x"></i>
+												</a>
+											</div>
 										</div>
 									{% endif %}
 								</div>
 							</div>
-							<div class="col-9">
-								{{ comment.content | raw }}
-								{% if comment.moderatedAt is null %}
-									<div class="row justify-content-end">
-										<div class="col-lg-1 report">
-											<a type="button" class="openReportModal" title="signaler" data-toggle="modal" data-comment-id="{{ comment.id }}" data-target="#CommentReportModal">
-												<i class="far fa-flag fa-2x"></i>
-											</a>
-										</div>
-									</div>
-								{% endif %}
-							</div>
 						</div>
-					</div>
-				{% endif %}
-			{% endfor %}
+					{% endif %}
+				{% endfor %}
+			</div>
 		</div>
-			</p>
-		</div>
+
+		{{ include('/activity/_comment_report_popup.html.twig') }}
 	</section>
 
 	{{ encore_entry_script_tags('show') }}
