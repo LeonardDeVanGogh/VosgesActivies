@@ -16,6 +16,8 @@ class BookingToJsonFormatter
 
     public function format(array $bookings)
     {
+        /*$test = $this->security->isGranted('ROLE_ADMIN' ,$this->security->getUser());
+        dd($test);*/
         $bookingsJson = [];
 
         foreach($bookings as $booking){
