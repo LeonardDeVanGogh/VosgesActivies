@@ -1,59 +1,62 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Home{% endblock %}
+{% block title %}Gérer mes activités{% endblock %}
 
 {% block body %}
 
-    <div class="row justify-content-center">
-        <h1 class="col-lg-6 text-center">Mes Activités :</h1>
-    </div>
-
-    <section class="articles">
-        {% for activity in activities %}
-            <div class="regularList">
-                <div class="row">
-                    <div class="col-lg-8">Nom : {{ activity.name }}</div>
-                    <div class="col-lg-1">
-                        <a href="{{ path('bookings_index', {'id':activity.id}) }}" title="Réservations">
-                            <i class="far fa-calendar-alt fa-2x"></i>
-                        </a>
-                    </div>
-                    <div class="col-lg-1">
-                        <a href="{{ path('read', {'id':activity.id}) }}" title="Consulter l'activité">
-                            <i class="fas fa-eye fa-2x"></i>
-                        </a>
-                    </div>
-                    <div class="col-lg-1">
-                        <a href="{{ path('activity_edit', {'id':activity.id}) }}" title="Modifier l'activité">
-                            <i class="fas fa-edit fa-2x"></i>
-                        </a>
-                    </div>
-                    <div class="col-lg-1">
-                        <a type="button" data-toggle="modal" data-target="#ActivityDeleteModal" title="Effacer l'activité">
-                            <i class="fas fa-times-circle fa-2x"></i>
-                        </a>
-                        <div class="modal fade" id="ActivityDeleteModal" tabindex="-1" role="dialog" aria-labelledby="ActivityDeleteModal" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title">Confirmation</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        Souhaitez-vous vraiment supprimer cette Activite ?
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-                                        <a href="{{ path('activity_delete', {'id':activity.id}) }}" type="button" class="btn btn-danger">Effacer</a>
+    <section class="container py-5">
+        <div class="row text-center pt-5 pb-3">
+            <div class="col-lg-6 m-auto">
+                <h1 class="h1">Gérer mes activités :</h1>
+            </div>
+        </div>
+        <div class="row">
+            {% for activity in activities %}
+                <div class="col-lg-10 mx-auto">
+                    <div class="row h-100 py-5 services-icon-wap shadow">
+                        <div class="col-lg-8">Nom : {{ activity.name }}</div>
+                        <div class="col-lg-1">
+                            <a href="{{ path('bookings_index', {'id':activity.id}) }}" title="Réservations">
+                                <i class="far fa-calendar-alt fa-2x"></i>
+                            </a>
+                        </div>
+                        <div class="col-lg-1">
+                            <a href="{{ path('read', {'id':activity.id}) }}" title="Consulter">
+                                <i class="fas fa-eye fa-2x"></i>
+                            </a>
+                        </div>
+                        <div class="col-lg-1">
+                            <a href="{{ path('activity_edit', {'id':activity.id}) }}" title="Editer">
+                                <i class="fas fa-edit fa-2x"></i>
+                            </a>
+                        </div>
+                        <div class="col-lg-1">
+                            <a type="button" data-toggle="modal" data-target="#ActivityDeleteModal" title="Effacer">
+                                <i class="fas fa-times-circle fa-2x"></i>
+                            </a>
+                            <div class="modal fade" id="ActivityDeleteModal" tabindex="-1" role="dialog" aria-labelledby="ActivityDeleteModal" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Confirmation</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Souhaitez-vous vraiment supprimer cette Activite ?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                                            <a href="{{ path('activity_delete', {'id':activity.id}) }}" type="button" class="btn btn-danger">Effacer</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        {% endfor %}
+            {% endfor %}
+        </div>
     </section>
 {% endblock %}
