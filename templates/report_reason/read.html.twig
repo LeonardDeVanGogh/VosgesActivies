@@ -1,36 +1,40 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Types de reports{% endblock %}
+{% block title %}Administration : types de signalements{% endblock %}
 
 {% block body %}
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-6" align="center">
-                <h1>Types de reports : </h1>
+    <section class="container py-5">
+        <div class="row text-center pt-5 pb-3">
+            <div class="col-lg-10 m-auto">
+                <h1 class="h1">Raisons de signalements : </h1>
+                <div class="row justify-content-center">
+                    <a class="h-100 py-5 services-icon-wap shadow col-lg-3" href="{{ path('report_reason_create') }}" title="Créer une nouvelle raison de signalement">
+                        <i class="fas fa-plus fa-3x"></i>
+                    </a>
+                </div>
             </div>
         </div>
+        <div class="row">
+            {% for reason in reasons %}
+                <div class="col-lg-10 mx-auto">
+                    <div class="row h-100 py-5 services-icon-wap shadow">
+                        <div class="col-lg-10">
+                            <div class="col-lg-12 h2">{{ reason.reason }}</div>
 
-        <div class="row justify-content-center">
-            <div class="col-lg-2" align="center">
-                <a href="{{ path('report_reason_create') }}">
-                    <i class="fas fa-plus fa-3x"></i>
-                </a>
-            </div>
+                        </div>
+                        <div class="col-lg-1">
+                            <a href="{{ path('report_reason_update',{'id':reason.id}) }}" title="Editer">
+                                <i class="fas fa-edit fa-2x"></i>
+                            </a>
+                        </div>
+                        <div class="col-lg-1">
+                            <a href="{{ path('report_reason_delete',{'id':reason.id}) }}" title="Effacer">
+                                <i class="fas fa-times-circle fa-2x"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
         </div>
-        {% for reason in reasons %}
-            <div class="row regularList">
-                <div class="col-lg-10">{{ reason.reason }}</div>
-                <div class="col-lg-1">
-                    <a href="{{ path('report_reason_update',{'id':reason.id}) }}">
-                        <i class="fas fa-edit fa-2x"></i>
-                    </a>
-                </div>
-                <div class="col-lg-1">
-                    <a href="{{ path('report_reason_delete',{'id':reason.id}) }}">
-                        <i class="fas fa-times-circle fa-2x"></i>
-                    </a>
-                </div>
-            </div>
-        {% endfor %}
-    </div>
+    </section>
 {% endblock %}
