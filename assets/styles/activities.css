@@ -1,12 +1,4 @@
-article{
-    margin-bottom:1em;
 
-}
-article:hover{
-    background-color:whitesmoke;
-    margin-top:0.5em;
-    margin-left:0.5em;
-}
 .selected{
     color:black;
     background-color:gray;
@@ -31,6 +23,13 @@ article:hover{
 
 .filterGroup{
     margin-right:5em;
+    margin-top:1em;
+}
+.categories{
+    margin-bottom:1em;
+}
+#viewOptionsDashboard{
+    margin-bottom:2em;
 }
 .displayed{
     display:block;
@@ -40,7 +39,4 @@ article:hover{
 }
 #mapid{
     height: 60vh;
-}
-.row{
-    margin-bottom:1em;
 }

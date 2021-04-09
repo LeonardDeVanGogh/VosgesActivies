@@ -2,7 +2,7 @@ import './styles/activities.css';
 
 let i;
 let j;
-let filteredElements = document.getElementById('filterDashboard').getElementsByClassName('filter');
+let filteredElements = document.getElementsByClassName('filter');
 let formData = new FormData();
 let selectedCategories = [];
 let categories = document.getElementsByClassName('option');
@@ -39,14 +39,22 @@ request.addEventListener('load', function () {
 
     for(i=0;i<activitiesJson.length;i++){
         let elementAdded = document.createElement('div');
-        elementAdded.className = "col-lg-4 activity activityDisplayed displayed";
+        elementAdded.className = "col-md-4 activity activityDisplayed displayed";
         elementAdded.innerHTML = '' +
-            '<article class="col-lg-12 text-truncate ">' +
-            '<h2 class="text-truncate">' + activitiesJson[i].name + '</h2>' +
-            '<img src="/images/' + activitiesJson[i].picture + ' " alt=" ' + activitiesJson[i].name + ' " class="img-fluid">' +
-            '<p class="text-center">' + activitiesJson[i].city + ' </p>' +
-            '<a href="/activity/read/ ' + activitiesJson[i].id + ' " class="col-lg-12 btn btn-primary">détails de l\'activité</a>' +
-            '</article>'
+            '<div class="col-md-12">\n' +
+            '\t\t\t\t\t\t<div class="card mb-4 product-wap rounded-0">\n' +
+            '\t\t\t\t\t\t\t<div class="card rounded-0">\n' +
+            '\t\t\t\t\t\t\t\t<img class="card-img rounded-0 img-fluid" src="/images/' + activitiesJson[i].picture + ' " alt=" ' + activitiesJson[i].name + ' " class="img-fluid">\n' +
+            '\t\t\t\t\t\t\t\t<div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">\n' +
+            '\t\t\t\t\t\t\t\t\t<a class="btn btn-success text-white mt-2" href="/activity/read/ ' + activitiesJson[i].id + ' "><i class="far fa-eye"></i></a>\n' +
+            '\t\t\t\t\t\t\t\t</div>\n' +
+            '\t\t\t\t\t\t\t</div>\n' +
+            '\t\t\t\t\t\t\t<div class="card-body row">\n' +
+            '\t\t\t\t\t\t\t\t<a href="/activity/read/ ' + activitiesJson[i].id + ' " class="h3 text-decoration-none text-center col-lg-12 text-truncate">' + activitiesJson[i].name + '</a>\n' +
+            '\t\t\t\t\t\t\t\t<p class="w-100 list-unstyled d-flex justify-content-center mb-0 col-lg-12">' + activitiesJson[i].city + ' </p>\n' +
+            '\t\t\t\t\t\t\t</div>\n' +
+            '\t\t\t\t\t\t</div>\n' +
+            '\t\t\t\t\t</div>'
         ;
         document.body.getElementsByClassName('articles')[0].appendChild(elementAdded);
         let isHandicaped = activitiesJson[i].isHandicaped===true?'<i class="fas fa-wheelchair fa-2x"></i>':'';
