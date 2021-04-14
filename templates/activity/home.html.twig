@@ -42,9 +42,19 @@
                         <div class="col-lg-6 mb-0 d-flex align-items-center">
                             <div class="text-align-left">
                                 <h1 class="h1">Activités</h1>
-                                <h3 class="h2">Trouvez celle qui est faite pour vous.</h3>
+                                <h3 class="h2">Trouvez celle qui est faite pour vous</h3>
                                 <p>
                                     Utilisez les filtres pour affiner votre choix puis selectionnez une <a class="text-success" href="{{ path('activity') }}">activité</a> parmis celles qui vous intéressent.
+                                </p>
+                                <p class="text-center">
+                                    <i class="fas fa-home text-success"></i>
+                                    <i class="fas fa-campground text-success"></i>
+                                    <i class="fas fa-wheelchair text-success"></i>
+                                    <i class="fas fa-paw text-success"></i>
+                                    <i class="fas fa-running text-success"></i>
+                                    <i class="fas fa-biking text-success"></i>
+                                    <i class="fas fa-walking text-success"></i>
+                                    <i class="fas fa-swimmer text-success"></i>
                                 </p>
                             </div>
                         </div>
@@ -64,19 +74,19 @@
                                 <p>Vous y trouverez toutes les informations utiles :</p>
                                 <ul class="list-unstyled text-center">
                                     <li>
-                                        <i class="fas fa-info"></i>
+                                        <i class="fas fa-info text-success"></i>
                                         <span> Infos pratiques</span>
                                     </li>
 
                                     <li>
-                                        <i class="fas fa-map-marker-alt"></i>
+                                        <i class="fas fa-map-marker-alt text-success"></i>
                                         <span> Adresse</span></li>
                                     <li>
-                                        <i class="fas fa-calendar-alt"></i>
+                                        <i class="fas fa-calendar-alt text-success"></i>
                                         <span> Réservation</span>
                                     </li>
                                     <li>
-                                        <i class="fas fa-location-arrow"></i>
+                                        <i class="fas fa-location-arrow text-success"></i>
                                         <span> Chemin pour s'y rendre</span>
                                     </li>
                                 </ul>
@@ -132,13 +142,13 @@
         </div>
     </section>
 
-    <section>
+    <section class="bg-light">
         <div class="row text-center pt-3">
         <div class="col-lg-6 m-auto">
             <h1 class="h1">Toutes les activités</h1>
         </div>
         </div>
-        <div class="col-lg-12 mx-auto text-center">
+        <div class="col-lg-12 mx-auto text-center pb-3">
             <a href="{{ path('activity') }}" class="btn btn-success col-lg-3" role="button">
                 <span>Consulter</span>
                 <i class="fa fa-arrow-circle-right"></i>
