@@ -58,9 +58,12 @@ class ActivityController extends AbstractController
     /**
     * @Route("/", name="home")
     */
-    public function home()
+    public function home(ActivityRepository $activityRepository )
     {
+        $lastActivities = $activityRepository->findLastActivitiesCreated();
+
     	return $this->render('activity/home.html.twig', [
+    	    'lastActivities' => $lastActivities,
         ]);
     }
 

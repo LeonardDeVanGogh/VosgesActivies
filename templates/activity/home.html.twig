@@ -77,10 +77,48 @@
         </a>
     </div>
 
-    <div class="container basicContainer">
+    <section class="container py-5">
+        <div class="row text-center pt-3">
+            <div class="col-lg-6 m-auto">
+                <h1 class="h1">Dernières activités :</h1>
+            </div>
+        </div>
+
+        <div class="row">
+            {% for activity in lastActivities %}
+                <div class="col-md-4">
+                    <div class="card mb-4 product-wap rounded-0">
+                        <div class="card rounded-0">
+                            <img class="card-img rounded-0 img-fluid" src="
+                                {% if activity.picture != "activity_default.jpg" %}
+                                    {{ asset('images/'~ activity.picture) }}" alt="{{ activity.name }}
+                                {% else %}
+                                    {{ asset('images/activity_default.jpg') }}" alt="image default
+                                {% endif %}
+                            ">
+                            <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
+                                <ul class="list-unstyled">
+                                    <li><a class="btn btn-success text-white" href="{{ path('read', {'id' : activity.id}) }}"><i class="far fa-eye"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="h3 text-decoration-none text-truncate">{{ activity.name }}</h3>
+                            <h2 class="h3 text-decoration-none text-truncate">{{ activity.city }}</h2>
+                            <p class="text-center mb-0">
+                                <a href="{{ path('read' , {'id' : activity.id}) }}" class="btn btn-success col-lg-12 text-truncate">Consulter</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <div class="container">
         <div class="col-lg-12 mx-auto text-center">
-            <a href="{{ path('activity') }}" class="btn btn-primary col-lg-6" role="button">
-                <span>Activités </span>
+            <a href="{{ path('activity') }}" class="btn btn-success col-lg-6" role="button">
+                <span>Consulter toutes les activités </span>
                 <i class="fa fa-arrow-circle-right"></i>
             </a>
         </div>

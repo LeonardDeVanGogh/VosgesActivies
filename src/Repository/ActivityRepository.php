@@ -49,6 +49,14 @@ class ActivityRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
+    public function findLastActivitiesCreated(){
+        return $this->createQueryBuilder('a')
+            ->andWhere('a.deleted_at is NULL')
+            ->orderBy('a.createdAt', 'DESC')
+            ->setMaxResults(3)
+            ->getQuery()
+            ->getResult();
+    }
     public function findFilteredActivities($isOutdoor, $isIndoor, $isAnimalsFriendly, $isHandicapedFriendly,$categories)
     {
 
