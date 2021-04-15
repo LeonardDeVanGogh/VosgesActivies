@@ -16,12 +16,10 @@ class BookingToJsonFormatter
 
     public function format(array $bookings)
     {
-        /*$test = $this->security->isGranted('ROLE_ADMIN' ,$this->security->getUser());
-        dd($test);*/
+
         $bookingsJson = [];
 
         foreach($bookings as $booking){
-
             $bookingsJson[] = [
                 'id' => $booking->getId(),
                 'title' => $this->setEventTitle($booking),
@@ -34,6 +32,7 @@ class BookingToJsonFormatter
     }
     public function formatMyBookings(array $bookings)
     {
+
         $bookingsJson = [];
 
         foreach($bookings as $booking){
@@ -62,13 +61,12 @@ class BookingToJsonFormatter
     private function setEventTitle($event)
     {
         $title = "erreur";
-        if($this->isCurrentUserTheOwnerOfThisActivity($event)){
+        if($this->isCurrentUserTheOwnerOfThisActivity($event) || $this->security->isGranted('ROLE_ADMIN' ,$this->security->getUser())){
             if($event->getBookedBy()){
-                $title = "Informations";
+                $title = "mail: " . $event->getBookedBy()->getEmail() . " / tél: " . $event->getBookedBy()->getPhoneNumber();
             }else{
-                $title = "Supprimer la réservation";
+                $title = "Supprimer";
             }
-
         }else{
             if($event->getBookedBy()){
                 $title = "Indisponible";
@@ -81,13 +79,12 @@ class BookingToJsonFormatter
     private function setEventBackgroundColor($event)
     {
         $color = "#808080";
-        if($this->isCurrentUserTheOwnerOfThisActivity($event)){
+        if($this->isCurrentUserTheOwnerOfThisActivity($event) || $this->security->isGranted('ROLE_ADMIN' ,$this->security->getUser())){
             if($event->getBookedBy()){
                 $color = "#008000";
             }else{
-                $color = "#808080";
+                $color = "#FF0000";
             }
-
         }else{
             if($event->getBookedBy()){
                 $color = "#FF0000";
