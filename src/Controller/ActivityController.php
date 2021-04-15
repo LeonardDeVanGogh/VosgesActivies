@@ -188,7 +188,6 @@ class ActivityController extends AbstractController
 
     	return $this->render('activity/show.html.twig',[
     		'activity' => $activity,
-
             'commentForm' => $formComment->createView(),
             'reportForm' => $formReport->createView()
     		]);

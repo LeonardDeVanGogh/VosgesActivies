@@ -20,14 +20,11 @@
     padding:10px;
 }
 #toRouteInstructions, #toBookingsView{
-    color:black;
-    background-color:var(--app-theme-color-four);
     border-radius:15px;
     padding:10px;
     text-align:center;
 }
 #toRouteInstructions:hover, #toBookingsView:hover{
-    color:black;
     text-decoration:none;
     background-color:var(--app-theme-color-two);
     transition:1s;
@@ -41,7 +38,6 @@
     margin:10px;
 }
 #commentForm{
-    background-color:var(--app-theme-color-five);
     margin-top:1em;
     margin-bottom:1em;
     padding:10px;
