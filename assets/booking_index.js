@@ -59,8 +59,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function setBookingId(info){
         bookingId = info.event.id
+        document.getElementById('bookingEdition').setAttribute('href', bookingId + '/edit')
         document.getElementById('bookingOptionsTitle').innerText = moment(info.event.start).format('LLL');
     }
+
     function setBookingStartEndDateTime(info){
         newBookingStartAt = info.startStr;
         newBookingEndAt = info.endStr;

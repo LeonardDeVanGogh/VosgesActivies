@@ -3,11 +3,15 @@
 {% block title %}Edit Bookings{% endblock %}
 
 {% block body %}
-    <h1>Edit Bookings</h1>
+<div class="container pb-5">
+    <div class="row text-center pt-5 pb-3">
+        <div class="col-lg-6 m-auto">
+            <h1 class="h1">Réservations :</h1>
+        </div>
+    </div>
 
-    {{ include('bookings/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('bookings/_form.html.twig') }}
+    <a href="{{ path('activity_manage') }}" class="btn btn-success mt-2">retour aux activités</a>
 
-    <a href="{{ path('bookings_index', {'id' : booking.activity.id}) }}">back to list</a>
-
-    {{ include('bookings/_delete_form.html.twig') }}
+</div>
 {% endblock %}

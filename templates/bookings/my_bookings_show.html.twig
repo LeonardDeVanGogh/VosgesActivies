@@ -1,13 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Activitité : {% endblock %}
+{% block title %}Mes réservations : {% endblock %}
 {% block head %}
-
     {{ encore_entry_link_tags('my_bookings_show') }}
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
 {% endblock %}
 
 {% block body %}
@@ -35,7 +33,6 @@
                         <a href="" id="activityLink">
                             <button type="button" class="btn btn-primary">détails</button>
                         </a>
-
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>

@@ -76,7 +76,6 @@ class BookingsController extends AbstractController
         ]);
     }
 
-
     /**
      * @Route("/{id}", name="bookings_show", methods={"GET"})
      */
@@ -90,7 +89,7 @@ class BookingsController extends AbstractController
     /**
      * @Route("/{id}/edit", name="bookings_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, Bookings $booking, Activity $activity): Response
+    public function edit(Bookings $booking, Request $request)
     {
         $form = $this->createForm(BookingsType::class, $booking);
         $form->handleRequest($request);

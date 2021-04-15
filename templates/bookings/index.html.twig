@@ -33,6 +33,9 @@
                                 <p id="bookingOptionsTitle"></p>
                                 <button type="button" id="bookingReservation" class="btn btn-primary">Réserver</button>
                                 {% if app.user.id() == activity.user.id() %}
+                                    <a role="button" href="" id="bookingEdition" >
+                                        <button class="btn btn-warning">Modifer</button>
+                                    </a>
                                     <button type="button" id="bookingCancellation" class="btn btn-warning">Annuler</button>
                                     <button type="button" id="bookingRemoval" class="btn btn-danger">Effacer</button>
                                 {% endif %}
