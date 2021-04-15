@@ -45,15 +45,7 @@ class AdminController extends AbstractController
      * @Route("/user/update/{id}", name="user_update")
      */
     public function userUpdate(User $user, Request $request){
-        $form = $this->createForm(EditUserType::class, $user);
-        $form->handleRequest($request);
-        if($form->isSubmitted() && $form->isValid()){
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($user);
-            $entityManager->flush();
-            $this->addFlash('message', 'Utilisateur modifié avec succès');
-            return $this->redirectToRoute('admin_users');
-        }
+        $form = $this->createForm(UserUpdateType::class, $user);
         return $this->render('admin/edit_user.html.twig', [
             'userForm' => $form->createView(),
         ]);
