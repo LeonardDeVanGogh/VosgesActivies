@@ -12,28 +12,34 @@
 
 {% block body %}
 
-    <h1>Mes Réservations</h1>
+    <div class="container pb-5">
+        <div class="row text-center pt-5 pb-3">
+            <div class="col-lg-6 m-auto">
+                <h1 class="h1">Mes Réservations :</h1>
+            </div>
+        </div>
 
-    <div class="row">
-        <div id="calendar" class="col-lgl-12"></div>
-    </div>
+        <div class="row justify-content-center">
+            <div id="calendar" class="col-lgl-12"></div>
+        </div>
 
-    <div class="modal fade" id="bookingOptions" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <p id="bookingOptionsTitle"></p>
-                    <button type="button" id="bookingCancellation" class="btn btn-warning">Annuler</button>
-                    <a href="" id="activityLink">
-                        <button type="button" class="btn btn-primary">détails</button>
-                    </a>
+        <div class="modal fade" id="bookingOptions" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <p id="bookingOptionsTitle"></p>
+                        <button type="button" id="bookingCancellation" class="btn btn-warning">Annuler</button>
+                        <a href="" id="activityLink">
+                            <button type="button" class="btn btn-primary">détails</button>
+                        </a>
 
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                    </div>
                 </div>
             </div>
         </div>
