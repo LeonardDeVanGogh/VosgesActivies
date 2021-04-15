@@ -11,6 +11,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Validator\Constraints\File;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 
 
 
@@ -39,7 +40,7 @@ class ActivityType extends AbstractType
                 ],
             ])
             ->add('city')
-            ->add('zipcode')
+            ->add('zipcode', NumberType::class)
             ->add('street')
             ->add('street_number')
             ->add('category', EntityType::class, [

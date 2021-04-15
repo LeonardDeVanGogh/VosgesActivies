@@ -2,32 +2,45 @@
 {% form_theme formActivity 'bootstrap_4_layout.html.twig' %}
 
 {% block body %}
-	<h1>creation d'une activité</h1>
-	{{ form_start(formActivity) }}
+	<section>
+		<div class="container pb-5">
+			<div class="row text-center pt-5 pb-3">
+				<div class="col-lg-6 m-auto">
+					<h1 class="h1">
+						{% if editMode %}
+							Modifier Mon Activité
+						{% else %}
+							Créer Une Activité
+						{% endif %}
+					</h1>
+				</div>
+			</div>
+			{{ form_start(formActivity) }}
 
-	{{ form_row(formActivity.name, {'attr' : {'placeholder' : "Nom", 'title' : 'titre trop court'}}) }}
-	{{ form_row(formActivity.description, {'attr' : {'placeholder' : "Description"}}) }}
-	{{ form_row(formActivity.latitude, {'attr' : {'placeholder' : "Latitude"}}) }}
-	{{ form_row(formActivity.longitude, {'attr' : {'placeholder' : "Longitude"}}) }}
-	{{ form_row(formActivity.picture) }}
-	{{ form_row(formActivity.category) }}
-	{{ form_row(formActivity.city, {'attr' : {'placeholder' : "Ville"}}) }}
-	{{ form_row(formActivity.zipcode, {'attr' : {'placeholder' : "Code postal"}}) }}
-	{{ form_row(formActivity.street, {'attr' : {'placeholder' : "Nom de la rue"}}) }}
-	{{ form_row(formActivity.street_number, {'attr' : {'placeholder' : "Numéro de rue"}}) }}
-	{{ form_row(formActivity.is_indoor, {'attr' : {'placeholder' : "Indoor"}}) }}
-	{{ form_row(formActivity.is_outdoor, {'attr' : {'placeholder' : "Outdoor"}}) }}
-	{{ form_row(formActivity.animals, {'attr' : {'placeholder' : "Animaux"}}) }}
-	{{ form_row(formActivity.is_handicaped, {'attr' : {'placeholder' : "Accès aux personnes à mobilité réduite"}}) }}
-
-
-	<button type="submit" class="btn btn-success">
-		{% if editMode %}
-			Modifier Activité
-		{% else %}
-			Créer Activité
-		{% endif %}
-	</button>
-	{{ form_end(formActivity) }}
+			{{ form_row(formActivity.name, {'label' : 'Nom', 'attr' : {'placeholder' : "Nom", 'title' : 'titre trop court'}}) }}
+			{{ form_row(formActivity.description, {'attr' : {'placeholder' : "Description"}}) }}
+			{{ form_row(formActivity.latitude, {'attr' : {'placeholder' : "Latitude"}}) }}
+			{{ form_row(formActivity.longitude, {'attr' : {'placeholder' : "Longitude"}}) }}
+			{{ form_row(formActivity.picture) }}
+			{{ form_row(formActivity.category, {'label' : 'Catégories'}) }}
+			{{ form_row(formActivity.city, {'label' : 'Ville', 'attr' : {'placeholder' : "Ville"}}) }}
+			{{ form_row(formActivity.zipcode, {'label' : 'Code postal', 'attr' : {'placeholder' : "Code postal"}}) }}
+			{{ form_row(formActivity.street_number, {'label' : 'Numéro de la rue','attr' : {'placeholder' : "Numéro de rue"}}) }}
+			{{ form_row(formActivity.street, {'label' : 'Nom de la rue', 'attr' : {'placeholder' : "Nom de la rue"}}) }}
+			<h2 class="h2">Cochez les affirmations qui sont exactes :</h2>
+			{{ form_row(formActivity.is_indoor, {'label' : 'Cette activité est pratiquable en intérieur', 'attr' : {'placeholder' : "Indoor"}}) }}
+			{{ form_row(formActivity.is_outdoor, {'label' : 'Cette activité est pratiquable en extérieur', 'attr' : {'placeholder' : "Outdoor"}}) }}
+			{{ form_row(formActivity.animals, {'label' : 'Les animaux sont les bienvenues', 'attr' : {'placeholder' : "Animaux"}}) }}
+			{{ form_row(formActivity.is_handicaped, {'label' : 'Cette activité est accessible aux personnes à mobilité réduite', 'attr' : {'placeholder' : "Accès aux personnes à mobilité réduite"}}) }}
+			<button type="submit" class="btn btn-success">
+				{% if editMode %}
+					Modifier Activité
+				{% else %}
+					Créer Activité
+				{% endif %}
+			</button>
+			{{ form_end(formActivity) }}
+		</div>
+	</section>
 
 {% endblock %}
