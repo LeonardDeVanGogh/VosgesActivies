@@ -10,64 +10,68 @@
 
 {% block body %}
 
-    <h1>Bookings index</h1>
-    <i class="fas fa-rocket"></i>
-    
-
-    <div class="row">
-        <div id="calendar" class="col-lgl-12"></div>
-    </div>
-
-    <div class="modal fade" id="bookingOptions" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-
-                    <div class="modal-body">
-                        {% if app.user %}
-                            <p id="bookingOptionsTitle"></p>
-                            <button type="button" id="bookingReservation" class="btn btn-primary">Réserver</button>
-                            {% if app.user.id() == activity.user.id() %}
-                                <button type="button" id="bookingCancellation" class="btn btn-warning">Annuler</button>
-                                <button type="button" id="bookingRemoval" class="btn btn-danger">Effacer</button>
-                            {% endif %}
-                        {% else %}
-                            <p>log toi</p>
-                        {% endif %}
-                    </div>
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
-                </div>
+    <div class="container pb-5">
+        <div class="row text-center pt-5 pb-3">
+            <div class="col-lg-6 m-auto">
+                <h1 class="h1">Réservations :</h1>
             </div>
-
         </div>
-    </div>
 
+        <div class="row">
+            <div id="calendar" class="col-lgl-12"></div>
+        </div>
 
-    {% if app.user %}
-        {% if app.user.id() == activity.user.id() %}
-            <div class="modal fade" id="bookingCreation" role="dialog">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        </div>
+        <div class="modal fade" id="bookingOptions" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
                         <div class="modal-body">
-                            <p>Réserver</p>
-                            <button type="button" id="bookingAdd" class="btn btn-primary">Créer une réservation</button>
+                            {% if app.user %}
+                                <p id="bookingOptionsTitle"></p>
+                                <button type="button" id="bookingReservation" class="btn btn-primary">Réserver</button>
+                                {% if app.user.id() == activity.user.id() %}
+                                    <button type="button" id="bookingCancellation" class="btn btn-warning">Annuler</button>
+                                    <button type="button" id="bookingRemoval" class="btn btn-danger">Effacer</button>
+                                {% endif %}
+                            {% else %}
+                                <p>Vous devez être connecté pour effectuer une réservation.</p>
+                                <a href="{{ path('user_connection') }}" class="btn btn-success">Connexion</a>
+                            {% endif %}
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        {% if app.user %}
+            {% if app.user.id() == activity.user.id() %}
+                <div class="modal fade" id="bookingCreation" role="dialog">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+                            <div class="modal-body">
+                                <p>Réserver</p>
+                                <button type="button" id="bookingAdd" class="btn btn-primary">Créer une réservation</button>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            {% endif %}
         {% endif %}
-    {% endif %}
-
+    </div>
 
     <script>
         let activityId = {{ activity.id }};

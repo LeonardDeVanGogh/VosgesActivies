@@ -13,20 +13,29 @@ class BookingToJsonFormatter
 
         $this->security = $security;
     }
+    private function isCurrentUserTheOwnerOfThisActivity($booking)
+    {
+        $currentUser = "";
+        if($this->security->getUser()){
+            $currentUser = $this->security->getUser()->getId();
+        }
+        $activityOwner = $booking->getActivity()->getUser()->getId();
+        return $currentUser===$activityOwner;
+    }
 
     public function format(array $bookings)
     {
-
         $bookingsJson = [];
-
         foreach($bookings as $booking){
-            $bookingsJson[] = [
-                'id' => $booking->getId(),
-                'title' => $this->setEventTitle($booking),
-                'start' => $booking->getStartedAt()->format('Y-m-d H:i:s'),
-                'end' => $booking->getEndAt()->format('Y-m-d H:i:s'),
-                'color' => $this->setEventBackgroundColor($booking),
-            ];
+            if($this->isCurrentUserTheOwnerOfThisActivity($booking) || !$booking->getBookedBy()){
+                $bookingsJson[] = [
+                    'id' => $booking->getId(),
+                    'title' => $this->setEventTitle($booking),
+                    'start' => $booking->getStartedAt()->format('Y-m-d H:i:s'),
+                    'end' => $booking->getEndAt()->format('Y-m-d H:i:s'),
+                    'color' => $this->setEventBackgroundColor($booking),
+                ];
+            }
         }
         return $bookingsJson;
     }
@@ -47,17 +56,7 @@ class BookingToJsonFormatter
         }
         return $bookingsJson;
     }
-    private function isCurrentUserTheOwnerOfThisActivity($booking)
-    {
-        $currentUser = "";
-        if($this->security->getUser()){
-            $currentUser = $this->security->getUser()->getId();
-        }
 
-        $activityOwner = $booking->getActivity()->getUser()->getId();
-
-        return $currentUser===$activityOwner;
-    }
     private function setEventTitle($event)
     {
         $title = "erreur";

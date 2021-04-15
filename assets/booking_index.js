@@ -10,6 +10,7 @@ moment.locale('fr');
 import { Calendar } from '@fullcalendar/core';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import dayGridPlugin from '@fullcalendar/daygrid';
+import listPlugin from '@fullcalendar/list';
 import interactionPlugin from '@fullcalendar/interaction';
 import frLocale from '@fullcalendar/core/locales/fr';
 import moment from "moment";
@@ -20,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let calendarEl = document.getElementById('calendar');
 
     let calendar = new Calendar(calendarEl, {
-        plugins: [ timeGridPlugin, dayGridPlugin,interactionPlugin],
+        plugins: [ timeGridPlugin, dayGridPlugin, interactionPlugin, listPlugin],
         locale:frLocale,
         timeZone: 'Europe/Paris',
         selectable: true,
@@ -28,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
         headerToolbar: {
             start:'prev,next today',
             center: 'title',
-            end: 'dayGridMonth,timeGridDay',
+            end: 'dayGridMonth,timeGridDay,listYear',
         },
         select: function(info) {
             if(document.getElementById('bookingAdd')){
