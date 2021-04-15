@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\EditRoleUserType;
+use App\Form\UserUpdateType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -45,7 +46,14 @@ class AdminController extends AbstractController
      * @Route("/user/update/{id}", name="user_update")
      */
     public function userUpdate(User $user, Request $request){
+
         $form = $this->createForm(UserUpdateType::class, $user);
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid()){
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($user);
+            $entityManager->flush();
+        }
         return $this->render('admin/edit_user.html.twig', [
             'userForm' => $form->createView(),
         ]);
