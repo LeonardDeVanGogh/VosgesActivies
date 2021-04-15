@@ -27,7 +27,11 @@ class EditRoleUserType extends AbstractType
             'multiple' => true,
             'label' => 'Rôles',
         ])
-        ->add('Valider', SubmitType::class)
+        ->add('Valider', SubmitType::class, [
+            'attr' => [
+                'class' => 'btn btn-success',
+            ]
+        ])
     ;
     }
 

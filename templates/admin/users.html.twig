@@ -17,20 +17,22 @@
 						<div class="col-lg-3">{{ user.username }}</div>
 						<div class="col-lg-3">{{ user.email }}</div>
 						<div class="col-lg-3">
-							{% for role in  user.roles %}
-								{% if role == "ROLE_USER" %}
-									Utilisateur
-								{% elseif role == "ROLE_EDITOR" %}
-									Gestionnaire d'activité
-								{% elseif role == "ROLE_MODERATOR" %}
-									Modérateur
-								{% elseif role == "ROLE_ADMIN" %}
-									Administrateur
-								{% endif %}
-							{% endfor %}
+							<ul class="list-unstyled">
+								{% for role in  user.roles %}
+									{% if role == "ROLE_USER" %}
+										<li>Utilisateur</li>
+									{% elseif role == "ROLE_EDITOR" %}
+										<li>Gestionnaire d'activité</li>
+									{% elseif role == "ROLE_MODERATOR" %}
+										<li>Modérateur</li>
+									{% elseif role == "ROLE_ADMIN" %}
+										<li>Administrateur</li>
+									{% endif %}
+								{% endfor %}
+							</ul>
 						</div>
 						<div class="col-lg-2 ">
-							<a href="{{ path('admin_user_role_update', {'id': user.id }) }}" class="btn btn-primary">Modifier</a>
+							<a href="{{ path('admin_user_role_update', {'id': user.id }) }}" class="btn btn-success">Modifier</a>
 						</div>
 					</div>
 				</div>

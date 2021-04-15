@@ -5,12 +5,12 @@
     <section class="container py-5">
         <div class="row text-center pt-5 pb-3">
             <div class="col-lg-6 m-auto">
-                <h1 class="h1">Modifier Utilisateur : </h1>
+                <h1 class="h1">Modifier rôle utilisateur : </h1>
             </div>
         </div>
         <div class="row">
             {{ form_start(userForm) }}
-            {{ form_label(userForm.roles, 'Rôles') }}
+            {{ form_label(userForm.roles, 'Rôles :') }}
             {{ form_widget(userForm.roles) }}
             {{ form_end(userForm) }}
         </div>
