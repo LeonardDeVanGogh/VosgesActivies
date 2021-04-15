@@ -1,17 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Administration : rôles utilisateurs{% endblock %}
+{% block title %}Espace membre{% endblock %}
 {% block body %}
     <section class="container py-5">
         <div class="row text-center pt-5 pb-3">
             <div class="col-lg-6 m-auto">
-                <h1 class="h1">Modifier Utilisateur faefae: </h1>
+                <h1 class="h1">Espace membre: </h1>
             </div>
         </div>
         <div class="row">
             {{ form_start(userForm) }}
-            {{ form_label(userForm.roles, 'Rôles') }}
-            {{ form_widget(userForm.roles) }}
             {{ form_end(userForm) }}
         </div>
     </section>

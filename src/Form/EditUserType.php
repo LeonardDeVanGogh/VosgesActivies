@@ -26,17 +26,6 @@ class EditUserType extends AbstractType
             ])
             ->add('username')
             ->add('phone_number')
-            ->add('roles', ChoiceType::class, [
-                'choices' => [
-                    'Utilisateur' => 'ROLE_USER',
-                    'Gestionnaire d\'activité' => 'ROLE_EDITOR',
-                    'Modérateur' => 'ROLE_MODERATOR',
-                    'Administrateur' => 'ROLE_ADMIN',
-                ],
-                'expanded' => true,
-                'multiple' => true,
-                'label' => 'Rôles',
-            ])
             ->add('Valider', SubmitType::class)
         ;
     }
