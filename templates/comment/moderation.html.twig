@@ -15,27 +15,25 @@
                 {% if comment.reports | length >=1 %}
                     <div class="container">
                         <div class="row h-100 py-5 services-icon-wap shadow">
-                            <div class="row">
-                                <div class="col-lg-2" align="center">{{ comment.reports | length }} signalement(s)</div>
-                                <div class="col-lg-8">
-                                    <div class="row col-lg-12">
-                                        <div class="col-lg-12">{{ comment.content | raw}}</div>
-                                        <div class="col-lg-12 h3">raison(s) : </div>
-                                        {% for report in comment.reports %}
-                                            <div class="col-lg-12">{{ report.reason.reason }}</div>
-                                        {% endfor %}
-                                    </div>
+                            <div class="col-lg-2" align="center">{{ comment.reports | length }} signalement(s)</div>
+                            <div class="col-lg-8">
+                                <div class="row col-lg-12">
+                                    <div class="col-lg-12">{{ comment.content | raw}}</div>
+                                    <div class="col-lg-12 h3">raison(s) : </div>
+                                    {% for report in comment.reports %}
+                                        <div class="col-lg-12">{{ report.reason.reason }}</div>
+                                    {% endfor %}
                                 </div>
-                                <div class="col-lg-1" align="center">
-                                    <a href="{{ path('comment_moderate', {'id':comment.id}) }}" title="Valider le commentaire">
-                                        <i class="fas fa-check fa-2x"></i>
-                                    </a>
-                                </div>
-                                <div class="col-lg-1" align="center">
-                                    <a href="{{ path('comment_delete', {'id':comment.id}) }}" title="Effacer le commentaire">
-                                        <i class="fas fa-times-circle fa-2x"></i>
-                                    </a>
-                                </div>
+                            </div>
+                            <div class="col-lg-1" align="center">
+                                <a href="{{ path('comment_moderate', {'id':comment.id}) }}" title="Valider le commentaire">
+                                    <i class="fas fa-check fa-2x"></i>
+                                </a>
+                            </div>
+                            <div class="col-lg-1" align="center">
+                                <a href="{{ path('comment_delete', {'id':comment.id}) }}" title="Effacer le commentaire">
+                                    <i class="fas fa-times-circle fa-2x"></i>
+                                </a>
                             </div>
                         </div>
                     </div>
