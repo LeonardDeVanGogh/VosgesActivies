@@ -10,11 +10,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Form\ReportReasonType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 
 class ReportReasonController extends AbstractController
 {
     /**
+     * @isGranted("ROLE_ADMIN")
      * @Route("/report/reason/create", name="report_reason_create")
      */
     public function create(Request $request, EntityManagerInterface $manager, ReportReasonRepository $repo)
@@ -33,6 +35,7 @@ class ReportReasonController extends AbstractController
         ]);
     }
     /**
+     * @isGranted("ROLE_MODERATOR")
      * @Route("/report/reason", name="report_reason")
      */
     public function read(ReportReasonRepository $repo)
@@ -43,6 +46,7 @@ class ReportReasonController extends AbstractController
         ]);
     }
     /**
+     * @isGranted("ROLE_MODERATOR")
      * @Route("/report/reason/{id}/update", name="report_reason_update")
      */
     public function update(ReportReason $reportReason, Request$request, EntityManagerInterface $manager, ReportReasonRepository $repo)
@@ -61,6 +65,7 @@ class ReportReasonController extends AbstractController
         ]);
     }
     /**
+     * @isGranted("ROLE_ADMIN")
      * @Route("/report/reason/{id}/delete", name="report_reason_delete")
      */
     public function delete(ReportReason $reportReason, EntityManagerInterface $manager){

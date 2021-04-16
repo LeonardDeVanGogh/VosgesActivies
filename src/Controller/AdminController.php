@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\UserRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
  * @Route("/admin", name="admin_")
@@ -18,6 +19,7 @@ class AdminController extends AbstractController
 {
 
 	 /**
+      * @isGranted("ROLE_ADMIN")
      * @Route("/users", name="users")
      */
     public function usersList(UserRepository $users){
@@ -26,6 +28,7 @@ class AdminController extends AbstractController
     	]);
     }
     /**
+     * @isGranted("ROLE_ADMIN")
      * @Route("/user/role/update/{id}", name="user_role_update")
      */
     public function userRoleUpdate(User $user, Request $request){
@@ -43,6 +46,7 @@ class AdminController extends AbstractController
         ]);
     }
     /**
+     * @isGranted("ROLE_USER")
      * @Route("/user/update/{id}", name="user_update")
      */
     public function userUpdate(User $user, Request $request){

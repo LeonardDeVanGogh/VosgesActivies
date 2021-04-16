@@ -9,10 +9,12 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 class CategoryController extends AbstractController
 {
     /**
+     * isGranted('ROLE_ADMIN')
      * @Route("/category", name="category_create")
      */
     public function create(Request $request, EntityManagerInterface $manager)
@@ -31,6 +33,7 @@ class CategoryController extends AbstractController
         ]);
     }
     /**
+     * isGranted('ROLE_MODERATOR')
      * @Route("/categories", name="categories")
      */
     public function read(CategoryRepository $repo)
@@ -41,6 +44,7 @@ class CategoryController extends AbstractController
         ]);
     }
     /**
+     * isGranted('ROLE_MODERATOR')
      * @Route("/category/{id}/update", name="category_update")
      */
     public function update(Category $category, Request$request, EntityManagerInterface $manager)
@@ -59,6 +63,7 @@ class CategoryController extends AbstractController
         ]);
     }
     /**
+     * isGranted('ROLE_ADMIN')
      * @Route("/category/{id}/delete", name="category_delete")
      */
     public function delete(Category $category, EntityManagerInterface $manager){

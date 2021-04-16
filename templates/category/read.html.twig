@@ -7,11 +7,13 @@
         <div class="row text-center pt-5 pb-3">
             <div class="col-lg-3 m-auto">
                 <h1 class="h1">Catégories : </h1>
-                <div class="row justify-content-center">
-                    <a class="h-100 py-5 services-icon-wap shadow col-lg-8" href="{{ path('category_create') }}" title="Créer une nouvelle catégorie">
-                        <i class="fas fa-plus fa-3x"></i>
-                    </a>
-                </div>
+                {% if is_granted('ROLE_ADMIN') %}
+                    <div class="row justify-content-center">
+                        <a class="h-100 py-5 services-icon-wap shadow col-lg-8" href="{{ path('category_create') }}" title="Créer une nouvelle catégorie">
+                            <i class="fas fa-plus fa-3x"></i>
+                        </a>
+                    </div>
+                {% endif %}
             </div>
         </div>
         <div class="row">
@@ -27,11 +29,13 @@
                                 <i class="fas fa-edit fa-2x"></i>
                             </a>
                         </div>
-                        <div class="col-lg-1">
-                            <a href="{{ path('category_delete',{'id':category.id}) }}" title="Effacer">
-                                <i class="fas fa-times-circle fa-2x"></i>
-                            </a>
-                        </div>
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <div class="col-lg-1">
+                                <a href="{{ path('category_delete',{'id':category.id}) }}" title="Effacer">
+                                    <i class="fas fa-times-circle fa-2x"></i>
+                                </a>
+                            </div>
+                        {% endif %}
                     </div>
                 </div>
             {% endfor %}

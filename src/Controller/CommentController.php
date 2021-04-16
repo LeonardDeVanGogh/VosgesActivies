@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\CommentRepository;
 use App\Entity\Comment;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 class CommentController extends AbstractController
 {
@@ -21,6 +22,8 @@ class CommentController extends AbstractController
         ]);
     }
     /**
+     *
+     * @isGranted("ROLE_MODERATOR")
      * @Route("/comment/moderation", name="comment_moderation")
      */
     public function moderation(CommentRepository $repo)
@@ -31,6 +34,7 @@ class CommentController extends AbstractController
         ]);
     }
     /**
+     * @isGranted("ROLE_MODERATOR")
      * @Route("/comment/{id}/validate", name="comment_moderate")
      */
     public function moderate(Comment $comment, EntityManagerInterface $manager)
@@ -45,6 +49,7 @@ class CommentController extends AbstractController
 
     }
     /**
+     * @isGranted("ROLE_USER")
      * @Route("/comment/{id}/delete", name="comment_delete")
      */
     public function delete(Comment $comment, EntityManagerInterface $manager)

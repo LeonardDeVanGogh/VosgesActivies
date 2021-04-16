@@ -14,6 +14,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Formatter\BookingToJsonFormatter;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
  * @Route("/bookings")
@@ -35,61 +36,20 @@ class BookingsController extends AbstractController
     {
 
         $bookings = $bookingsRepository->findAllBookingsByActivity($activity->getId());
-        if($activity->getDeletedAt() == null){
+        if ($activity->getDeletedAt() == null) {
             return $this->render('bookings/index.html.twig', [
                 'bookings' => $bookings,
                 'activity' => $activity,
             ]);
-        }else{
+        } else {
             return $this->redirectToRoute('home');
         }
     }
     /**
-     * @Route("/myBookings", name="read_my_bookings", methods={"GET"})
-     */
-    public function readMyBookings()
-    {
-        return $this->render('bookings/my_bookings_show.html.twig');
-    }
-
-        /**
-     * @Route("/new/{id}", name="bookings_new", methods={"GET","POST"})
-     */
-    public function new(Request $request, ActivityRepository $activityRepository, Activity $activity): Response
-    {
-        $booking = new Bookings();
-        $form = $this->createForm(BookingsType::class, $booking);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $booking->setActivity($activity);
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($booking);
-            $entityManager->flush();
-
-            return $this->redirectToRoute('bookings_index', ['id'=> $activity->getId()]);
-        }
-
-        return $this->render('bookings/new.html.twig', [
-            'booking' => $booking,
-            'form' => $form->createView(),
-        ]);
-    }
-
-    /**
-     * @Route("/{id}", name="bookings_show", methods={"GET"})
-     */
-    public function show(Bookings $booking): Response
-    {
-        return $this->render('bookings/show.html.twig', [
-            'booking' => $booking,
-        ]);
-    }
-
-    /**
+     * isGranted("ROLE_EDITOR")
      * @Route("/{id}/edit", name="bookings_edit", methods={"GET","POST"})
      */
-    public function edit(Bookings $booking, Request $request)
+    public function edit(Bookings $booking, Request $request): Response
     {
         $form = $this->createForm(BookingsType::class, $booking);
         $form->handleRequest($request);
@@ -107,13 +67,12 @@ class BookingsController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="bookings_delete", methods={"DELETE"})
+     * @isGranted("ROLE_USER")
+     * @Route("/myBookings", name="read_my_bookings", methods={"GET"})
      */
-    public function delete(Activity $activity, Bookings $booking, Request $request, EntityManagerInterface $manager)
+    public function readMyBookings()
     {
-        $booking->setDeletedAt(new \DateTime());
-        $manager->persist($booking);
-        $manager->flush();
-        return $this->redirectToRoute('bookings_index', ['id' => $booking->getActivity()->getId()]);
+        return $this->render('bookings/my_bookings_show.html.twig');
     }
+
 }

@@ -193,14 +193,6 @@ class ActivityController extends AbstractController
     		]);
 
     }
-    /**
-     * @Route("/Activity/test", name="test")
-     */
-    public function test()
-    {
-        return $this->render('activity/test.html.twig');
-    }
-
 
     /**
      * @isGranted("ROLE_EDITOR")
@@ -216,6 +208,7 @@ class ActivityController extends AbstractController
     }
 
     /**
+     * @isGranted("ROLE_EDITOR")
      * @Route("/activity/{id}/delete", name="activity_delete")
      */
     public function delete(Activity $activity, Request $request, EntityManagerInterface $manager)
