@@ -4,8 +4,6 @@ let formData = new FormData();
 let bookingId;
 let newBookingStartAt;
 let newBookingEndAt;
-moment.locale('fr');
-/* FullCalendar_integration */
 
 import { Calendar } from '@fullcalendar/core';
 import timeGridPlugin from '@fullcalendar/timegrid';
@@ -15,8 +13,20 @@ import interactionPlugin from '@fullcalendar/interaction';
 import frLocale from '@fullcalendar/core/locales/fr';
 import moment from "moment";
 
+moment.locale('fr');
 
 document.addEventListener('DOMContentLoaded', function() {
+
+    function setBookingId(info){
+        bookingId = info.event.id
+        document.getElementById('bookingEdition').setAttribute('href', bookingId + '/edit')
+        document.getElementById('bookingOptionsTitle').innerText = moment(info.event.start).format('LLL');
+    }
+
+    function setBookingStartEndDateTime(info){
+        newBookingStartAt = info.startStr;
+        newBookingEndAt = info.endStr;
+    }
 
     let calendarEl = document.getElementById('calendar');
 
@@ -57,19 +67,8 @@ document.addEventListener('DOMContentLoaded', function() {
         calendar.refetchEvents();
     });
 
-    function setBookingId(info){
-        bookingId = info.event.id
-        document.getElementById('bookingEdition').setAttribute('href', bookingId + '/edit')
-        document.getElementById('bookingOptionsTitle').innerText = moment(info.event.start).format('LLL');
-    }
-
-    function setBookingStartEndDateTime(info){
-        newBookingStartAt = info.startStr;
-        newBookingEndAt = info.endStr;
-    }
     if(document.getElementById('bookingAdd')){
         document.getElementById('bookingAdd').addEventListener('click', function bookingAdd() {
-            //ici mon ajax
             let newEvent = document.getElementById("bookingCreation")
             formData.append('newBookingStartAt', newBookingStartAt);
             formData.append('newBookingEndAt', newBookingEndAt);
@@ -107,10 +106,3 @@ document.addEventListener('DOMContentLoaded', function() {
         })
     }
 });
-/* /fullCalendar_integration */
-
-
-/* fullCalendar_user_interactions */
-
-
-/* /fullCalendar_user_interactions */

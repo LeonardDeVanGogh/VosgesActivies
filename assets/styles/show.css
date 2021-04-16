@@ -1,51 +1,51 @@
-.subCategory{
-    background-color:lightgray;
-    margin:1em;
+.subCategory {
+  background-color:lightgray;
+  margin:1em;
 }
-.isUnavailableForThisActivity{
-    opacity:0.3;
+.isUnavailableForThisActivity {
+  opacity: 0.3;
 }
-.activitySectionTitle{
-    border-radius:15px;
-    background-color:var(--app-theme-color-five);
-    text-align:center;
+.activitySectionTitle {
+  border-radius:15px;
+  background-color:var(--app-theme-color-five);
+  text-align:center;
 }
-.activitySectionBody{
-    margin-top:2em;
-    border-top:solid 5px var(--app-theme-color-two);
-    border-bottom:solid 5px var(--app-theme-color-two);
-    border-radius:20px;
+.activitySectionBody {
+  margin-top:2em;
+  border-top:solid 5px var(--app-theme-color-two);
+  border-bottom:solid 5px var(--app-theme-color-two);
+  border-radius:20px;
 }
-.activityConstraints{
-    padding:10px;
+.activityConstraints {
+  padding: 10px;
 }
-#toRouteInstructions, #toBookingsView{
-    border-radius:15px;
-    padding:10px;
-    text-align:center;
+#toRouteInstructions, #toBookingsView {
+  border-radius:15px;
+  padding:10px;
+  text-align:center;
 }
-#toRouteInstructions:hover, #toBookingsView:hover{
-    text-decoration:none;
-    background-color:var(--app-theme-color-two);
-    transition:1s;
+#toRouteInstructions:hover, #toBookingsView:hover {
+  text-decoration:none;
+  background-color:var(--app-theme-color-two);
+  transition:1s;
 }
-.categories{
-    text-align:center;
-    color:var(--app-theme-color-one);
-    background-color:var(--app-theme-color-four);
-    border-radius:15px;
-    padding:10px;
-    margin:10px;
+.categories {
+  text-align:center;
+  color:var(--app-theme-color-one);
+  background-color:var(--app-theme-color-four);
+  border-radius:15px;
+  padding:10px;
+  margin:10px;
 }
-#commentForm{
-    margin-top:1em;
-    margin-bottom:1em;
-    padding:10px;
+#commentForm {
+  margin-top:1em;
+  margin-bottom:1em;
+  padding:10px;
 }
-.comments{
-    margin-bottom:10px;
-    border-top:solid 2px var(--app-theme-color-five);
+.comments {
+  margin-bottom:10px;
+  border-top:solid 2px var(--app-theme-color-five);
 }
-.report{
-    text-align:center;
+.report {
+  text-align: center;
 }

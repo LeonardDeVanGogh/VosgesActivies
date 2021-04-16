@@ -49,7 +49,7 @@ class ApiController extends AbstractController
     /**
      * @Route("/api/bookingCreation/{id}", name="booking_creation")
      */
-    public function bookingCreation(Activity $activity, Request $request, BookingsRepository $bookingsRepository, EntityManagerInterface $manager)
+    public function bookingCreation(Activity $activity, Request $request, EntityManagerInterface $manager)
     {
         $newBookingStartAt = $request->request->get('newBookingStartAt');
         $newBookingEndAt = $request->request->get('newBookingEndAt');
@@ -71,7 +71,7 @@ class ApiController extends AbstractController
     /**
      * @Route("/api/bookingReservation/{id}", name="booking_reservation")
      */
-    public function bookingReservation(Bookings $bookings, Request $request,BookingsRepository $bookingsRepository, EntityManagerInterface $manager)
+    public function bookingReservation(Bookings $bookings, EntityManagerInterface $manager)
     {
         $bookings->setBookedBy($this->getUser());
         $manager->persist($bookings);
@@ -87,7 +87,7 @@ class ApiController extends AbstractController
     /**
      * @Route("/api/bookingCancellation/{id}", name="booking_cancellation")
      */
-    public function bookingCancellation(Bookings $bookings, BookingsRepository $bookingsRepository, EntityManagerInterface $manager)
+    public function bookingCancellation(Bookings $bookings, EntityManagerInterface $manager)
     {
         $bookings->setBookedBy(null);
         $manager->persist($bookings);
@@ -103,7 +103,7 @@ class ApiController extends AbstractController
     /**
      * @Route("/api/bookingDelete/{id}", name="booking_delete")
      */
-    public function bookingDelete(Bookings $bookings, BookingsRepository $bookingsRepository, EntityManagerInterface $manager)
+    public function bookingDelete(Bookings $bookings, EntityManagerInterface $manager)
     {
         $bookings->setDeletedAt(new \DateTime());
         $manager->persist($bookings);

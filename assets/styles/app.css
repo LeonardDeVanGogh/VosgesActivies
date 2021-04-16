@@ -1,93 +1,93 @@
 :root {
-    --app-theme-color-one: #304025;
-    --app-theme-color-two: #6D8C3E;
-    --app-theme-color-three: #D2D904;
-    --app-theme-color-four: #D5D971;
-    --app-theme-color-five: #D9D5A3;
+  --app-theme-color-one: #304025;
+  --app-theme-color-two: #6d8c3e;
+  --app-theme-color-three: #d2d904;
+  --app-theme-color-four: #d5d971;
+  --app-theme-color-five: #d9d5a3;
 }
 
-.basicContainer{
-    min-height:85vh;
+.basicContainer {
+  min-height:85vh;
 }
-#navbarOptions{
-    min-width:80%;
+#navbarOptions {
+  min-width:80%;
 }
-.fa-github{
-    color:black;
+.fa-github {
+  color:black;
 }
 .fa-times-circle, .fa-times
 {
-    color:red;
+  color:red;
 }
 .fa-times-circle:hover, .fa-times:hover
 {
-    color:darkred;
-    text-decoration:none;
+  color:darkred;
+  text-decoration:none;
 }
 .fa-flag,
 .fa-map-marked
 {
-    color:black;
+  color:black;
 }
 .fa-flag:hover,
 .fa-map-marked:hover
 {
-    color:#2E2E2E;
-    text-decoration:none;
+  color:#2e2e2e;
+  text-decoration:none;
 }
 .fa-edit
 {
-    color:orange;
+  color:orange;
 }
 .fa-edit:hover
 {
-    color:darkorange;
-    text-decoration:none;
+  color:darkorange;
+  text-decoration:none;
 }
 .fa-check, .fa-plus
 {
-    color:green;
+  color:green;
 }
 .fa-check:hover, .fa-plus:hover
 {
-    color:darkgreen;
-    text-decoration:none;
+  color:darkgreen;
+  text-decoration:none;
 }
 
-.regularList{
-    background-color:lightgray;
-    margin-bottom:1em;
-    padding:10px;
+.regularList {
+  background-color:lightgray;
+  margin-bottom:1em;
+  padding:10px;
 }
-.regularList:hover{
-    box-shadow:0.5em 0.5em lightgray;
-    background-color:gray;
+.regularList:hover {
+  box-shadow:0.5em 0.5em lightgray;
+  background-color:gray;
 }
-.appThemeColorOne{
-    color:var(--app-theme-color-one);
+.appThemeColorOne {
+  color:var(--app-theme-color-one);
 }
-.appThemeBackgroundColorOne{
-    background-color:var(--app-theme-color-one);
+.appThemeBackgroundColorOne {
+  background-color:var(--app-theme-color-one);
 }
-.appThemeColorTwo{
-    color:var(--app-theme-color-two);;
+.appThemeColorTwo {
+  color: var(--app-theme-color-two);;
 }.appThemeBackgroundColorTwo{
-    background-color:var(--app-theme-color-two);
-}
-.appThemeColorThree{
-    color:var(--app-theme-color-three);
+   background-color: var(--app-theme-color-two);
+ }
+.appThemeColorThree {
+  color: var(--app-theme-color-three);
 }.appThemeBackgroundColorThree{
-    background-color:var(--app-theme-color-three);
+   background-color: var(--app-theme-color-three);
+ }
+.appThemeColorFour {
+  color: var(--app-theme-color-four);
 }
-.appThemeColorFour{
-    color:var(--app-theme-color-four);
+.appThemeBackgroundColorFour {
+  background-color: var(--app-theme-color-four);
 }
-.appThemeBackgroundColorFour{
-    background-color:var(--app-theme-color-four);
+.appThemeColorFive {
+  color: var(--app-theme-color-five);
 }
-.appThemeColorFive{
-    color:var(--app-theme-color-five);
-}
-.appThemeBackgroundColorFive{
-    background-color:var(--app-theme-color-five);
+.appThemeBackgroundColorFive {
+  background-color: var(--app-theme-color-five);
 }

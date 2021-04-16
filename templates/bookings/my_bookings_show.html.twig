@@ -41,13 +41,7 @@
             </div>
         </div>
     </div>
+    <div id="user" data-userId="{{ app.user.id }}"></div>
 
-
-
-    <script>
-        {% if app.user%}
-        let user = {{ app.user.id }};
-        {% endif %}
-    </script>
     {{ encore_entry_script_tags('my_bookings_show') }}
 {% endblock %}

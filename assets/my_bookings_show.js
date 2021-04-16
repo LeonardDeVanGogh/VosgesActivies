@@ -5,7 +5,7 @@ let formData = new FormData();
 let bookingId;
 let newBookingStartAt;
 let newBookingEndAt;
-moment.locale('fr');
+let user = document.getElementById('user').dataset.userId;
 
 /* FullCalendar_integration */
 
@@ -17,6 +17,7 @@ import frLocale from '@fullcalendar/core/locales/fr';
 import listPlugin from '@fullcalendar/list';
 import moment from "moment";
 
+moment.locale('fr');
 
 document.addEventListener('DOMContentLoaded', function() {
 
@@ -58,7 +59,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function setBookingId(info){
         bookingId = info.event.id ;
-        console.log(moment(info.event.start).format('LLLL'));
         document.getElementById('activityLink').href = info.event.url
         document.getElementById('bookingOptionsTitle').innerText = moment(info.event.start).format('LLLL');
 

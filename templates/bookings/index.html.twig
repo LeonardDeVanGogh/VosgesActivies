@@ -75,12 +75,11 @@
             {% endif %}
         {% endif %}
     </div>
+    <div id="user" data-userId="{{ app.user.id }}"></div>
+    <div id="activityId" data-activityId="{{ activity.id }}"></div>
 
     <script>
         let activityId = {{ activity.id }};
-        {% if app.user%}
-            let user = {{ app.user.id }};
-        {% endif %}
     </script>
 
     {{ encore_entry_script_tags('booking_index') }}

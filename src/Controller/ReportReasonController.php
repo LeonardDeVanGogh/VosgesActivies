@@ -19,7 +19,7 @@ class ReportReasonController extends AbstractController
      * @isGranted("ROLE_ADMIN")
      * @Route("/report/reason/create", name="report_reason_create")
      */
-    public function create(Request $request, EntityManagerInterface $manager, ReportReasonRepository $repo)
+    public function create(Request $request, EntityManagerInterface $manager)
     {
         $reportReason = new ReportReason();
         $reportReasonForm = $this->createForm(ReportReasonType::class, $reportReason);
@@ -49,7 +49,7 @@ class ReportReasonController extends AbstractController
      * @isGranted("ROLE_MODERATOR")
      * @Route("/report/reason/{id}/update", name="report_reason_update")
      */
-    public function update(ReportReason $reportReason, Request$request, EntityManagerInterface $manager, ReportReasonRepository $repo)
+    public function update(ReportReason $reportReason, Request$request, EntityManagerInterface $manager)
     {
 
         $reportReasonForm = $this->createForm(ReportReasonType::class, $reportReason);

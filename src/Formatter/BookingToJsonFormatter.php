@@ -59,18 +59,14 @@ class BookingToJsonFormatter
 
     private function setEventTitle($event)
     {
-        $title = "erreur";
+        $title = "Résrever";
+        if($event->getBookedBy()){
+            $title = "Indisponible";
+        }
         if($this->isCurrentUserTheOwnerOfThisActivity($event) || $this->security->isGranted('ROLE_ADMIN' ,$this->security->getUser())){
+            $title = "Supprimer";
             if($event->getBookedBy()){
                 $title = "mail: " . $event->getBookedBy()->getEmail() . " / tél: " . $event->getBookedBy()->getPhoneNumber();
-            }else{
-                $title = "Supprimer";
-            }
-        }else{
-            if($event->getBookedBy()){
-                $title = "Indisponible";
-            }else{
-                $title = "Résrever";
             }
         }
         return $title;

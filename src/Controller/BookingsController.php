@@ -32,19 +32,17 @@ class BookingsController extends AbstractController
     /**
      * @Route("/{id}", name="bookings_index", methods={"GET"}, requirements={"id"="\d+"})
      */
-    public function index(BookingsRepository $bookingsRepository, Activity $activity): Response
+    public function index(Activity $activity): Response
     {
 
-        $bookings = $bookingsRepository->findAllBookingsByActivity($activity->getId());
         if ($activity->getDeletedAt() == null) {
             return $this->render('bookings/index.html.twig', [
-                'bookings' => $bookings,
                 'activity' => $activity,
             ]);
-        } else {
-            return $this->redirectToRoute('home');
         }
+        return $this->redirectToRoute('home');
     }
+
     /**
      * isGranted("ROLE_EDITOR")
      * @Route("/{id}/edit", name="bookings_edit", methods={"GET","POST"})
