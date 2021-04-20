@@ -19,7 +19,7 @@ class Report
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity=comment::class, inversedBy="reports")
+     * @ORM\ManyToOne(targetEntity=Comment::class, inversedBy="reports")
      * @ORM\JoinColumn(nullable=false)
      */
     private $comment;
