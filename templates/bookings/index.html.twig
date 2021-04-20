@@ -41,7 +41,7 @@
                                 {% endif %}
                             {% else %}
                                 <p>Vous devez être connecté pour effectuer une réservation.</p>
-                                <a href="{{ path('user_connection') }}" class="btn btn-success">Connexion</a>
+                                <a href="{{ path('security_login') }}" class="btn btn-success">Connexion</a>
                             {% endif %}
                         </div>
 
@@ -75,7 +75,10 @@
             {% endif %}
         {% endif %}
     </div>
-    <div id="user" data-userId="{{ app.user.id }}"></div>
+    {% if app.user %}
+        <div id="user" data-userId="{{ app.user.id }}"></div>
+    {% endif %}
+
     <div id="activityId" data-activityId="{{ activity.id }}"></div>
 
     <script>

@@ -12,7 +12,6 @@ use App\Formatter\ActivityToJsonFormatter;
 use App\Repository\ActivityRepository;
 use App\Repository\CategoryRepository;
 use App\Repository\CommentRepository;
-use App\Repository\ReportReasonRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -25,7 +24,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 class ActivityController extends AbstractController
 {
     /** @var ActivityToJsonFormatter */
-    private $activityToJsonFormatter;
+    private ActivityToJsonFormatter $activityToJsonFormatter;
 
     public function __construct(ActivityToJsonFormatter $activityToJsonFormatter)
     {
