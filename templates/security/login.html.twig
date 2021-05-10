@@ -3,7 +3,7 @@
 {% block body %}
 	<div class="container pb-5">
 		<div class="row text-center pt-5 pb-3">
-			<div class="col-lg-6 m-auto">
+			<div class="col-lg-6 mx-auto">
 				<h1 class="h1">Connexion :</h1>
 			</div>
 		</div>
@@ -18,5 +18,10 @@
 				<button type="submit" class="btn btn-success">Connexion</button>
 			</div>
 		</form>
+		<div class="row">
+			<div class="col-lg-6">
+				<a class="btn btn-outline-success" href="{{ path('security_registration') }}">Inscription</a>
+			</div>
+		</div>
 	</div>
 {%  endblock %}
