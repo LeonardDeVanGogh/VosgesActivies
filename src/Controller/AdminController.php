@@ -45,21 +45,5 @@ class AdminController extends AbstractController
             'userForm' => $form->createView(),
         ]);
     }
-    /**
-     * @isGranted("ROLE_USER")
-     * @Route("/user/update/{id}", name="user_update")
-     */
-    public function userUpdate(User $user, Request $request){
 
-        $form = $this->createForm(UserUpdateType::class, $user);
-        $form->handleRequest($request);
-        if($form->isSubmitted() && $form->isValid()){
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($user);
-            $entityManager->flush();
-        }
-        return $this->render('admin/edit_user.html.twig', [
-            'userForm' => $form->createView(),
-        ]);
-    }
 }

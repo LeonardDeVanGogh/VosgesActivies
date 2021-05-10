@@ -82,7 +82,7 @@
                                 {{ app.user.username }}
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item" href="{{ path('admin_user_update', {'id' : app.user.id}) }}">Mon Espace</a>
+                                <a class="dropdown-item" href="{{ path('user_update', {'id' : app.user.id}) }}">Mon Espace</a>
                                 <a class="dropdown-item" href="{{ path('read_my_bookings') }}">Gérer mes Réservations</a>
                             </div>
                         </li>
