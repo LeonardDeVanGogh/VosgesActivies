@@ -17,6 +17,10 @@ class UserController extends AbstractController
      */
     public function userUpdate(User $user, Request $request){
 
+        if($this->getUser()->getId()!==$user->getId()){
+            return $this->redirectToRoute('home');
+        }
+
         $form = $this->createForm(UserUpdateType::class, $user);
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()){
