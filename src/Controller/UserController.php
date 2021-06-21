@@ -2,32 +2,30 @@
 
 namespace App\Controller;
 
-use App\Entity\User;
 use App\Form\UserUpdateType;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 class UserController extends AbstractController
 {
     /**
-     * @isGranted("ROLE_USER")
-     * @Route("/user/update/{id}", name="user_update")
+     * @Route("/user/update", name="user_update", methods={"GET", "POST"})
+     * @IsGranted("ROLE_USER")
      */
-    public function userUpdate(User $user, Request $request){
+    public function userUpdate(Request $request, EntityManagerInterface $manager): Response
+    {
+        $form = $this->createForm(UserUpdateType::class, $this->getUser());
 
-        if($this->getUser()->getId()!==$user->getId()){
-            return $this->redirectToRoute('home');
-        }
-
-        $form = $this->createForm(UserUpdateType::class, $user);
         $form->handleRequest($request);
-        if($form->isSubmitted() && $form->isValid()){
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($user);
-            $entityManager->flush();
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $manager->flush();
         }
+
         return $this->render('user/edit_user.html.twig', [
             'userForm' => $form->createView(),
         ]);

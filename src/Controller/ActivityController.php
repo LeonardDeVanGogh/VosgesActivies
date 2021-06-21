@@ -167,6 +167,9 @@ class ActivityController extends AbstractController
             return $this->redirectToRoute('read', ['id'=>$activity->getId()]);
         }
 
+        //myHandler(blabla);
+        //if myHandler{ redirectToRoute();}
+
         $report = new Report();
         $formReport = $this->createForm(ReportType::class, $report);
         $formReport->handleRequest($request);
